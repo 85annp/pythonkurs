@@ -221,22 +221,51 @@ export default function Speltillampningar() {
 
       <hr />
 
-      <h3>Din uppgift (görs längst ner på sidan)</h3>
+      <h3>Din uppgift (görs i Thonny och klistras in längst ner på sidan)</h3>
       <div className="task-box">
-        <p><strong>Tips!</strong><br/>Låt alla uppgifter finnas kvar i kodrutan, men kommentera bort de uppgifter du är färdig med genom att skriva ''' på raden före och efter kodblocket.</p>
         <ol>
-          <li>Tärning</li>
+          <li>Testa pygame</li>
           <ul>
             <li>Skriv en kommentar "Uppgift 1".</li>
-            <li>Importera random och skapa en variabel där du lagrar ett tärningskast [1..6].</li>
-            <li>Lägg in utskrifter:
-              <ul>
-                <li>Om du rullar en 1:a, skriv "Du rullade en etta, bättre lycka nästa gång!"</li>
-                <li>Om du rullar en 6:a, skriv "Wow, du rullade en sexa!"</li>
-                <li>För alla andra kast, skriv "Du rullade en x:a" där x är det kast du fick.</li>
-              </ul>
-            </li>
+            <li>Utgå från koden i exemplet och ändra fönstret till 800x600.</li>
+            <li>Rita en röd rektangel istället för en cirkel (använd pygame.draw.rect).</li>
+            <li>Byt bakgrundsfärg till en RGB-färg, t.ex. (50, 50, 200).</li>
           </ul>
+          <li>Testa pygame</li>
+          <ul>
+            <li>Skriv en kommentar "Uppgift 1".</li>
+            <li>Utgå från koden i exemplet och ändra fönstret till 800x600.</li>
+            <li>Rita en röd rektangel istället för en cirkel (använd pygame.draw.rect).</li>
+            <li>Byt bakgrundsfärg till en RGB-färg, t.ex. (50, 50, 200).</li>
+          </ul>
+          <li>Testa pygame</li>
+          <ul>
+            <li>Skriv en kommentar "Uppgift 1".</li>
+            <li>Utgå från koden i exemplet och ändra fönstret till 800x600.</li>
+            <li>Rita en röd rektangel istället för en cirkel (använd pygame.draw.rect).</li>
+            <li>Byt bakgrundsfärg till en RGB-färg, t.ex. (50, 50, 200).</li>
+          </ul>
+          <li>Testa pygame</li>
+          <ul>
+            <li>Skriv en kommentar "Uppgift 1".</li>
+            <li>Utgå från koden i exemplet och ändra fönstret till 800x600.</li>
+            <li>Rita en röd rektangel istället för en cirkel (använd pygame.draw.rect).</li>
+            <li>Byt bakgrundsfärg till en RGB-färg, t.ex. (50, 50, 200).</li>
+          </ul>
+          <li>Testa pygame</li>
+          <ul>
+            <li>Skriv en kommentar "Uppgift 1".</li>
+            <li>Utgå från koden i exemplet och ändra fönstret till 800x600.</li>
+            <li>Rita en röd rektangel istället för en cirkel (använd pygame.draw.rect).</li>
+            <li>Byt bakgrundsfärg till en RGB-färg, t.ex. (50, 50, 200).</li>
+          </ul>
+          <li>Testa pygame</li>
+          <ul>
+            <li>Skriv en kommentar "Uppgift 1".</li>
+            <li>Utgå från koden i exemplet och ändra fönstret till 800x600.</li>
+            <li>Rita en röd rektangel istället för en cirkel (använd pygame.draw.rect).</li>
+            <li>Byt bakgrundsfärg till en RGB-färg, t.ex. (50, 50, 200).</li>
+          </ul>                                                  
         </ol>
       </div>
     </div>

@@ -97,26 +97,31 @@ for person in namn:
 
       <PythonIDE
         hideCompletion={true}
-        initialCode={`favorittal = []
-favorittal.append(150)
-favorittal.append(4)
-favorittal.append(42)
-favorittal.append(100)
+        initialCode={`favorittal = [150, 4, 42, 100]
+
 favorittal.append(16)
+print(favorittal)
 
 # Ta bort talet 100 från listan
+print("Tar bort 100...")
 favorittal.remove(100)
 
 # Hitta vilket index talet 150 har och ta bort talet på detta index
+print("Tar bort 150...")
 index = favorittal.index(150)
 del favorittal[index]
 
-# Sortera listan i storleksordning
-favorittal.sort()
+# Ta bort det andra elementet med .pop() och spara det borttagna värdet i en variabel
+print("Tar bort det andra elementet...", end=" ")
+andra = favorittal.pop(1)
+print(f"Det andra elementet var {andra}.")
 
 # Finns talet 16 i listan?
 if 16 in favorittal:
     print("Talet 16 finns i listan!")
+   
+# Sortera listan i storleksordning
+favorittal.sort()
 
 print(favorittal)`}
       />
@@ -305,24 +310,86 @@ print(frukter)`}
 
       <hr />
 
-      <h3>Din uppgift (görs längst ner på sidan)</h3>
+      <h3>Dina uppgifter (görs längst ner på sidan)</h3>
       <div className="task-box">
         <p><strong>Tips!</strong><br />Låt alla uppgifter finnas kvar i kodrutan, men kommentera bort de uppgifter du är färdig med genom att skriva ''' på raden före och efter kodblocket.</p>
+        <p><strong>Tips 2!</strong><br/>Om det inte fungerar med print med end=" ", kan du testa att lägga en tom print() på raden efter.</p>
         <ol>
-          <li>Tärning</li>
+          <li>Hantera lista</li>
           <ul>
             <li>Skriv en kommentar "Uppgift 1".</li>
-            <li>Importera random och skapa en variabel där du lagrar ett tärningskast [1..6].</li>
-            <li>Lägg in utskrifter:
-              <ul>
-                <li>Om du rullar en 1:a, skriv "Du rullade en etta, bättre lycka nästa gång!"</li>
-                <li>Om du rullar en 6:a, skriv "Wow, du rullade en sexa!"</li>
-                <li>För alla andra kast, skriv "Du rullade en x:a" där x är det kast du fick.</li>
-              </ul>
-            </li>
+            <ul>
+              <li>Skapa en lista med namnen på de tre svenska städerna Stockholm, Göteborg och Malmö.</li>
+              <li>Skriv ut de tre städerna på samma rad.<br />
+                  <code>Stockholm Göteborg Malmö</code>
+              </li>
+              <li>Fråga användaren vilken stad hen vill ha med i listan.</li>
+              <li>Lägg in den som tredje stad (i stället för Malmö).</li>
+              <li>Skriv ut de tre städerna på samma rad igen.</li>
+            </ul>
           </ul>
+          <li>Fylla lista</li>
+          <ul>
+            <li>Skriv en kommentar "Uppgift 2".</li>
+            <li>Skapa en lista för färger. (Lägg inte in några färger.)</li>
+            <li>Skapa en loop som frågar användaren efter fem färger.</li>
+            <li>Skriv ut alla färgerna på en rad.</li>
+          </ul>
+          <li>Lista med namn</li>
+          <ul>
+            <li>Skriv en kommentar "Uppgift 3".</li>
+            <li>Skapa en lista som innehåller dessa namn (i den här ordningen): Petter, David, Adam, Bertil, Gustav, Martin, Olof, Erik, Kalle.</li>
+            <li>Skriv ut alla namnen på samma rad.<br />
+                <code>Petter David Adam Bertil Gustav Martin Olof Erik Kalle</code>
+            </li>
+            <li>Sortera namnen och skriv ut dem igen.<br />
+                <code>Adam Bertil David Erik Gustav Kalle Martin Olof Petter</code>
+            </li>
+            <li>Fråga användaren efter dennes namn och lägg in det sist i listan. Sortera listan och skriv ut den igen.</li>
+            <li>Fråga användaren efter ett annat namn att leta efter i listan. Skriv ut om det finns eller inte.</li>
+            <li>Ta bort Adam ur listan.</li>
+            <li>Sortera listan i omvänd bokstavsordning och skriv ut den igen.<br />
+                <strong>Ledtråd: </strong><code>sort()</code> kan ha ett frivilligt argument för omvänd sortering.</li>
+          </ul>
+          <li>Lista med tal</li>
+          <ul>
+            <li>Skriv en kommentar "Uppgift 4".</li>
+            <li>Skapa en lista med dessa heltal: 150, 4, 42, 100, 25, 75, 60, 33, 81, 58, 21, 73, 300.</li>
+            <li>Sortera talen och skriv ut dem på en rad.</li>
+            <li>Skriv ut max, min, summa och medelvärdeför talen. Gör utskriften snygg, så att det går att förstå vad det är som skrivs ut.<br />
+                <strong>Tips: </strong>Tänk på att det finns många inbyggda metoder.<br />
+                <code>4 21 25 33 42 58 60 73 75 81 100 150 300
+                <br />
+                Max: 300
+                <br />
+                Min: 4
+                <br />
+                Summa: 1022
+                <br />
+                Medelvärde: 78.62</code>
+                </li>
+          </ul>  
+          <li>Lexikon</li>
+          <ul>
+            <li>Skriv en kommentar "Uppgift 5".</li>
+            <li>Skapa ett program som kan översätta orden hej, dator, tangentbord och mus till engelska med hjälp av en dictionary.</li>
+            <li>Be användaren skriva in ett av dessa ord och skriv sedan ut översättningen på engelska med hjälp av dictionaryn.</li>
+          </ul>  
+          <li>🤯 Ord i mening (utgå från exemplet ovan)</li>
+          <ul>
+            <li>Skriv en kommentar "Uppgift 6".</li>
+            <li>Skapa en variabel med den här texten: “Idag har jag druckit en kopp te och en kopp kaffe och sedan en kopp kaffe till.”.</li>
+            <li>Gör om texten till en lista (det finns en färdig metod för detta).</li>
+            <li>Skriv ut alla ord som förekommer exakt 2 eller 3 gånger i meningen:<br />
+                <code>en - 3<br />
+                      kopp - 3<br />
+                      och - 2<br />
+                      kaffe - 2</code>
+            </li>
+          </ul>                                                  
         </ol>
       </div>
     </div>
   );
 }
+

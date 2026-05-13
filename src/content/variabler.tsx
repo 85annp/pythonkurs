@@ -120,7 +120,7 @@ export default function Variabler() {
 
       <hr style={{ margin: '3rem 0', borderColor: 'var(--border-color)', borderBottom: 'none' }} />
 
-      <h3>Din uppgift (görs längst ner på sidan)</h3>
+      <h3>Dina uppgifter (görs längst ner på sidan)</h3>
       <div className="task-box">
         <p><strong>Tips!</strong><br/>Låt alla uppgifter finnas kvar i kodrutan, men kommentera bort de uppgifter du är färdig med genom att skriva ''' på raden före och efter kodblocket.</p>
         <ol>
@@ -128,13 +128,13 @@ export default function Variabler() {
           <ul>
             <li>Skriv en kommentar (med #) "Uppgift 1".</li>
             <li>Skapa en variabel för text med namnet <code>city</code> och ge den värdet av staden du bor i (glöm inte citattecken runt texten).</li>
-            <li>Använd <code>print(f</code> för att skriva ut en mening, t.ex. <code>Jag bor i Falköping</code>.</li>
+            <li>Använd <code>print(f</code> för att skriva ut en mening med <code>city</code>, t.ex. <code>Jag bor i Falköping</code>.</li>
           </ul>
           <li>Chokladboll</li>
           <ul>
             <li>Skriv en kommentar "Uppgift 2".</li>
             <li>Fråga efter priset på en chokladboll och lagra svaret i en variabel för decimaltal (välj namn själv, men ta något som passar för ett pris).</li>
-            <li>Skriv ut vad det kostar om man köper två chokladbollar, t.ex. <code>Två chokladbollar kostar 60 kr</code>.</li>
+            <li>Använd <code>print(f</code> för att skriva ut vad det kostar om man köper två chokladbollar, t.ex. <code>Två chokladbollar kostar 60 kr</code>.</li>
           </ul>
           <li>Längd</li>
           <ul>
@@ -157,7 +157,7 @@ export default function Variabler() {
           <ul>
             <li>Skriv en kommentar "Uppgift 5".</li>
             <li>Skapa variabler för tre tal och ge dem några olika värden.</li>
-            <li>Skriv ut medelvärdet av talen, t.ex. <code>Medelvärde: 1.7</code>. </li>
+            <li>Skriv ut medelvärdet (avrundat till 1 decimal) av talen, t.ex. <code>Medelvärde: 1.7</code>. </li>
             <li>Testkör med olika värden och kontrollera resultatet.</li>
           </ul>
         </ol>

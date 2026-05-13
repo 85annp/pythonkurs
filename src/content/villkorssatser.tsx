@@ -281,7 +281,7 @@ print(f"Du rullade en {kast}:a!")`}
 
             <hr />
 
-      <h3>Din uppgift (görs längst ner på sidan)</h3>
+      <h3>Dina uppgifter (görs längst ner på sidan)</h3>
       <div className="task-box">
         <p><strong>Tips!</strong><br/>Låt alla uppgifter finnas kvar i kodrutan, men kommentera bort de uppgifter du är färdig med genom att skriva ''' på raden före och efter kodblocket.</p>
         <ol>
@@ -293,9 +293,10 @@ print(f"Du rullade en {kast}:a!")`}
               <ul>
                 <li>Om du rullar en 1:a, skriv "Du rullade en etta, bättre lycka nästa gång!"</li>
                 <li>Om du rullar en 6:a, skriv "Wow, du rullade en sexa!"</li>
-                <li>För alla andra kast, skriv "Du rullade en x:a" där x är det kast du fick.</li>
+                <li>För alla andra kast, skriv "Du rullade en x:a." där x är det kast du fick.</li>
               </ul>
             </li>
+            <li>Testkör flera gånger så att du ser alla varianter av utskrifter.</li>
           </ul>
           <li>Tågbiljett</li>
           <ul>
@@ -309,7 +310,8 @@ print(f"Du rullade en {kast}:a!")`}
                 <li>Pensionär: 65 år och äldre</li>
               </ul>
             </li>
-            <li><strong>Obs!</strong> Du får inte använda operatorerna and och or i den här uppgiften.</li>
+            <li><strong>Obs!</strong> Du får inte använda operatorerna <code>and</code> och <code>or</code> i den här uppgiften.</li>
+            <li>Testkör flera gånger så att du ser alla varianter av utskrifter.</li>
           </ul>
           <li>Status</li>
           <ul>
@@ -321,9 +323,10 @@ print(f"Du rullade en {kast}:a!")`}
                 <li>stopp: "Systemet stannar..."</li>
                 <li>status: "Systemet körs..."</li>
                 <li>reset: "Startar om systemet..."</li>
-                <li>annat: "Okänt kommando"</li>
+                <li>allt annat: "Okänt kommando"</li>
               </ul>
             </li>
+            <li>Testkör flera gånger så att du ser alla varianter av utskrifter.</li>
           </ul>                    
         </ol>
       </div>

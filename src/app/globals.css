@@ -286,6 +286,11 @@ a:hover {
   font-size: larger;
 }
 
+.module-content td code {
+  font-size: larger;
+}
+
+
 /* Custom components */
 .code-example {
   background-color: #0f172a;

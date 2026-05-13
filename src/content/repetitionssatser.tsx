@@ -186,9 +186,10 @@ print("En text på\\ntvå rader!")`}
 
       <hr />
 
-      <h3>Din uppgift (görs längst ner på sidan)</h3>
+      <h3>Dina uppgifter (görs längst ner på sidan)</h3>
       <div className="task-box">
         <p><strong>Tips!</strong><br/>Låt alla uppgifter finnas kvar i kodrutan, men kommentera bort de uppgifter du är färdig med genom att skriva ''' på raden före och efter kodblocket.</p>
+        <p><strong>Tips 2!</strong><br/>Om det inte fungerar med print med end=" ", kan du testa att lägga en tom print() på raden efter.</p>
         <ol>
           <li>Tal med for-satser</li>
           <ul>
@@ -202,10 +203,6 @@ print("En text på\\ntvå rader!")`}
              <li>Skriv med en for-loop ut talen 10-1 på en rad med mellanslag mellan varje tal.<br />
                 <code>10 9 8 7 6 5 4 3 2 1</code>
             </li>
-             <li>Skriv med en for-loop ut vart tredje tal (3-15) på en rad med mellanslag mellan varje tal.<br />
-                <code>3 6 9 12 15</code>
-            </li>
-            <li>Fråga användaren efter startvärde, slutvärde och steg och skriv ut på en rad med mellanslag mellan varje tal enligt önskemålen.</li>
           </ul>
 
           <li>Mönster med nästlade for-satser</li>
@@ -233,13 +230,6 @@ print("En text på\\ntvå rader!")`}
               <code>**</code><br />
               <code>*</code><br />
             </li>
-            <li>🤯 Skriv ut en ihålig kvadrat av asterisker med den önskade sidlängden. Det ska vara asterisker i alla ytterkanterna, men mellanslag i mitten.<br />
-              <code>*****</code><br />
-              <code>*&nbsp;&nbsp;&nbsp;*</code><br />
-              <code>*&nbsp;&nbsp;&nbsp;*</code><br />
-              <code>*&nbsp;&nbsp;&nbsp;*</code><br />
-              <code>*****</code><br />
-            </li>
             <li>🤯 Skriv ut en pyramid av asterisker med höjden samma som sidlängden innan.<br />
               <code>&nbsp;&nbsp;&nbsp;&nbsp;*</code><br />
               <code>&nbsp;&nbsp;&nbsp;***</code><br />
@@ -258,19 +248,20 @@ print("En text på\\ntvå rader!")`}
                 <li>När användaren svarar rätt ska hen få ett meddelande om att det var rätt svar.</li>
               </ul>
             </li>
-            <li>Meny
+            <li>Meny (Testkör gärna i Thonny, så ser du hur ett menyprogram fungerar.)
               <ul>
                 <li>Lägg in en meny med tre val: addera två tal, multiplicera två tal och avsluta.</li>
                 <li>Se till att alla valen fungerar som förväntat.</li>
+                <li>Varje gång den utfört ett menyval ska menyn visas igen.</li>
                 <li>Talen ska kunna vara decimaltal.</li>
               </ul>
             </li>
             <li>🤯 Summera tal
               <ul>
-                <li>Be användaren ange positiva heltal, ett i taget. </li>
+                <li>Be användaren ange positiva heltal, ett i taget, och avsluta med -1. </li>
                 <li>Använd en while-loop för att fortsätta läsa in tal tills användaren skriver in -1.</li>
-                <li>När inmatningen är slut, ska programmet beräkna och skriva ut medelvärdet av alla inmatade tal (exklusive -1).</li>
-                <li>Ledtråd: Du behöver en variabel för att lagra summan av alla tal och en annan för att räkna hur många tal som matats in.</li>
+                <li>När inmatningen är slut, ska programmet beräkna och skriva ut medelvärdet av alla inmatade tal (exklusive -1).<br />
+                    <strong>Ledtråd:</strong> Du behöver en variabel för att lagra summan av alla tal och en annan för att räkna hur många tal som matats in.</li>
               </ul>
             </li>
           </ul>

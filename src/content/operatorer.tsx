@@ -212,25 +212,22 @@ print(not(x > 0 and x % 2 == 0))`}
 
       <hr />
 
-      <h3>Din uppgift (görs längst ner på sidan)</h3>
+      <h3>Dina uppgifter (görs längst ner på sidan)</h3>
       <div className="task-box">
         <p><strong>Tips!</strong><br/>Låt alla uppgifter finnas kvar i kodrutan, men kommentera bort de uppgifter du är färdig med genom att skriva ''' på raden före och efter kodblocket.</p>
         <ol>
-          <li>"Miniräknare"</li>
+          <li>Aritmetik</li>
           <ul>
             <li>Skriv en kommentar "Uppgift 1".</li>
-            <li>Fråga efter ett tal (ska kunna vara decimaltal) och lagra svaret i en variabel <code>number1</code>.</li>
-            <li>Fråga efter ett tal (ska kunna vara decimaltal) och lagra svaret i en variabel <code>number2</code>.</li>
-            <li>Gör sedan en utskrift där du skriver ut (om användaren matat in 10 och 3):
-                <br /><code>10 plus 3 = 13</code>
-                <br /><code>10 minus 3 = 7</code>
-                <br /><code>10 gånger 3 = 30</code>
-                <br /><code>10 delat med 3 = 3.333333333333333</code>
-                <br /><code>10 upphöjt med 3 = 1000</code>
-                <br /><code>10 rest 3 = 1</code>
-                <br /><code>10 heltalsdivision med 3 = 3</code>
+            <li>Skapa en variabel <code>number1</code> där användaren får mata in ett heltal.</li>
+            <li>Skapa en variabel <code>number2</code> där användaren får mata in ett till heltal.</li>
+            <li>Gör sedan en utskrift där du skriver ut (om användaren matat in <code>10</code> och <code>3</code>):
+                <br /><code>10 / 3 = 3.3333333333333335</code>
+                <br /><code>10 // 3 = 3</code>
+                <br /><code>10 % 3 = 1</code>
+                <br /><code>10 ** 3 = 1000</code>
             </li>
-            <li>Testa programmet både med heltal och decimaltal.</li>
+            <li>Testa programmet både olika heltal.</li>
           </ul>
           <li>Månader och år</li>
           <ul>
@@ -250,28 +247,9 @@ print(not(x > 0 and x % 2 == 0))`}
               <br /><code>7385 sekunder motsvarar 2 timmar, 3 minuter och 5 sekunder.</code>
             </li>      
           </ul> 
-          <li>Hyrbilen</li>
-          <ul>
-            <li>Skriv en kommentar "Uppgift 4".</li>
-            <li>Låt användaren mata in antalet dagar hen ska hyra en bil och hur många kilometer som hen ska köra. Spara dessa i variabler med lämpliga namn.</li>
-            <li>Beräkna kostnaden för att hyra bilen och spara den i en variabel med lämpligt namn.<br/>
-              Följande gäller för biluthyrningen:
-              <ul>
-                <li>startavgiften för att hyra bilen är 300 kr</li>
-                <li>det kostar ytterligare 1 krona per kilometer man kör</li>
-                <li>det kostar ytterligare 500 kronor för varje extra dag man vill hyra den förutom den första.</li>
-              </ul>
-            </li>
-            <li>
-              Gör en utskrift av hyreskostnaden.
-              <br /><code>Ange antal dagar: 5</code>
-              <br /><code>Ange antal kilometer: 320</code>
-              <br /><code>Det kommer att kosta 2620 kr.</code>
-            </li> 
-          </ul>
           <li>Udda eller jämn</li>
           <ul>
-            <li>Skriv en kommentar "Uppgift 5".</li>
+            <li>Skriv en kommentar "Uppgift 4".</li>
             <li>Skapa en variabel <code>number</code> och låt användaren ge den ett värde.</li>    
             <li>Skriv ut <code>True</code> om talet är jämnt och <code>False</code> om talet är udda.<br/>
                 <strong>Obs!</strong> Använd inget annat än det du lärt dig hittills i kursen!</li>    

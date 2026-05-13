@@ -4,7 +4,7 @@ import PythonIDE from "../components/PythonIDE";
 export default function Metoder() {
   return (
     <div className="module-content">
-      <h2>Funktioner (Metoder)</h2>
+      <h2>Funktioner (metoder)</h2>
       <p>
         Ofta kommer vi när vi programmerar att vilja använda samma funktionalitet flera gånger.
         Detta kan vi naturligtvis göra genom att kopiera och klistra in kod, eller ibland använda en loop.
@@ -201,17 +201,74 @@ print(f"Summan är: {tal1 + tal2}")`}
       <div className="task-box">
         <p><strong>Tips!</strong><br/>Låt alla uppgifter finnas kvar i kodrutan, men kommentera bort de uppgifter du är färdig med genom att skriva ''' på raden före och efter kodblocket.</p>
         <ol>
-          <li>Tärning</li>
+          <li>Baklänges</li>
           <ul>
             <li>Skriv en kommentar "Uppgift 1".</li>
-            <li>Importera random och skapa en variabel där du lagrar ett tärningskast [1..6].</li>
-            <li>Lägg in utskrifter:
+            <li>Skapa metoden <code>skriv_baklänges(meddelande)</code>.
               <ul>
-                <li>Om du rullar en 1:a, skriv "Du rullade en etta, bättre lycka nästa gång!"</li>
-                <li>Om du rullar en 6:a, skriv "Wow, du rullade en sexa!"</li>
-                <li>För alla andra kast, skriv "Du rullade en x:a" där x är det kast du fick.</li>
+                <li>Metoden ska ta emot en sträng som parameter (<code>meddelande</code>).</li>
+                <li>Metoden ska skriva ut parametern meddelande baklänges genom att loopa från sista till första positionen.</li>
               </ul>
             </li>
+            <li>Anropa metoden minst tre gånger i ditt program.</li>
+          </ul>
+          <li>Tal i kvadrat</li>
+          <ul>
+            <li>Skriv en kommentar "Uppgift 2".</li>
+            <li>Skapa metoden <code>skriv_tal_i_kvadrat_mellan(nedreGräns, övreGräns)</code>. 
+              <ul>
+                <li>Metoden ska ta emot två heltal som parametrar (<code>nedreGräns</code> och <code>övreGräns</code>).</li>
+                <li>För varje tal mellan <code>nedreGräns</code> och <code>övreGräns</code> (inklusive) ska metoden beräkna och skriva ut vad talet är i kvadrat, alltså upphöjt till två.</li>
+              </ul>
+            </li>
+            <li>Om metoden anropas genom att skriva <code>skriv_tal_i_kvadrat_mellan(3, 5)</code> så ska programmet skriva ut:<br />
+                <code>Talet 3 i kvadrat är 9.<br />
+                      Talet 4 i kvadrat är 16.<br />
+                      Talet 5 i kvadrat är 25.
+                </code>
+            </li>
+          </ul>
+          <li>Triangel</li>
+          <ul>
+            <li>Skriv en kommentar "Uppgift 3".</li>
+            <li>Skapa metoden <code>rita_rätvinklig_triangel(sidlängd)</code>. 
+              <ul>
+                <li>Metoden ska ta emot ett heltal som parameter (<code>sidlängd</code>).</li>
+                <li>Metoden ska rita ut en rätvinklig triangel med den sidlängd som anges.</li>
+              </ul>
+            </li>
+            <li>En triangel ritad av denna metod skulle t.ex. kunna se ut så här:<br />
+              <code>*<br />
+                    **<br />
+                    ***<br />
+                    ****<br />
+                    *****</code>
+            </li>
+            <li>Anropa metoden minst två gånger i ditt program.</li>
+          </ul>
+          <li>Addera</li>
+          <ul>
+            <li>Skriv en kommentar "Uppgift 4".</li>
+            <li>Skapa metoden <code>addera(tal1, tal2)</code>.
+              <ul>
+                <li>Metoden ska ta emot två heltal som parametrar (<code>tal1</code> och <code>tal2</code>).</li>
+                <li>Metoden ska returnera summan av talen.</li>
+              </ul>
+            </li>
+            <li>Anropa metoden minst tre gånger i ditt program och skriv ut resultaten.</li>
+          </ul>
+          <li>Längst ord</li>
+          <ul>
+            <li>Skriv en kommentar "Uppgift 5".</li>
+            <li>Skapa metoden <code>längst(text1, text2)</code>.
+              <ul>
+                <li>Metoden ska ta emot två strängar som parametrar (<code>text1</code> och <code>text2</code>).</li>
+                <li>Metoden ska returnera den sträng av de båda parameterna som är längst.</li>
+              </ul>
+              <li>Som exempel så ska anropet <code>längst("Hej", "Hejsan")</code> returnera <code>"Hejsan"</code>.</li>
+              <li>Om båda argumenten är lika långa så ska metoden returnera det första av dem.</li>
+            </li>
+            <li>Anropa metoden minst tre gånger där den första är störst en gång, den andra en gång och texterna är lika långa en gång (men olika texter). Skriv ut resultaten.</li>
           </ul>
         </ol>
       </div>

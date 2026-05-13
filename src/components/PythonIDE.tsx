@@ -16,7 +16,7 @@ interface PythonIDEProps {
   hideCompletion?: boolean;
 }
 
-export default function PythonIDE({ moduleId, title, initialCode = 'print("Hej världen!")', hideCompletion = false }: PythonIDEProps) {
+export default function PythonIDE({ moduleId, title, initialCode = '# Uppgift 1\nprint("Hej världen!")', hideCompletion = false }: PythonIDEProps) {
   const [code, setCode] = useState(initialCode);
   const [output, setOutput] = useState("Laddar Python-miljö...");
   const [pyodide, setPyodide] = useState<any>(null);
@@ -119,7 +119,7 @@ builtins.input = custom_input
 
   return (
     <div style={{ marginBottom: hideCompletion ? '2rem' : '0' }}>
-      <div className="editor-container" style={{ height: hideCompletion ? '300px' : '500px' }}>
+      <div className="editor-container" style={{ height: hideCompletion ? '350px' : '600px' }}>
         <div className="editor-pane">
           <div className="editor-header">
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
