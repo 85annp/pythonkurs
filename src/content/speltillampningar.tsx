@@ -11,7 +11,7 @@ export default function Speltillampningar() {
       <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
         <p className="text-sm text-yellow-800 m-0">
           <strong>Viktigt:</strong> Pygame kräver att det öppnas ett eget fönster på din dator. Därför kan du <strong>inte</strong> köra koden direkt här i webbläsaren. 
-          Kopiera istället koden till <strong>Thonny</strong> och kör den lokalt på din egen dator!
+          Kopiera istället koden till <strong>Thonny</strong>  (<a href="https://thonny.org/" target="_blank">https://thonny.org/</a>) och kör den lokalt på din egen dator!
         </p>
       </div>
 
@@ -25,11 +25,17 @@ export default function Speltillampningar() {
         Ett spel i pygame kräver alltid en <strong>game Loop</strong> - en loop (oftast <code>while True</code>) som körs hela tiden spelet är igång. 
         Spelet stängs när loopen bryts.
       </p>
-      <ul>
-        <li><strong>init()</strong>: Startar pygame-motorn.</li>
-        <li><strong>Event Loop</strong>: Kollar om användaren gör något (till exempel klickar på krysset för att stänga fönstret).</li>
-        <li><strong>Fill & Flip</strong>: Färglägg skärmen och visa ("flip") det du har ritat i det här varvet.</li>
-      </ul>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
+          <ul>
+            <li><strong>init()</strong>: Startar pygame-motorn.</li>
+            <li><strong>Event Loop</strong>: Kollar om användaren gör något (till exempel klickar på krysset för att stänga fönstret).</li>
+            <li><strong>Fill & Flip</strong>: Färglägg skärmen och visa ("flip") det du har ritat i det här varvet.</li>
+          </ul>
+        <div style={{ flexShrink: 0, width: '200px', textAlign: 'center' }}>
+          <img src="/gameloop.png" alt="Illustration av spel-loopen" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }} />
+        </div>
+      </div>
+
 
       <p>
         Testa så att det här exemplet fungerar på din dator. Det borde öppna ett fönster med en vit cirkel på en mörkgrön bakgrund. Stäng fönstret när du är klar.

@@ -2,6 +2,8 @@ import { auth } from "../../../auth";
 import { redirect } from "next/navigation";
 import { prisma } from "../../lib/prisma";
 import TeacherApprovalToggle from "../../components/TeacherApprovalToggle";
+import StudentManager from "../../components/StudentManager";
+import DeleteStudentButton from "../../components/DeleteStudentButton";
 
 export default async function TeacherDashboard() {
   const session = await auth();
@@ -21,8 +23,11 @@ export default async function TeacherDashboard() {
 
   return (
     <div>
-      <h1 style={{ marginBottom: '2rem' }}>Lärarvy - Elevers framsteg 📊</h1>
+      <h1 style={{ marginBottom: '2rem' }}>Lärarvy - Administrera Kurs 📊</h1>
       
+      <StudentManager />
+
+      <h3 style={{ marginBottom: '1rem' }}>Elevers Framsteg</h3>
       <div style={{ overflowX: 'auto', backgroundColor: 'var(--card-bg)', borderRadius: 'var(--radius)', border: '1px solid var(--border-color)' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
           <thead>
@@ -43,9 +48,9 @@ export default async function TeacherDashboard() {
               return (
                 <tr key={student.id}>
                   <td style={{ padding: '1rem', borderBottom: '1px solid var(--border-color)', verticalAlign: 'top' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                      {student.image && <img src={student.image} alt="" style={{ width: '30px', borderRadius: '50%' }} />}
-                      {student.name || student.email}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+                      <span style={{ fontWeight: 'bold' }}>{student.username}</span>
+                      <DeleteStudentButton studentId={student.id} studentName={student.username} />
                     </div>
                   </td>
                   {modules.map(m => {

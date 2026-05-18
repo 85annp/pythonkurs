@@ -1,13 +1,38 @@
-import { signIn } from "../../../auth";
-import { redirect } from "next/navigation";
-import { AuthError } from "next-auth";
+"use client";
 
-export default function LoginPage({ searchParams }: { searchParams: { error?: string } }) {
-  const errorMessage = searchParams.error === "CredentialsSignin" 
-    ? "Ogiltigt användarnamn eller lösenord." 
-    : searchParams.error 
-      ? "Ett fel inträffade vid inloggning." 
-      : "";
+import { signIn } from "next-auth/react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export default function LoginPage() {
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError("");
+
+    const formData = new FormData(e.currentTarget);
+    const username = formData.get("username") as string;
+    const password = formData.get("password") as string;
+
+    const res = await signIn("credentials", {
+      username,
+      password,
+      redirect: false,
+    });
+
+    setIsLoading(false);
+
+    if (res?.error) {
+      setError("Ogiltigt användarnamn eller lösenord.");
+    } else if (res?.ok) {
+      router.push("/");
+      router.refresh();
+    }
+  };
 
   return (
     <div className="flex justify-center items-center" style={{ minHeight: '60vh' }}>
@@ -18,31 +43,13 @@ export default function LoginPage({ searchParams }: { searchParams: { error?: st
           <p>Ange dina inloggningsuppgifter från läraren.</p>
         </div>
 
-        {errorMessage && (
+        {error && (
           <div style={{ backgroundColor: '#fee2e2', color: '#991b1b', padding: '1rem', borderRadius: '8px', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
-            {errorMessage}
+            {error}
           </div>
         )}
 
-        <form
-          action={async (formData) => {
-            "use server";
-            try {
-              await signIn("credentials", formData);
-            } catch (error) {
-              if (error instanceof AuthError) {
-                switch (error.type) {
-                  case 'CredentialsSignin':
-                    return redirect('/login?error=CredentialsSignin');
-                  default:
-                    return redirect('/login?error=UnknownError');
-                }
-              }
-              throw error; // Rethrow next/navigation redirect errors
-            }
-          }}
-          style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
-        >
+        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <div>
             <label htmlFor="username" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>Användarnamn</label>
             <input 
@@ -63,8 +70,8 @@ export default function LoginPage({ searchParams }: { searchParams: { error?: st
               style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid var(--border-color)' }}
             />
           </div>
-          <button type="submit" className="btn btn-primary" style={{ marginTop: '1rem', width: '100%' }}>
-            Logga in
+          <button type="submit" className="btn btn-primary" style={{ marginTop: '1rem', width: '100%' }} disabled={isLoading}>
+            {isLoading ? "Loggar in..." : "Logga in"}
           </button>
         </form>
       </div>
