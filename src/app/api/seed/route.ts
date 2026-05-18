@@ -32,26 +32,24 @@ export async function GET() {
       });
     }
 
-    const hashedPassword = await bcrypt.hash('123456', 10);
+    const hashedPassword = await bcrypt.hash('Koda_Python2026!', 10);
 
     const larare = await prisma.user.upsert({
       where: { username: 'Larare01' },
-      update: {},
+      update: { password: hashedPassword },
       create: {
         username: 'Larare01',
         password: hashedPassword,
-        name: 'Lärare Test',
         role: 'TEACHER',
       },
     });
 
     const elev = await prisma.user.upsert({
       where: { username: 'Elev01' },
-      update: {},
+      update: { password: hashedPassword },
       create: {
         username: 'Elev01',
         password: hashedPassword,
-        name: 'Elev Test',
         role: 'STUDENT',
       },
     });

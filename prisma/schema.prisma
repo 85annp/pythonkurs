@@ -13,7 +13,6 @@ model User {
   id            String    @id @default(cuid())
   username      String    @unique
   password      String
-  name          String?
   role          String    @default("STUDENT") // STUDENT or TEACHER
   progress      Progress[]
 }

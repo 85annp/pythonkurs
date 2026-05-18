@@ -98,12 +98,11 @@ export async function createStudent(username: string, passwordPlain: string) {
   const hashedPassword = await bcrypt.hash(passwordPlain, 10);
 
   await prisma.user.create({
-    data: {
-      username,
-      password: hashedPassword,
-      name: username,
-      role: "STUDENT"
-    }
+      data: {
+        username,
+        password: hashedPassword,
+        role: "STUDENT"
+      }
   });
 
   revalidatePath("/teacher");
@@ -142,7 +141,6 @@ export async function batchCreateStudents(count: number, prefix: string = "Elev"
       data: {
         username,
         password: hashedPassword,
-        name: username,
         role: "STUDENT"
       }
     });

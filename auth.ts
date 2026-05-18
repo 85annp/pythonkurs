@@ -26,7 +26,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         );
 
         if (passwordsMatch) {
-          return { id: user.id, name: user.name, role: user.role };
+          return { id: user.id, name: user.username, role: user.role };
         }
         return null;
       }
