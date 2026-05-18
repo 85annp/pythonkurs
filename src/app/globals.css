@@ -339,3 +339,48 @@ a:hover {
   background-color: var(--secondary);
   font-weight: 600;
 }
+
+/* Responsive adjustments for mobile fallback */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .navbar {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .navbar-brand {
+    font-size: 1.25rem;
+  }
+
+  .hero {
+    padding: 3rem 1rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 {
+    font-size: 2.25rem;
+  }
+
+  .editor-container {
+    flex-direction: column;
+    height: auto;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .editor-pane {
+    min-height: 350px;
+    height: 350px; /* Tvingar en fast höjd för redigerare och utdata på mobilen */
+  }
+
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+  }
+}

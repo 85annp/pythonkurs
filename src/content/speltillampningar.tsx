@@ -60,15 +60,6 @@ export default function Speltillampningar() {
         &nbsp;&nbsp;&nbsp;&nbsp;clock.tick(60) # Kör loopen i 60 FPS (Bilder per sekund)
       </div>
 
-      <div className="bg-blue-50 rounded-lg p-4 mb-6">
-        <h4 className="font-bold text-blue-800 mt-0">Övningar:</h4>
-        <ul className="text-sm text-blue-900 m-0">
-          <li>Ändra fönstret till 800x600.</li>
-          <li>Rita en röd rektangel istället för en cirkel (använd <code>pygame.draw.rect(screen, "red", (x, y, bredd, höjd))</code>).</li>
-          <li>Byt bakgrundsfärg till en RGB-färg, t.ex. <code>(50, 50, 200)</code> istället för "darkgreen".</li>
-        </ul>
-      </div>
-
       <h2>Flytta saker och input</h2>
       <p>
         För att flytta på något behöver vi variabler för positionen (<strong>x</strong> och <strong>y</strong>). 
