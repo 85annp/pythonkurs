@@ -1,14 +1,14 @@
 import React from "react";
 import PythonIDE from "../components/PythonIDE";
 
-export default function Metoder() {
+export default function Funktioner() {
   return (
     <div className="module-content">
-      <h2>Funktioner (metoder)</h2>
+      <h2>Funktioner (tidigare metoder)</h2>
       <p>
         Ofta kommer vi när vi programmerar att vilja använda samma funktionalitet flera gånger.
         Detta kan vi naturligtvis göra genom att kopiera och klistra in kod, eller ibland använda en loop.
-        Men det absolut bästa sättet att sätta samman flera rader kod så att vi kan återanvända dem som ett eget litet "kommando" är att använda <strong>funktioner</strong> (som ofta kallas <em>metoder</em> i andra språk).
+        Men det absolut bästa sättet att sätta samman flera rader kod så att vi kan återanvända dem som ett eget litet "kommando" är att använda <strong>funktioner</strong> (som ofta kallas <em>metoder</em> i objektorienterade språk).
       </p>
       <p>
         Vi har hittills använt funktioner utan att tänka på det. Till exempel är <code>print()</code> en inbyggd funktion.
@@ -209,25 +209,25 @@ print(f"Summan är: {tal1 + tal2}")`}
           <li>Baklänges</li>
           <ul>
             <li>Skriv en kommentar "Uppgift 1".</li>
-            <li>Skapa metoden <code>skriv_baklänges(meddelande)</code>.
+            <li>Skapa funktionen <code>skriv_baklänges(meddelande)</code>.
               <ul>
-                <li>Metoden ska ta emot en sträng som parameter (<code>meddelande</code>).</li>
-                <li>Metoden ska skriva ut parametern meddelande baklänges genom att loopa från sista till första positionen.</li>
-                <li>Utskriften ska ske på en rad.</li>
+                <li>Funktionen ska ta emot en sträng som parameter (<code>meddelande</code>).</li>
+                <li>Funktionen ska skriva ut parametern meddelande baklänges genom att loopa från sista till första positionen.</li>
+                <li>Utskriften ska ske på en rad och markören ska vara på nästa rad efter hela utskriften är klar.</li>
               </ul>
             </li>
-            <li>Anropa metoden minst tre gånger.</li>
+            <li>Anropa funktionen minst tre gånger.</li>
           </ul>
           <li>Tal i kvadrat</li>
           <ul>
             <li>Skriv en kommentar "Uppgift 2".</li>
-            <li>Skapa metoden <code>skriv_tal_i_kvadrat_mellan(nedreGräns, övreGräns)</code>.
+            <li>Skapa funktionen <code>skriv_tal_i_kvadrat_mellan(nedreGräns, övreGräns)</code>.
               <ul>
-                <li>Metoden ska ta emot två heltal som parametrar (<code>nedreGräns</code> och <code>övreGräns</code>).</li>
-                <li>För varje tal mellan <code>nedreGräns</code> och <code>övreGräns</code> (inklusive) ska metoden beräkna och skriva ut vad talet är i kvadrat, alltså upphöjt till två.</li>
+                <li>Funktionen ska ta emot två heltal som parametrar (<code>nedreGräns</code> och <code>övreGräns</code>).</li>
+                <li>För varje tal mellan <code>nedreGräns</code> och <code>övreGräns</code> (inklusive) ska funktionen beräkna och skriva ut vad talet är i kvadrat, alltså upphöjt till två.</li>
               </ul>
             </li>
-            <li>Om metoden anropas genom att skriva <code>skriv_tal_i_kvadrat_mellan(3, 5)</code> så ska programmet skriva ut:<br />
+            <li>Om funktionen anropas genom att skriva <code>skriv_tal_i_kvadrat_mellan(3, 5)</code> så ska programmet skriva ut:<br />
               <code>Talet 3 i kvadrat är 9.<br />
                 Talet 4 i kvadrat är 16.<br />
                 Talet 5 i kvadrat är 25.
@@ -237,53 +237,53 @@ print(f"Summan är: {tal1 + tal2}")`}
           <li>Triangel</li>
           <ul>
             <li>Skriv en kommentar "Uppgift 3".</li>
-            <li>Skapa metoden <code>rita_rätvinklig_triangel(sidlängd)</code>.
+            <li>Skapa funktionen <code>rita_rätvinklig_triangel(sidlängd)</code>.
               <ul>
-                <li>Metoden ska ta emot ett heltal som parameter (<code>sidlängd</code>).</li>
-                <li>Metoden ska rita ut en rätvinklig triangel med den sidlängd som anges.</li>
+                <li>Funktionen ska ta emot ett heltal som parameter (<code>sidlängd</code>).</li>
+                <li>Funktionen ska rita ut en rätvinklig triangel med den sidlängd som anges.</li>
               </ul>
             </li>
-            <li>En triangel ritad av denna metod skulle t.ex. kunna se ut så här:<br />
+            <li>En triangel ritad av denna funktion skulle t.ex. kunna se ut så här:<br />
               <code>*<br />
                 **<br />
                 ***<br />
                 ****<br />
                 *****</code>
             </li>
-            <li>Anropa metoden minst två gånger i ditt program.</li>
+            <li>Anropa funktionen minst två gånger i ditt program.</li>
           </ul>
           <li>Addera</li>
           <ul>
             <li>Skriv en kommentar "Uppgift 4".</li>
-            <li>Skapa metoden <code>addera(tal1, tal2)</code>.
+            <li>Skapa funktionen <code>addera(tal1, tal2)</code>.
               <ul>
-                <li>Metoden ska ta emot två heltal som parametrar (<code>tal1</code> och <code>tal2</code>).</li>
-                <li>Metoden ska returnera summan av talen.</li>
+                <li>Funktionen ska ta emot två heltal som parametrar (<code>tal1</code> och <code>tal2</code>).</li>
+                <li>Funktionen ska returnera summan av talen.</li>
               </ul>
             </li>
-            <li>Anropa metoden minst två gånger i ditt program och skriv ut resultaten.</li>
+            <li>Anropa funktionen minst två gånger i ditt program och skriv ut resultaten.</li>
           </ul>
           <li>Längst ord</li>
           <ul>
             <li>Skriv en kommentar "Uppgift 5".</li>
-            <li>Skapa metoden <code>längst(text1, text2)</code>.
+            <li>Skapa funktionen <code>längst(text1, text2)</code>.
               <ul>
-                <li>Metoden ska ta emot två strängar som parametrar (<code>text1</code> och <code>text2</code>).</li>
-                <li>Metoden ska returnera den sträng av de båda parameterna som är längst.</li>
+                <li>Funktionen ska ta emot två strängar som parametrar (<code>text1</code> och <code>text2</code>).</li>
+                <li>Funktionen ska returnera den sträng av de båda parameterna som är längst.</li>
                 <li>Som exempel så ska anropet <code>längst("Hej", "Hejsan")</code> returnera <code>"Hejsan"</code>.</li>
-                <li>Om båda argumenten är lika långa så ska metoden returnera det första av dem.</li>
+                <li>Om båda argumenten är lika långa så ska funktionen returnera det första av dem.</li>
               </ul>
             </li>
-            <li>Anropa metoden minst tre gånger där den första är störst en gång, den andra en gång och texterna är lika långa en gång (men olika texter). Skriv ut resultaten.</li>
+            <li>Anropa funktionen minst tre gånger där den första är störst en gång, den andra en gång och texterna är lika långa en gång (men olika texter). Skriv ut resultaten.</li>
           </ul>
           <li>Inläsning med felhantering</li>
           <ul>
             <li>Skriv en kommentar "Uppgift 6".</li>
-            <li>Skapa metoden <code>las_in_heltal(meddelande)</code> exakt som i exemplet.</li>
-            <li>Skapa metoden <code>las_in_decimaltal(meddelande)</code> analogt med exemplet.</li>
-            <li>Anropa båda metoderna och testa att skriva både rätt och fel.</li>
-            <li>🤯 Skapa en metod <code>tal_eller_ej(text)</code> som skriver ut om texten är ett heltal, ett decimaltal eller varken eller.<br />
-                Anropa metoden minst tre gånger (med heltal, decimaltal och annat än tal).</li>
+            <li>Skapa funktionen <code>las_in_heltal(meddelande)</code> exakt som i exemplet.</li>
+            <li>Skapa funktionen <code>las_in_decimaltal(meddelande)</code> analogt med exemplet.</li>
+            <li>Anropa båda funktionerna och testa att skriva både rätt och fel.</li>
+            <li>🤯 Skapa en funktion <code>tal_eller_ej(text)</code> som skriver ut om texten är ett heltal, ett decimaltal eller varken eller.<br />
+                Anropa funktionen minst tre gånger (med heltal, decimaltal och annat än tal).</li>
           </ul>
         </ol>
       </div>

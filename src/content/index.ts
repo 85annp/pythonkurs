@@ -4,7 +4,7 @@ import Operatorer from "./operatorer";
 import Villkorssatser from "./villkorssatser";
 import Repetitionssatser from "./repetitionssatser";
 import Samlingar from "./samlingar";
-import Metoder from "./metoder";
+import Funktioner from "./funktioner";
 import Pygame from "./speltillampningar";
 
 export const ModuleContent: Record<string, React.FC> = {
@@ -14,6 +14,6 @@ export const ModuleContent: Record<string, React.FC> = {
   "villkorssatser": Villkorssatser,
   "repetitionssatser": Repetitionssatser,
   "samlingar": Samlingar,
-  "metoder": Metoder,
+  "funktioner": Funktioner,
   "speltillampningar-pygame": Pygame,
 };
