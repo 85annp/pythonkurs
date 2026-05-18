@@ -369,7 +369,7 @@ a:hover {
 
   .editor-container {
     flex-direction: column;
-    height: auto;
+    height: auto !important;
     gap: 1rem;
     margin-top: 1rem;
   }
