@@ -5,12 +5,12 @@ export default function Speltillampningar() {
     <div className="module-content">
       <h2>Speltillämpningar med pygame</h2>
       <p>
-        Nu är det dags att lämna den svarta textrutan och börja bygga riktiga grafiska applikationer och spel! 
+        Nu är det dags att lämna den svarta textrutan och börja bygga riktiga grafiska applikationer och spel!
         För att göra detta kommer vi använda ett bibliotek som heter <strong>pygame</strong>.
       </p>
       <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
         <p className="text-sm text-yellow-800 m-0">
-          <strong>Viktigt:</strong> Pygame kräver att det öppnas ett eget fönster på din dator. Därför kan du <strong>inte</strong> köra koden direkt här i webbläsaren. 
+          <strong>Viktigt:</strong> Pygame kräver att det öppnas ett eget fönster på din dator. Därför kan du <strong>inte</strong> köra koden direkt här i webbläsaren.
           Kopiera istället koden till <strong>Thonny</strong>  (<a href="https://thonny.org/" target="_blank">https://thonny.org/</a>) och kör den lokalt på din egen dator!
         </p>
       </div>
@@ -22,15 +22,31 @@ export default function Speltillampningar() {
 
       <h2>Ditt första fönster</h2>
       <p>
-        Ett spel i pygame kräver alltid en <strong>game Loop</strong> - en loop (oftast <code>while True</code>) som körs hela tiden spelet är igång. 
+        Ett spel i pygame kräver alltid en <strong>game loop</strong> - en loop (oftast <code>while True</code>) som körs hela tiden spelet är igång.
         Spelet stängs när loopen bryts.
       </p>
       <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
-          <ul>
-            <li><strong>init()</strong>: Startar pygame-motorn.</li>
-            <li><strong>Event Loop</strong>: Kollar om användaren gör något (till exempel klickar på krysset för att stänga fönstret).</li>
-            <li><strong>Fill & Flip</strong>: Färglägg skärmen och visa ("flip") det du har ritat i det här varvet.</li>
-          </ul>
+        <ul>
+          <li><strong>initiera pygame</strong>: Startar pygame-motorn och sätter upp skärmen och klockan.<br />
+            <code>pygame.init()<br />
+              screen = pygame.display.set_mode((400, 300))<br />
+              clock = pygame.time.Clock()</code>
+          </li>
+          <li><strong>kontrollera händelser</strong>: Kollar om användaren gör något (till exempel klickar på krysset för att stänga fönstret).<br />
+            <code>for event in pygame.event.get():</code>
+          </li>
+          <li><strong>uppdatera objekt</strong>: Färglägg skärmen och visa ("flip") det du har ritat i det här varvet. (Fill & Flip)<br />
+            <code>screen.fill("darkgreen")<br />
+                  pygame.draw.circle(screen, "white", (200, 150), 40)</code>
+          </li>
+          <li><strong>visa det nya fönstret</strong>: Visar det uppdaterade fönstret på skärmen.
+            <code>pygame.display.flip()</code>
+          </li>
+          <li><strong>avsluta spelet</strong>: Stänger programmet när loopen bryts.<br />
+            <code>if event.type == pygame.QUIT:<br />
+              &nbsp;&nbsp;exit() # Stänger programmet</code>
+          </li>
+        </ul>
         <div style={{ flexShrink: 0, width: '200px', textAlign: 'center' }}>
           <img src="/gameloop.png" alt="Illustration av spel-loopen" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }} />
         </div>
@@ -62,7 +78,7 @@ export default function Speltillampningar() {
 
       <h2>Flytta saker och input</h2>
       <p>
-        För att flytta på något behöver vi variabler för positionen (<strong>x</strong> och <strong>y</strong>). 
+        För att flytta på något behöver vi variabler för positionen (<strong>x</strong> och <strong>y</strong>).
         Men innan vi börjar flytta saker ska vi lära oss ett proffsknep: <strong>Konstanter</strong>.
       </p>
       <p>
@@ -262,7 +278,7 @@ export default function Speltillampningar() {
             <li>Utgå från koden i exemplet och ändra fönstret till 800x600.</li>
             <li>Rita en röd rektangel istället för en cirkel (använd pygame.draw.rect).</li>
             <li>Byt bakgrundsfärg till en RGB-färg, t.ex. (50, 50, 200).</li>
-          </ul>                                                  
+          </ul>
         </ol>
       </div>
     </div>
