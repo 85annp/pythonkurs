@@ -35,7 +35,7 @@ export default function Speltillampningar() {
           <li><strong>kontrollera händelser</strong>: Kollar om användaren gör något (till exempel klickar på krysset för att stänga fönstret).<br />
             <code>for event in pygame.event.get():</code>
           </li>
-          <li><strong>uppdatera objekt</strong>: Färglägg skärmen och visa ("flip") det du har ritat i det här varvet. (Fill & Flip)<br />
+          <li><strong>uppdatera objekt</strong>: Färglägg skärmen och rita en vit cirkel.<br />
             <code>screen.fill("darkgreen")<br />
                   pygame.draw.circle(screen, "white", (200, 150), 40)</code>
           </li>
@@ -44,7 +44,7 @@ export default function Speltillampningar() {
           </li>
           <li><strong>avsluta spelet</strong>: Stänger programmet när loopen bryts.<br />
             <code>if event.type == pygame.QUIT:<br />
-              &nbsp;&nbsp;exit() # Stänger programmet</code>
+              &nbsp;&nbsp;&nbsp;&nbsp;exit() # Stänger programmet</code>
           </li>
         </ul>
         <div style={{ flexShrink: 0, width: '200px', textAlign: 'center' }}>
@@ -73,20 +73,20 @@ export default function Speltillampningar() {
         &nbsp;&nbsp;&nbsp;&nbsp;pygame.draw.circle(screen, "white", (200, 150), 40)<br />
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;pygame.display.flip()<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;clock.tick(60) # Kör loopen i 60 FPS (Bilder per sekund)
+        &nbsp;&nbsp;&nbsp;&nbsp;clock.tick(60) # Kör loopen i 60 FPS (bilder per sekund)
       </div>
 
       <h2>Flytta saker och input</h2>
       <p>
         För att flytta på något behöver vi variabler för positionen (<strong>x</strong> och <strong>y</strong>).
-        Men innan vi börjar flytta saker ska vi lära oss ett proffsknep: <strong>Konstanter</strong>.
+        Men innan vi börjar flytta saker ska vi lära oss ett proffsknep: <strong>konstanter</strong>.
       </p>
       <p>
         Istället för att skriva talet <code>400</code> på flera olika ställen i din kod, skapar vi en variabel som aldrig ändras, till exempel <code>WIDTH = 400</code>. I Python skriver vi alltid konstanter med STORA BOKSTÄVER högst upp i koden.
       </p>
       <p>
         <strong>Koordinatsystemet i pygame:</strong><br />
-        (0, 0) är högst upp i vänstra hörnet. Ökar du Y-värdet så åker din figur <em>neråt</em>!
+        (0, 0) är högst upp i vänstra hörnet. Ökar du y-värdet så åker din figur <em>neråt</em> !
       </p>
 
       <div className="code-example">
@@ -100,6 +100,7 @@ export default function Speltillampningar() {
         <br />
         pygame.init()<br />
         screen = pygame.display.set_mode((WIDTH, HEIGHT))<br />
+        clock = pygame.time.Clock()<br />
         <br />
         # Spelarens position (dessa ändras under spelets gång!)<br />
         x = WIDTH // 2<br />
@@ -118,15 +119,8 @@ export default function Speltillampningar() {
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;screen.fill("black")<br />
         &nbsp;&nbsp;&nbsp;&nbsp;pygame.draw.rect(screen, "cyan", (x, y, PLAYER_SIZE, PLAYER_SIZE))<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;pygame.display.flip()
-      </div>
-
-      <div className="bg-blue-50 rounded-lg p-4 mb-6">
-        <h4 className="font-bold text-blue-800 mt-0">Övningar:</h4>
-        <ul className="text-sm text-blue-900 m-0">
-          <li>Begränsa rörelsen så att spelaren stannar vid fönstrets kanter (t.ex. <code>if x &lt; 0: x = 0</code>).</li>
-          <li>Lägg till en andra spelare (en ny rektangel i en annan färg) som styrs med W, A, S och D. Du behöver skapa helt egna x- och y-variabler för denna spelare!</li>
-        </ul>
+        &nbsp;&nbsp;&nbsp;&nbsp;pygame.display.flip()<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;clock.tick(60) # Kör loopen i 60 FPS (bilder per sekund)
       </div>
 
       <h2>Slump och fallande objekt</h2>
@@ -138,29 +132,36 @@ export default function Speltillampningar() {
         import pygame<br />
         import random<br />
         <br />
+        # KONSTANTER<br />
+        WIDTH = 400<br />
+        HEIGHT = 400<br />
+        CIRCLE_RADIUS = 15<br />
+        SPEED = 5<br />
+        <br />
         pygame.init()<br />
-        screen = pygame.display.set_mode((400, 400))<br />
+        screen = pygame.display.set_mode((WIDTH, HEIGHT))<br />
+        clock = pygame.time.Clock()<br />
         <br />
         # Startposition för en fallande cirkel<br />
-        circle_x = random.randint(0, 400)<br />
+        circle_x = random.randint(0, WIDTH - CIRCLE_RADIUS)<br />
         circle_y = -50<br />
-        fall_speed = 3<br />
         <br />
         while True:<br />
         &nbsp;&nbsp;&nbsp;&nbsp;for event in pygame.event.get():<br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if event.type == pygame.QUIT: exit()<br />
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;# Rörelse nedåt<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;circle_y += fall_speed<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;circle_y += SPEED<br />
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;# Om den åker utanför botten, börja om uppe<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;if circle_y &gt; 400:<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;if circle_y &gt; HEIGHT:<br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;circle_y = -50<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;circle_x = random.randint(0, 400)<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;circle_x = random.randint(0, WIDTH - CIRCLE_RADIUS)<br />
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;screen.fill("midnightblue")<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;pygame.draw.circle(screen, "white", (circle_x, circle_y), 15)<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;pygame.display.flip()
+        &nbsp;&nbsp;&nbsp;&nbsp;pygame.draw.circle(screen, "white", (circle_x, circle_y), CIRCLE_RADIUS)<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;pygame.display.flip()<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;clock.tick(60) # Kör loopen i 60 FPS (bilder per sekund)
       </div>
 
       <h2>Kollisioner och rects</h2>
@@ -170,13 +171,22 @@ export default function Speltillampningar() {
       </p>
 
       <div className="code-example">
-        import pygame, random<br />
+        import pygame<br />
+        import random<br />
+        <br />
+        # KONSTANTER<br />
+        WIDTH = 400<br />
+        HEIGHT = 400<br />
+        PLAYER_SIZE = 40<br />
+        COIN_SIZE = 20<br />
+        SPEED = 5<br />
+        <br />
         pygame.init()<br />
-        screen = pygame.display.set_mode((400, 400))<br />
+        screen = pygame.display.set_mode((WIDTH, HEIGHT))<br />
         <br />
         # Skapa Rect-objekt istället för bara x och y<br />
-        player = pygame.Rect(200, 200, 40, 40)<br />
-        coin = pygame.Rect(100, 100, 20, 20)<br />
+        player = pygame.Rect((WIDTH - PLAYER_SIZE) // 2, (HEIGHT - PLAYER_SIZE) // 2, PLAYER_SIZE, PLAYER_SIZE)<br />
+        coin = pygame.Rect(100, 100, COIN_SIZE, COIN_SIZE)<br />
         score = 0<br />
         font = pygame.font.SysFont("Arial", 24)<br />
         <br />
@@ -186,15 +196,15 @@ export default function Speltillampningar() {
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;# Styrning (som tidigare, men nu styr vi "player")<br />
         &nbsp;&nbsp;&nbsp;&nbsp;keys = pygame.key.get_pressed()<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;if keys[pygame.K_RIGHT]: player.x += 5<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;if keys[pygame.K_LEFT]: player.x -= 5<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;if keys[pygame.K_RIGHT]: player.x += SPEED<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;if keys[pygame.K_LEFT]: player.x -= SPEED<br />
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;# Kolla krock mellan spelare och mynt!<br />
         &nbsp;&nbsp;&nbsp;&nbsp;if player.colliderect(coin):<br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;score += 1<br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Flytta myntet<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coin.x = random.randint(0, 380)<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coin.y = random.randint(0, 380)<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coin.x = random.randint(0, WIDTH - COIN_SIZE)<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coin.y = random.randint(0, HEIGHT - COIN_SIZE)<br />
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;screen.fill("gray20")<br />
         &nbsp;&nbsp;&nbsp;&nbsp;pygame.draw.rect(screen, "blue", player)<br />
@@ -211,11 +221,38 @@ export default function Speltillampningar() {
       <p>
         Nu byter vi ut de enkla färgade lådorna mot riktiga bilder! Lägg en bildfil i samma mapp som din Python-fil.
       </p>
+
+      <h3>Ladda och rita bilder</h3>
       <ul>
-        <li><strong>Ladda bilden:</strong> <code>img = pygame.image.load("min_bild.png").convert_alpha()</code></li>
-        <li><strong>Ändra storlek:</strong> <code>img = pygame.transform.scale(img, (bredd, höjd))</code></li>
-        <li><strong>Rita bilden:</strong> <code>screen.blit(img, (x, y))</code></li>
+        <li>Ladda in en bild i pygame med <code>img = pygame.image.load("filnamn.png")</code>. Detta gör man en gång INNAN game-loopen.</li>
+        <li>För att rita bilden använder man blit (block transfer) med bilden och positionen för övre vänstra hörnet, <code>screen.blit(img, (x, y))</code>.</li>
       </ul>
+
+      <h3>Transparens och storlek</h3>
+      <ul>
+        <li>Använd .convert_alpha() när du ladda bilder för att behålla genomskinliga bakgrunder. Gör helst konverteringen innan game-loopen för att undvika prestandaproblem.</li>
+        <li>Använd .transform.scale() för att ändra storleken på bilder. Gör helst skalningen innan game-loopen för att undvika prestandaproblem.</li>
+      </ul>
+
+      <div className="code-example">
+        import pygame<br />
+        pygame.init()<br />
+        screen = pygame.display.set_mode((400, 300))<br />
+        <br />
+        # Låtsaskod - du behöver en bildfil i samma mapp!<br />
+        # player_img = pygame.image.load("player.png").convert_alpha()<br />
+        # player_img = pygame.transform.scale(player_img, (64, 64))<br />
+        <br />
+        # För exemplet ritar vi en bild-ersättare<br />
+        while True:<br />
+            for event in pygame.event.get():<br />
+                if event.type == pygame.QUIT: exit()<br />
+            <br />
+            screen.fill("midnightblue")<br />
+            # screen.blit(player_img, (100, 100))<br />
+            pygame.display.flip()<br />
+            pygame.time.Clock().tick(60)
+      </div>
 
       <hr />
 
@@ -232,52 +269,85 @@ export default function Speltillampningar() {
         <li>När bollen åker utanför höger eller vänster kant – ge poäng och återställ bollen till mitten!</li>
       </ul>
 
+      <h2>Slutprojekt: Bygg Snake!</h2>
+      <p>
+        Nu har du allt du behöver för att bygga ett komplett spel! Ditt slutprojekt i kursen är att bygga <strong>Snake</strong>.
+      </p>
+      <p>Du behöver:</p>
+      <ul>
+        <li>En lista av positioner för ormen.<br />
+            När ormen rör sig lägger du till ett nytt huvud först i listan och tar bort det sista elementet (svansen).</li>
+        <li>När ormens huvud krockar med maten låter du bli att ta bort svansen – då växer ormen!</li>
+        <li>En mat som dyker upp på slumpmässiga platser.</li>
+        <li>Kollisioner med väggar och själva ormen som avslutar spelet.</li>
+        <li>Hanterar styrning så att ormen inte kan vända 180 grader direkt.</li>
+      </ul>
+
       <hr />
 
       <h3>Din uppgift (görs i Thonny och klistras in längst ner på sidan)</h3>
       <div className="task-box">
         <ol>
-          <li>Testa pygame</li>
+          <li>Ditt första fönster</li>
           <ul>
             <li>Skriv en kommentar "Uppgift 1".</li>
-            <li>Utgå från koden i exemplet och ändra fönstret till 800x600.</li>
-            <li>Rita en röd rektangel istället för en cirkel (använd pygame.draw.rect).</li>
-            <li>Byt bakgrundsfärg till en RGB-färg, t.ex. (50, 50, 200).</li>
+            <li>Utgå från koden i "Ditt första fönster"
+              <ul>
+                <li>Ändra fönstret till 800x600.</li>
+                <li>Rita en röd rektangel istället för en cirkel (använd pygame.draw.rect).</li>
+                <li>Byt bakgrundsfärg till en RGB-färg, t.ex. (50, 50, 200).</li>
+              </ul>
+            </li>
           </ul>
-          <li>Testa pygame</li>
+          <li>Flytta saker och input</li>
           <ul>
-            <li>Skriv en kommentar "Uppgift 1".</li>
-            <li>Utgå från koden i exemplet och ändra fönstret till 800x600.</li>
-            <li>Rita en röd rektangel istället för en cirkel (använd pygame.draw.rect).</li>
-            <li>Byt bakgrundsfärg till en RGB-färg, t.ex. (50, 50, 200).</li>
+            <li>Skriv en kommentar "Uppgift 2".</li>
+            <li>Utgå från koden i "Flytta saker och input"
+              <ul>
+                <li>Skapa en konstant för bakgrundsfärgen, t.ex. <code>BG_COLOR = (20, 20, 20)</code>, och använd den i <code>screen.fill(BG_COLOR)</code>.</li>
+                <li>Begränsa rörelsen så att spelaren stannar vid fönstrets kanter (t.ex. <code>if x &lt; 0: x = 0</code>).</li>
+                <li>Lägg till en andra spelare (en ny rektangel i en annan färg) som styrs med W, A, S och D. <br />
+                    Du behöver skapa helt egna x- och y-variabler för denna spelare!<br />
+                    Döp gärna om x och y till player1_x och player1_y och gör samma för den andra spelaren!</li>
+              </ul>
+            </li>
           </ul>
-          <li>Testa pygame</li>
+          <li>Slump och fallande objekt</li>
           <ul>
-            <li>Skriv en kommentar "Uppgift 1".</li>
-            <li>Utgå från koden i exemplet och ändra fönstret till 800x600.</li>
-            <li>Rita en röd rektangel istället för en cirkel (använd pygame.draw.rect).</li>
-            <li>Byt bakgrundsfärg till en RGB-färg, t.ex. (50, 50, 200).</li>
+            <li>Skriv en kommentar "Uppgift 3".</li>
+            <li>Utgå från koden i "Slump och fallande objekt"
+              <ul>
+                <li>Gör så att cirkeln faller snabbare genom att ändra konstanten.</li>
+                <li>Skapa en variabel för cirkelns färg, t.ex. <code>CIRCLE_COLOR = (255, 0, 0)</code>. 
+                    Ge den ett nytt slumpat värde varje gång cirkeln skapas.</li>
+                <li>Låt cirkeln falla snett genom att lägga till en variabel för horisontell hastighet. Den ska ha samma riktning hela vägen ner tills den börjar om (så att den inte "wobblar" fram och tillbaka genom att ändra riktning i varje varv).</li>
+              </ul>
+            </li>
           </ul>
-          <li>Testa pygame</li>
+          <li>Kollisioner och rects</li>
           <ul>
-            <li>Skriv en kommentar "Uppgift 1".</li>
-            <li>Utgå från koden i exemplet och ändra fönstret till 800x600.</li>
-            <li>Rita en röd rektangel istället för en cirkel (använd pygame.draw.rect).</li>
-            <li>Byt bakgrundsfärg till en RGB-färg, t.ex. (50, 50, 200).</li>
+            <li>Skriv en kommentar "Uppgift 4".</li>
+            <li>Utgå från koden i "Kollisioner och rects"
+              <ul>
+                <li>Variabeln score finns redan i koden. Din uppgift är att se till att poängen faktiskt ökar med 1 varje gång spelaren och myntet krockar (inuti colliderect-blocket).</li>
+                <li>Hindra spelaren från att åka utanför fönstret! Använd if-satser för att se till att player.x och player.y alltid håller sig mellan 0 och WIDTH/HEIGHT.</li>
+                <li>Skapa en röd "fiende"-rektangel. Skapa en funktion, t.ex. reset_game(), som nollställer poängen och flyttar tillbaka spelaren till mitten. Anropa denna funktion när spelaren krockar med fienden.</li>
+              </ul>
+            </li>
           </ul>
-          <li>Testa pygame</li>
+          <li>Bilder och sprites</li>
           <ul>
-            <li>Skriv en kommentar "Uppgift 1".</li>
-            <li>Utgå från koden i exemplet och ändra fönstret till 800x600.</li>
-            <li>Rita en röd rektangel istället för en cirkel (använd pygame.draw.rect).</li>
-            <li>Byt bakgrundsfärg till en RGB-färg, t.ex. (50, 50, 200).</li>
-          </ul>
-          <li>Testa pygame</li>
-          <ul>
-            <li>Skriv en kommentar "Uppgift 1".</li>
-            <li>Utgå från koden i exemplet och ändra fönstret till 800x600.</li>
-            <li>Rita en röd rektangel istället för en cirkel (använd pygame.draw.rect).</li>
-            <li>Byt bakgrundsfärg till en RGB-färg, t.ex. (50, 50, 200).</li>
+            <li>Skriv en kommentar "Uppgift 5".</li>
+            <li>Utgå från koden i "Bilder och sprites"
+              <ul>
+                <li>Ladda bilden: img = pygame.image.load("min_bild.png").convert_alpha()</li>
+                <li>Ändra storlek: img = pygame.transform.scale(img, (bredd, höjd))</li>
+                <li>Rita bilden: screen.blit(img, (x, y))</li>
+                <li>Hitta en liten bild (PNG) på nätet och lägg i samma mapp som pygamekoden.</li>
+                <li>Ladda in bilden och få den att följa muspekaren.</li>
+                <li>Lägg in en bakgrundsbild som täcker hela fönstret.</li>
+              </ul>
+            </li>
           </ul>
         </ol>
       </div>
