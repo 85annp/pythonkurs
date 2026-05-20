@@ -39,7 +39,7 @@ export default function Speltillampningar() {
             <code>screen.fill("darkgreen")<br />
                   pygame.draw.circle(screen, "white", (200, 150), 40)</code>
           </li>
-          <li><strong>visa det nya fönstret</strong>: Visar det uppdaterade fönstret på skärmen.
+          <li><strong>visa det nya fönstret</strong>: Visar det uppdaterade fönstret på skärmen.<br />
             <code>pygame.display.flip()</code>
           </li>
           <li><strong>avsluta spelet</strong>: Stänger programmet när loopen bryts.<br />
@@ -89,12 +89,47 @@ export default function Speltillampningar() {
         Istället för att skriva talet <code>400</code> på flera olika ställen i din kod, skapar vi en variabel som aldrig ändras, till exempel <code>WIDTH = 400</code>. 
         I Python skriver vi alltid konstanter med STORA BOKSTÄVER högst upp i koden.
       </p>
+      <h3>Skärmkoordinater</h3>
       <p>
-        <strong>Koordinatsystemet i pygame:</strong><br />
-        (0, 0) är högst upp i vänstra hörnet. Ökar du <code>y</code>-värdet så åker din figur <em>neråt</em> !
+        (0, 0) är högst upp i vänstra hörnet på skärmen. x-axeln går horisontellt och ökar åt höger. y-axeln går vertikalt och ökar nedåt, till skillnad från traditionell matematik där y-axeln pekar uppåt.
+      </p>
+      <p>
+        Om du ökar <code>y</code>-värdet så åker din figur alltså <em>neråt</em> !
+      </p>
+      <p>
+        Vi kan tänka oss flera sätt att flytta på saker i ett spel. 
+        Ett vanligt sätt är att kolla om användaren trycker på en tangent och ändra positionen baserat på det. 
+        Ett annat sätt är att kolla var muspekaren är och låta en figur påverkas av den.
+        Dessutom kan man låta saker röra sig av sig själva, som en boll som studsar eller en fiende som jagar efter dig. 
       </p>
 
-      <p>Provkör det här programmet i Thonny. Du ska kunna flytta runt den cyanfärgade spelaren.</p>
+      <h3>Förklaring av koden</h3>
+      <p>
+        I det här exemplet har vi lagt in konstanter för skärmens bredd och höjd, storleken på spelaren och hur snabbt den ska röra sig samt storleken på musens cirkel. 
+        Det är en god vana att använda konstanter för den här typen av värden. Det gör att det är enkelt att ändra dessa senare!
+      </p>
+      <p>
+        Spelarens position lagras i variablerna <code>x</code> och <code>y</code>. Vi börjar med att skapa dessa variabler och sätta dem till mitten av skärmen.
+      </p>
+      <p>
+        Musen döljs med <code>pygame.mouse.set_visible(False)</code> eftersom vi kommer rita en cirkel som följer musen istället.
+      </p>
+      <p>
+        För att flytta på saker behöver vi kolla om användaren trycker på en tangent. 
+        Det gör vi med <code>pygame.key.get_pressed()</code>, som ger oss en lista av alla tangenter och om de är nedtryckta eller inte.
+        Vi kan kolla en specifik tangent, till exempel <code>pygame.K_LEFT</code> för vänsterpil.
+        Om den är nedtryckt kan vi ändra på <code>x</code> för att flytta på vår figur!
+      </p>
+      <p>
+        Musens position hämtas med <code>pygame.mouse.get_pos()</code>, som ger oss en tuple (x, y) med musens koordinater. 
+        Vi kan spara dessa i variablerna <code>mouse_x</code> och <code>mouse_y</code>.
+      </p>
+      <p>
+        För att rita ut spelaren använder vi <code>pygame.draw.rect()</code>, som ritar en rektangel. Den tar skärmen, färgen och en tuple med (x, y, bredd, höjd) som argument.
+        För att rita ut musen använder vi <code>pygame.draw.circle()</code>, som ritar en cirkel. Den tar skärmen, färgen, en tuple med (x, y) för cirkelns mitt och radien som argument.
+      </p>
+
+      <p>Provkör programmet i Thonny. Du ska kunna flytta runt den cyanfärgade "spelaren" och musen ska visas som en röd cirkel.</p>
 
       <div className="code-example">
         import pygame<br />
@@ -104,6 +139,7 @@ export default function Speltillampningar() {
         HEIGHT = 400<br />
         PLAYER_SIZE = 50<br />
         SPEED = 5<br />
+        CIRCLE_SIZE = 10<br />
         <br />
         pygame.init()<br />
         screen = pygame.display.set_mode((WIDTH, HEIGHT))<br />
@@ -112,6 +148,9 @@ export default function Speltillampningar() {
         # Spelarens position (dessa ändras under spelets gång!)<br />
         x = (WIDTH - PLAYER_SIZE) // 2<br />
         y = (HEIGHT - PLAYER_SIZE) // 2<br />
+        <br />
+        # Dölj muspekaren (vi ritar en cirkel istället)<br />
+        pygame.mouse.set_visible(False)<br />
         <br />
         while True:<br />
         &nbsp;&nbsp;&nbsp;&nbsp;for event in pygame.event.get():<br />
@@ -124,8 +163,13 @@ export default function Speltillampningar() {
         &nbsp;&nbsp;&nbsp;&nbsp;if keys[pygame.K_UP]:    y -= SPEED<br />
         &nbsp;&nbsp;&nbsp;&nbsp;if keys[pygame.K_DOWN]:  y += SPEED<br />
         <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;# Hämta musens position<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;mouse_x, mouse_y = pygame.mouse.get_pos()<br />
+        <br />
         &nbsp;&nbsp;&nbsp;&nbsp;screen.fill("black")<br />
         &nbsp;&nbsp;&nbsp;&nbsp;pygame.draw.rect(screen, "cyan", (x, y, PLAYER_SIZE, PLAYER_SIZE))<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;pygame.draw.circle(screen, "red", (mouse_x, mouse_y), CIRCLE_SIZE)<br />
+        <br />
         &nbsp;&nbsp;&nbsp;&nbsp;pygame.display.flip()<br />
         &nbsp;&nbsp;&nbsp;&nbsp;clock.tick(60) # Kör loopen i 60 FPS (bilder per sekund)
       </div>
@@ -137,9 +181,26 @@ export default function Speltillampningar() {
 
       <h2>Slump och fallande objekt</h2>
       <p>
-        För att ett spel inte ska vara exakt likadant varje gång använder vi modulen <code>random</code>. 
+        För att ett spel inte ska vara exakt likadant varje gång, använder vi modulen <code>random</code>. 
         I det här exemplet skapar vi en cirkel som faller ner från toppen av skärmen. Varje gång den åker utanför botten så börjar den om från toppen på en ny slumpad <code>x</code>-position.
       </p>
+
+      <h3>Förklaring av koden</h3>
+      <p>
+        För att få slumpmässiga tal i Python använder vi modulen <code>random</code>. Vi får tillgång till den genom att skriva <code>import random</code> högst upp i koden.
+      </p>
+      <p>
+        I det här exemplet har vi lagt in konstanter för skärmens bredd och höjd, radien på cirkeln och hur snabbt den ska röra sig. 
+      </p>
+      <p>
+        För att få ett slumpat heltal mellan 0 och 10 kan vi använda <code>random.randint(0, 10)</code>. Både 0 och 10 kan alltså vara möjliga resultat.
+        I det här exemplet använder vi <code>random.randint(CIRCLE_RADIUS, WIDTH - CIRCLE_RADIUS)</code> för att få en slumpad x-position som är helt inom skärmen (så att cirkeln inte kan börja med att vara helt eller delvis utanför).
+      </p>
+      <p>
+        I spelloopen rör vi cirkeln nedåt genom att öka på <code>circle_y</code> varje varv. 
+        När cirkeln åker utanför botten av skärmen så ger vi den en ny slumpad x-position och sätter y-positionen till -CIRCLE_RADIUS så att den börjar precis ovanför skärmen.
+      </p>
+      <p>Provkör programmet i Thonny. Det ska komma en vit cirkel som faller ner från toppen av skärmen. När den kommit utanför botten så börjar den om från toppen på en ny slumpad x-position.</p>
 
       <div className="code-example">
         import pygame<br />
@@ -168,11 +229,12 @@ export default function Speltillampningar() {
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;# Om den åker utanför botten, börja om uppe<br />
         &nbsp;&nbsp;&nbsp;&nbsp;if circle_y &gt; HEIGHT:<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;circle_y = -CIRCLE_RADIUS<br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;circle_x = random.randint(CIRCLE_RADIUS, WIDTH - CIRCLE_RADIUS)<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;circle_y = -CIRCLE_RADIUS<br />
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;screen.fill("midnightblue")<br />
         &nbsp;&nbsp;&nbsp;&nbsp;pygame.draw.circle(screen, "white", (circle_x, circle_y), CIRCLE_RADIUS)<br />
+        <br />
         &nbsp;&nbsp;&nbsp;&nbsp;pygame.display.flip()<br />
         &nbsp;&nbsp;&nbsp;&nbsp;clock.tick(60) # Kör loopen i 60 FPS (bilder per sekund)
       </div>
@@ -280,6 +342,7 @@ export default function Speltillampningar() {
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;screen.fill("midnightblue")<br />
         &nbsp;&nbsp;&nbsp;&nbsp;screen.blit(player_img, ((WIDTH - PLAYER_SIZE) // 2, (HEIGHT - PLAYER_SIZE) // 2))<br />
+        <br />
         &nbsp;&nbsp;&nbsp;&nbsp;pygame.display.flip()<br />
         &nbsp;&nbsp;&nbsp;&nbsp;clock.tick(60) # Kör loopen i 60 FPS (bilder per sekund)
       </div>
@@ -329,7 +392,7 @@ export default function Speltillampningar() {
             <li>Utgå från koden i "Ditt första fönster"
               <ul>
                 <li>Ändra fönstret till 800x600.</li>
-                <li>Rita en röd rektangel istället för en cirkel (använd pygame.draw.rect).</li>
+                <li>Byt färg på cirkeln till orange, ge den radien 200 och flytta den till mitten.</li>
                 <li>Byt bakgrundsfärg till en RGB-färg, t.ex. (50, 50, 200).</li>
               </ul>
             </li>
@@ -343,7 +406,7 @@ export default function Speltillampningar() {
                 <li>Begränsa rörelsen så att spelaren stannar vid fönstrets kanter (t.ex. <code>if x &lt; 0: x = 0</code>).</li>
                 <li>Lägg till en andra spelare (en ny rektangel i en annan färg) som styrs med W, A, S och D. <br />
                     Du behöver skapa helt egna x- och y-variabler för denna spelare!<br />
-                    Döp gärna om x och y till player1_x och player1_y och gör samma för den andra spelaren!</li>
+                    Döp gärna om x och y till player1_x och player1_y och gör liknande för den andra spelaren!</li>
               </ul>
             </li>
           </ul>
@@ -353,10 +416,11 @@ export default function Speltillampningar() {
             <li>Utgå från koden i "Slump och fallande objekt"
               <ul>
                 <li>Gör så att cirkeln faller snabbare genom att ändra konstanten.</li>
-                <li>Skapa en variabel för cirkelns färg, t.ex. <code>CIRCLE_COLOR = (255, 0, 0)</code>. 
-                    Ge den ett nytt slumpat värde varje gång cirkeln skapas.</li>
+                <li>Skapa en variabel för cirkelns färg, t.ex. <code>circle_color = (255, 0, 0)</code> och se till så att cirkeln använder den.</li>
                 <li>Låt cirkeln falla snett genom att lägga till en variabel för horisontell hastighet. 
                     Den ska ha samma riktning hela vägen ner tills den börjar om (så att den inte "wobblar" fram och tillbaka genom att ändra riktning i varje varv i game-loopen).</li>
+                <li>Skapa en funktion för beräkningen av den nya cirkelpositionen. Låt den returnera den nya x- och y-koordinaten (som en koordinat). Se till så att funktionen används på båda ställena i koden.<br />
+                    Du kan placera din funktion efter konstanterna.</li>
               </ul>
             </li>
           </ul>
