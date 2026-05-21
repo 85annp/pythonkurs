@@ -359,7 +359,7 @@ export default function Speltillampningar() {
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
         <p style={{ flex: 1, minWidth: '250px' }}>
-          Ladda ner bilden och lägg den i samma mapp som din Python-fil!<br />
+          Ladda ner bilden och lägg den i samma mapp som din Python-fil!<br /><br />
           För att ladda in bilden i pygame använder vi <code>pygame.image.load("player.png")</code>. 
           Bilden har genomskinlig bakgrund så vi använder <code>.convert_alpha()</code> för att få den genomskinlig även i pygame.
           Därefter skalar vi bilden till den storlek vi vill ha på spelaren med <code>pygame.transform.scale()</code>.
@@ -502,7 +502,7 @@ export default function Speltillampningar() {
             <li>Utgå från koden i "Bilder och sprites"
               <ul>
                 <li>Se till så att det går att flytta spelaren med piltangenterna. <br />
-                    Använd en Rect för spelarens position och en konstant för hastigheten. Se också till att den inte kan komma utanför fönstret.</li>
+                    Använd en Rect för spelarens position och en konstant för hastigheten. Se också till att spelaren inte kan komma utanför fönstret.</li>
                 <li>Ladda ner och lägg in bilden på en jackfrukt på en slumpmässig plats. <br />
                     Lägg in poäng och en kollisionshantering så att spelaren får poäng när den krockar med bilden.</li>
                 <li>Lägg in en bakgrundsbild som täcker hela fönstret.</li>
@@ -510,10 +510,10 @@ export default function Speltillampningar() {
             </li>
           </ul>
         </ol>
+        <img src="/player.png" alt="Spelare till spel" style={{ maxWidth: '100px', height: 'auto', borderRadius: '8px' }} />
+        <img src="/jackfruit.png" alt="Jackfrukt till spel" style={{ maxWidth: '100px', height: 'auto', borderRadius: '8px' }} />
+        <img src="/background.png" alt="Bakgrund till spel" style={{ maxWidth: '100px', height: 'auto', borderRadius: '8px' }} />
       </div>
-      <img src="/player.png" alt="Spelare till spel" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }} />
-      <img src="/jackfruit.png" alt="Jackfrukt till spel" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }} />
-      <img src="/background.png" alt="Bakgrund till spel" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }} />
     </div>
   );
 }
