@@ -193,12 +193,12 @@ export default function Speltillampningar() {
         I det här exemplet har vi lagt in konstanter för skärmens bredd och höjd, radien på cirkeln och hur snabbt den ska röra sig. 
       </p>
       <p>
-        För att få ett slumpat heltal mellan 0 och 10 kan vi använda <code>random.randint(0, 10)</code>. Både 0 och 10 kan alltså vara möjliga resultat.
-        I det här exemplet använder vi <code>random.randint(CIRCLE_RADIUS, WIDTH - CIRCLE_RADIUS)</code> för att få en slumpad x-position som är helt inom skärmen (så att cirkeln inte kan börja med att vara helt eller delvis utanför).
+        För att få ett slumpat heltal mellan 0 och 10 kan vi använda <code>random.randint(0, 10)</code>. Detta ger slumptal där både 0 och 10 kan vara möjliga resultat.
+        I det här exemplet använder vi <code>random.randint(CIRCLE_RADIUS, WIDTH - CIRCLE_RADIUS)</code> för att få en slumpad x-position som är helt inom fönstret.
       </p>
       <p>
         I spelloopen rör vi cirkeln nedåt genom att öka på <code>circle_y</code> varje varv. 
-        När cirkeln åker utanför botten av skärmen så ger vi den en ny slumpad x-position och sätter y-positionen till -CIRCLE_RADIUS så att den börjar precis ovanför skärmen.
+        När cirkeln åker utanför botten av skärmen så ger vi den en ny slumpad x-position och sätter y-positionen till -CIRCLE_RADIUS så att den börjar om precis ovanför fönstret.
       </p>
       <p>Provkör programmet i Thonny. Det ska komma en vit cirkel som faller ner från toppen av skärmen. När den kommit utanför botten så börjar den om från toppen på en ny slumpad x-position.</p>
 
@@ -249,6 +249,39 @@ export default function Speltillampningar() {
         I pygame använder vi objektet <code>Rect</code> (rektangel) för att hantera position och krockar. En <code>Rect</code> är som en osynlig låda som håller koll på var din figur finns.
         Om du har två rektanglar kan pygame enkelt svara på om de överlappar varandra med metoden <code>rect1.colliderect(rect2)</code>. Det blir <code>True</code> om de nuddar varandra!
       </p>
+      <p>
+        När vi använder <code>Rect</code> som en osynlig låda, kan vi också använda den till att rita ut vår figur! 
+        Istället för att använda <code>pygame.draw.rect(screen, color, (x, y, width, height))</code> kan vi rita den med <code>pygame.draw.rect(screen, color, player)</code> om <code>player</code> är ett <code>Rect</code>-objekt. 
+        På motsvarande sätt kan vi rita en cirkel med <code>pygame.draw.circle(screen, color, coin.center, coin.width // 2)</code> om <code>coin</code> är ett <code>Rect</code>-objekt. Cirkeln blir då inskriven i rektangeln.
+      </p>
+
+      <h3>Förklaring av koden</h3>
+      <p>
+        Som vanligt har vi konstanter för skärmens bredd och höjd, storleken på spelaren och myntet samt hur snabbt spelaren ska röra sig.
+      </p>
+      <p>
+        För att skapa en rektangel i pygame använder vi <code>pygame.Rect(x, y, width, height)</code>. 
+        Detta använder vi både för spelaren och myntet. 
+      </p>
+      <p>
+        Vi förbereder för att kunna hålla reda på poängen genom att skapa en variabel <code>score</code> som börjar på 0. 
+        Vi skapar också ett <code>font</code>-objekt som vi kan använda för att rita ut text på skärmen.
+      </p>
+      <p>
+        Spelaren styrs som tidigare med piltangenterna.
+      </p>
+      <p>
+        För att kolla om spelaren och myntet nuddar varandra använder vi <code>player.colliderect(coin)</code>.
+        Om det är en kollision så flyttar vi myntet till en ny slumpad position.
+      </p>
+      <p>
+        Spelaren och myntet ritas ut med hjälp av deras respektive <code>Rect</code>-objekt. 
+        Spelarens rektangel ritas ut som en blå låda, och myntet ritas ut som en gul cirkel inskriven i sin rektangel.
+      </p>
+      <p>
+        För att rita ut poängen använder vi <code>font.render()</code> för att skapa en bild av texten, 
+        och sedan <code>screen.blit()</code> för att rita ut den på skärmen.
+      </p>
 
       <div className="code-example">
         import pygame<br />
@@ -288,13 +321,13 @@ export default function Speltillampningar() {
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;screen.fill("gray20")<br />
         &nbsp;&nbsp;&nbsp;&nbsp;pygame.draw.rect(screen, "blue", player)<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;pygame.draw.rect(screen, "yellow", coin)<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;pygame.draw.circle(screen, "yellow", coin.center, coin.width // 2)<br />
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;# Rita ut poängen<br />
         &nbsp;&nbsp;&nbsp;&nbsp;text_surface = font.render(f"Poäng: {"{"}score{"}"}", True, "white")<br />
         &nbsp;&nbsp;&nbsp;&nbsp;screen.blit(text_surface, (10, 10))<br />
         <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;pygame.display.flip()
+        &nbsp;&nbsp;&nbsp;&nbsp;pygame.display.flip()<br />
         &nbsp;&nbsp;&nbsp;&nbsp;clock.tick(60) # Kör loopen i 60 FPS (bilder per sekund)
       </div>
 
@@ -319,12 +352,33 @@ export default function Speltillampningar() {
         <li>Använd <code>img.transform.scale()</code> för att ändra storleken på bilder. Gör helst skalningen innan game-loopen för att undvika prestandaproblem.</li>
       </ul>
 
+      <h3>Förklaring av koden</h3>
+      <p>
+        I det här exemplet har vi konstanter för skärmens bredd och höjd samt storleken på spelaren.
+      </p>
+
+      <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
+        <p style={{ flex: 1, minWidth: '250px' }}>
+          Ladda ner bilden och lägg den i samma mapp som din Python-fil!<br />
+          För att ladda in bilden i pygame använder vi <code>pygame.image.load("player.png")</code>. 
+          Bilden har genomskinlig bakgrund så vi använder <code>.convert_alpha()</code> för att få den genomskinlig även i pygame.
+          Därefter skalar vi bilden till den storlek vi vill ha på spelaren med <code>pygame.transform.scale()</code>.
+        </p>
+        <div style={{ flexShrink: 0, width: '200px', textAlign: 'center' }}>
+          <img src="/player.png" alt="Spelare till spel" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }} />
+        </div>
+      </div>
+
+      <p>
+        I spelloopen ritar vi ut bilden av spelaren med <code>screen.blit(player_img, (x, y))</code>.
+      </p>
+
       <div className="code-example">
         import pygame<br />
         <br />
         # KONSTANTER<br />
-        WIDTH = 600<br />
-        HEIGHT = 400<br />
+        WIDTH = 640<br />
+        HEIGHT = 480<br />
         PLAYER_SIZE = 64<br />
         <br />
         pygame.init()<br />
@@ -354,7 +408,7 @@ export default function Speltillampningar() {
 
       <hr />
 
-      <h2>Slutprojekt: Bygg Pong!</h2>
+      <h2>Spelprojekt: Bygg Pong!</h2>
       <p>
         Nu har du allt du behöver för att bygga ett komplett spel! Ditt slutprojekt i kursen är att bygga <strong>Pong</strong>.
       </p>
@@ -367,7 +421,7 @@ export default function Speltillampningar() {
         <li>När bollen åker utanför höger eller vänster kant – ge poäng och återställ bollen till mitten!</li>
       </ul>
 
-      <h2>Slutprojekt: Bygg Snake!</h2>
+      <h2>Spelprojekt: Bygg Snake!</h2>
       <p>
         Nu har du allt du behöver för att bygga ett komplett spel! Ditt slutprojekt i kursen är att bygga <strong>Snake</strong>.
       </p>
@@ -407,6 +461,8 @@ export default function Speltillampningar() {
                 <li>Lägg till en andra spelare (en ny rektangel i en annan färg) som styrs med W, A, S och D. <br />
                     Du behöver skapa helt egna x- och y-variabler för denna spelare!<br />
                     Döp gärna om x och y till player1_x och player1_y och gör liknande för den andra spelaren!</li>
+                <li>Lägg in en fiende i form av en gul cirkel. Låt fienden börja i mitten av fönstret. Fienden ska sedan närma sig musen med 1% av avståndet till musen varje frame.<br />
+                    Tänk på att använda konstanter och variabler enligt god programmeringssed.</li>
               </ul>
             </li>
           </ul>
@@ -416,8 +472,10 @@ export default function Speltillampningar() {
             <li>Utgå från koden i "Slump och fallande objekt"
               <ul>
                 <li>Gör så att cirkeln faller snabbare genom att ändra konstanten.</li>
-                <li>Skapa en variabel för cirkelns färg, t.ex. <code>circle_color = (255, 0, 0)</code> och se till så att cirkeln använder den.</li>
+                <li>Skapa en variabel för cirkelns färg, t.ex. <code>circle_color = (255, 0, 0)</code> och se till så att cirkeln använder den. 
+                    Ge färgen ett slumpat värde varje gång den börjar om längst upp.</li>
                 <li>Låt cirkeln falla snett genom att lägga till en variabel för horisontell hastighet. 
+                    Se till så att den horisontella hastigheten slumpas, t.ex mellan -1 och 1.<br />
                     Den ska ha samma riktning hela vägen ner tills den börjar om (så att den inte "wobblar" fram och tillbaka genom att ändra riktning i varje varv i game-loopen).</li>
                 <li>Skapa en funktion för beräkningen av den nya cirkelpositionen. Låt den returnera den nya x- och y-koordinaten (som en koordinat). Se till så att funktionen används på båda ställena i koden.<br />
                     Du kan placera din funktion efter konstanterna.</li>
@@ -430,9 +488,11 @@ export default function Speltillampningar() {
             <li>Utgå från koden i "Kollisioner och rects"
               <ul>
                 <li>Spelaren kan bara gå i sidled. Lägg in så att det går att flytta även i höjdled.</li>
-                <li>Variabeln score finns redan i koden. Din uppgift är att se till att poängen faktiskt ökar med 1 varje gång spelaren och myntet krockar (inuti colliderect-blocket).</li>
-                <li>Hindra spelaren från att åka utanför fönstret! Använd if-satser för att se till att <code>player.x</code> och <code>player.y</code> alltid håller sig mellan <code>0</code> och <code>WIDTH</code>/<code>HEIGHT</code>.</li>
-                <li>Skapa en röd "fiende"-rektangel. Skapa en funktion, t.ex. reset_game(), som nollställer poängen och flyttar tillbaka spelaren till mitten. Anropa denna funktion när spelaren krockar med fienden.</li>
+                <li>Variabeln score finns redan i koden. Se till så att poängen faktiskt ökar med 1 varje gång spelaren och myntet krockar.</li>
+                <li>Hindra spelaren från att åka utanför fönstret! 
+                    Använd if-satser och egenskaperna <code>left</code>, <code>right</code>, <code>top</code> och <code>bottom</code> för <code>player</code>, tillsammans med värdena <code>0</code> och <code>WIDTH</code>/<code>HEIGHT</code>.</li>
+                <li>🤯 Skapa en röd "fiende"-cirkel. 
+                    Skapa också en funktion, t.ex. <code>reset_game()</code>, som nollställer poängen och flyttar allt till startläget. Anropa denna funktion när spelaren krockar med fienden.</li>
               </ul>
             </li>
           </ul>
@@ -441,17 +501,19 @@ export default function Speltillampningar() {
             <li>Skriv en kommentar "Uppgift 5".</li>
             <li>Utgå från koden i "Bilder och sprites"
               <ul>
-                <li>Ladda bilden: img = pygame.image.load("min_bild.png").convert_alpha()</li>
-                <li>Ändra storlek: img = pygame.transform.scale(img, (bredd, höjd))</li>
-                <li>Rita bilden: screen.blit(img, (x, y))</li>
-                <li>Hitta en liten bild (PNG) på nätet och lägg i samma mapp som pygamekoden.</li>
-                <li>Ladda in bilden och få den att följa muspekaren.</li>
+                <li>Se till så att det går att flytta spelaren med piltangenterna. <br />
+                    Använd en Rect för spelarens position och en konstant för hastigheten. Se också till att den inte kan komma utanför fönstret.</li>
+                <li>Ladda ner och lägg in bilden på en jackfrukt på en slumpmässig plats. <br />
+                    Lägg in poäng och en kollisionshantering så att spelaren får poäng när den krockar med bilden.</li>
                 <li>Lägg in en bakgrundsbild som täcker hela fönstret.</li>
               </ul>
             </li>
           </ul>
         </ol>
       </div>
+      <img src="/player.png" alt="Spelare till spel" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }} />
+      <img src="/jackfruit.png" alt="Jackfrukt till spel" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }} />
+      <img src="/background.png" alt="Bakgrund till spel" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }} />
     </div>
   );
 }
