@@ -33,11 +33,11 @@ export default function KommaIgang() {
       
       <h3>Enradskommentarer</h3>
       <p>För att kommentera bort en enstaka rad använder du en brädgård (<code>#</code>). Allt som står efter brädgården på samma rad ignoreras av datorn.</p>
-      <PythonIDE hideCompletion initialCode={`# Det här är en kommentar. Datorn ignorerar den!\nprint("Detta körs dock som vanligt") # Man kan också lägga kommentarer efter koden`} />
+      <PythonIDE hideCompletion initialCode={`# Det här är en kommentar. Datorn ignorerar den!\n\nprint("Detta körs dock som vanligt") # Man kan också lägga kommentarer efter koden`} />
 
       <h3>Flerradskommentarer</h3>
       <p>Om du vill skriva en längre förklaring som sträcker sig över flera rader, kan du använda tredubbla citattecken (<code>"""</code>) i början och i slutet av din text.</p>
-      <PythonIDE hideCompletion initialCode={`"""\nDet här är en längre kommentar.\nDen kan sträcka sig över\nhur många rader som helst.\nPerfekt för att förklara stora kodblock!\n"""\nprint("Bara denna rad visas i terminalen.")`} />
+      <PythonIDE hideCompletion initialCode={`"""\nDet här är en längre kommentar.\nDen kan sträcka sig över\nhur många rader som helst.\nPerfekt för att förklara stora kodblock!\n"""\n\nprint("Bara denna rad visas i terminalen.")`} />
 
       <hr style={{ margin: '3rem 0', borderColor: 'var(--border-color)', borderBottom: 'none' }} />
 
