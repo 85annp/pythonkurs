@@ -158,7 +158,7 @@ else:
     pris = 30`}
               </pre>
             </td>
-            <td>
+            <td style={{ backgroundColor: 'lightpink' }}>
               <pre style={{ margin: 0 }}>
 {`if alder < 7:
     pris = 0
