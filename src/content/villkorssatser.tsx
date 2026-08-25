@@ -143,7 +143,7 @@ if 6 <= klockslag < 9:
         <thead>
           <tr>
             <th>Med elif (effektivt)</th>
-            <th style={{ backgroundColor: '#FFE1E6' }}>Bara med if (ineffektivt)</th>
+            <th style={{ backgroundColor: '#ccb4b8' }}>Bara med if (ineffektivt)</th>
           </tr>
         </thead>
         <tbody>
