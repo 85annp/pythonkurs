@@ -143,7 +143,7 @@ if 6 <= klockslag < 9:
         <thead>
           <tr>
             <th>Med elif (effektivt)</th>
-            <th style={{ backgroundColor: '#ccb4b8' }}>Bara med if (ineffektivt)</th>
+            <th style={{ backgroundColor: 'var(--th-background-discourage)' }}>Bara med if (ineffektivt)</th>
           </tr>
         </thead>
         <tbody>
@@ -158,7 +158,7 @@ else:
     pris = 30`}
               </pre>
             </td>
-            <td style={{ backgroundColor: '#FFE1E6' }}>
+            <td style={{ backgroundColor: 'var(--td-background-discourage)' }}>
               <pre style={{ margin: 0 }}>
 {`if alder < 7:
     pris = 0

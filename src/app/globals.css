@@ -10,6 +10,8 @@
   --card-bg: #ffffff;
   --border-color: #e2e8f0;
   --success: #22c55e;
+  --th-background-discourage: #ccb4b8;
+  --td-background-discourage: #ffe1e6;
   --radius: 12px;
   --shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
