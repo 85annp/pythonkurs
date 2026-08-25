@@ -4,7 +4,7 @@ import PythonIDE from "../components/PythonIDE";
 export default function Funktioner() {
   return (
     <div className="module-content">
-      <h2>Funktioner (tidigare metoder)</h2>
+      <h2>Funktioner</h2>
       <p>
         Ofta kommer vi när vi programmerar att vilja använda samma funktionalitet flera gånger.
         Detta kan vi naturligtvis göra genom att kopiera och klistra in kod, eller ibland använda en loop.
