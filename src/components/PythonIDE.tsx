@@ -89,10 +89,10 @@ builtins.input = custom_input
           }
           
           setPyodide(py);
-          setOutput("✅ Python-miljön är redo!\\n");
+          setOutput("✅ Python-miljön är redo!\n");
           setIsLoading(false);
         } catch (err) {
-          setOutput("❌ Kunde inte ladda Python-miljön.\\n");
+          setOutput("❌ Kunde inte ladda Python-miljön.\n");
           setIsLoading(false);
         }
       }
@@ -109,13 +109,13 @@ builtins.input = custom_input
       setOutput((prev) => prev + text);
     };
     
-    setOutput("Kör koden...\\n---\\n");
+    setOutput("Kör koden...\n---\n");
     try {
       await pyodide.runPythonAsync(code);
     } catch (err: any) {
-      setOutput((prev) => prev + err.toString() + "\\n");
+      setOutput((prev) => prev + err.toString() + "\n");
     }
-    setOutput((prev) => prev + "\\n---\\nKörning klar.\\n");
+    setOutput((prev) => prev + "\n---\nKörning klar.\n");
   };
 
   const toggleCompletion = async () => {
@@ -128,7 +128,7 @@ builtins.input = custom_input
 
   const openPythonTutor = () => {
     const encodedCode = encodeURIComponent(code);
-    const tutorUrl = \`https://pythontutor.com/visualize.html#code=\${encodedCode}&cumulative=false&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false\`;
+    const tutorUrl = `https://pythontutor.com/visualize.html#code=${encodedCode}&cumulative=false&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false`;
     window.open(tutorUrl, '_blank');
   };
 
