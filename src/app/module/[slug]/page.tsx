@@ -54,6 +54,7 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
             moduleId={moduleInfo.id} 
             title={moduleInfo.title} 
             initialCode={progress?.savedCode || undefined} 
+            initialIsCompleted={progress?.status === "COMPLETED"}
           />
         </div>
       </div>

@@ -5,9 +5,11 @@ import { prisma } from "../lib/prisma";
 import { revalidatePath } from "next/cache";
 import bcrypt from "bcryptjs";
 
-export async function markModuleCompleted(moduleId: string) {
+export async function markModuleCompleted(moduleId: string, completed: boolean = true) {
   const session = await auth();
   if (!session?.user) throw new Error("Unauthorized");
+
+  const status = completed ? "COMPLETED" : "IN_PROGRESS";
 
   await prisma.progress.upsert({
     where: {
@@ -17,12 +19,12 @@ export async function markModuleCompleted(moduleId: string) {
       }
     },
     update: {
-      status: "COMPLETED"
+      status: status
     },
     create: {
       userId: session.user.id,
       moduleId: moduleId,
-      status: "COMPLETED"
+      status: status
     }
   });
 
