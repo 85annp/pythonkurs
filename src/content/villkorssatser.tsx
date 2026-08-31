@@ -92,7 +92,7 @@ else:
 
       <h2>Kombinera flera villkor</h2>
       <p>
-        Ofta behöver man undersöka flera villkor samtidigt. Villkoren kan kombineras med OCH eller ELLER.
+        Det är vanligt att man behöver undersöka flera villkor samtidigt. Villkoren kan kombineras med OCH eller ELLER.
       </p>
       <ul>
         <li>Om man sätter <strong>OCH</strong> mellan villkoren kräver man att båda uttrycken är sanna. I Python skriver vi <code>and</code>.</li>
@@ -120,6 +120,9 @@ if 6 <= klockslag < 9:
       <p>
         I Python använder vi nyckelordet <code>elif</code> (som står för "else if"). Vi kollar alltså bara nästa villkor om det första inte var uppfyllt!
       </p>
+      <p>
+        Det går att ha många <code>elif</code>-satser efter varandra.
+      </p>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
         <div className="code-example" style={{ flex: 1, minWidth: '250px' }}>
@@ -135,8 +138,14 @@ if 6 <= klockslag < 9:
         </div>
       </div>
 
+      <h3>
+        Värden i stege
+      </h3>
       <p>
         När man ska jämföra numeriska värden som ligger i en stege, är det klokt att ta det i storleksordning och utnyttja just att <code>elif</code> bara körs om koden ovanför var falsk. Den vänstra koden nedan är mycket smidigare än den högra!
+      </p>
+      <p>
+        Om man behöver ändra något av värdena i stegen är det också mycket lättare att göra det i den vänstra koden, eftersom man bara behöver ändra på ett ställe. 
       </p>
 
       <table className="content-table">
@@ -262,7 +271,7 @@ else:
         För att kunna använda det måste vi alltid skriva <code>import random</code> längst upp i vårt program.
       </p>
       <p>
-        Det vanligaste är att vi vill ha ett heltal (t.ex. en tärning). Då använder vi metoden <code>randint(min, max)</code> som ger ett tal från och med <strong>min</strong> till och med <strong>max</strong>.
+        Det vanligaste är att vi vill ha ett heltal (t.ex. en tärning). Då använder vi metoden <code>randint(min, max)</code> som ger ett tal från och med <code>min</code> till och med <code>max</code>. Lägg märke till att både <code>min</code> och <code>max</code> är inkluderade i intervallet.
       </p>
 
       <PythonIDE 
