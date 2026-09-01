@@ -6,7 +6,7 @@ export default function Repetitionssatser() {
     <div className="module-content">
       <h2>Upprepningar - iterationer - loopar</h2>
       <p>
-        Upprepningar, alltså att något skall göras flera gånger, kallas även för iterationer. Ofta kallar vi det helt enkelt för <strong>loopar</strong>.
+        Upprepningar, alltså att något skall göras flera gånger, kallas även för iterationer. Men oftast kallar vi det helt enkelt för <strong>loopar</strong>.
       </p>
       <p>Alla loopar kommer att upprepas antingen:</p>
       <ul>
@@ -25,7 +25,7 @@ export default function Repetitionssatser() {
       </p>
       <p>
         En <code>range()</code> kan anges med <code>start</code>, <code>stop</code> och <code>step</code>. 
-        Om man inte anger <code>start</code> börjar den på noll. Om man inte anger <code>step</code> hoppar den ett steg i taget.
+        Om man inte anger <code>start</code> börjar den på <strong>noll</strong>. Om man inte anger <code>step</code> hoppar den ett steg i taget.
       </p>
       <ul>
         <li><code>range(5)</code> ger talen: 0, 1, 2, 3, 4 (den börjar på noll och stannar precis innan slutsiffran)</li>
@@ -39,10 +39,25 @@ export default function Repetitionssatser() {
     print(i)`}
       />
 
+      <h2>for-loopen tillsammans med textmultiplikation</h2>
+      <p>
+        I Python kan man multiplicera text med ett heltal. Det betyder att man kan skriva ut samma text flera gånger i rad. Det är perfekt när man vill skriva ut mönster med asterisker eller andra tecken.
+        Vi kan kombinera detta med <code>for</code>-loopen för att skapa mönster som till exempel trianglar och pyramider.
+      </p>
+
+      <PythonIDE 
+        hideCompletion={true}
+        initialCode={`for i in range(4):
+    print("*" * (i + 1))`}
+      />
+
       <h2>for-loopen för listor (som foreach i andra språk)</h2>
       <p>
         I många andra språk finns en speciell <code>foreach</code>-loop för att gå igenom en samling (till exempel en lista med namn).
         I Python är <code>for</code>-loopen så smart att den fungerar som en foreach-loop per automatik! Den går själv igenom alla element, ett efter ett.
+      </p>
+      <p>
+        Mer om listor och hur man skapar dem kommer i nästa modul.
       </p>
 
       <PythonIDE 
@@ -58,12 +73,18 @@ for bil in bilar:
         Iterationer begränsas inte till att bara använda en upprepning. Man kan kombinera flera loopar genom att lägga dem inuti varandra.
       </p>
       <p>
-        Det är viktigt att tänka på att använda olika variabelnamn i de olika looparna. 
+        Det är viktigt att tänka på att använda <strong>olika variabelnamn</strong> i de olika looparna. 
         Tänk också på hur du använder indenteringen, så att koden hör till rätt loop!
       </p>
-      <p>
-        När man har nästlade loopar kan man tänka sig att man loopar igenom ett schackbräde eller liknande, där ena loopen styr vilken rad man är på och den andra loopen vilken kolumn.
-      </p>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
+        <p style={{ flex: 1, minWidth: '250px' }}>
+          När man har nästlade loopar kan man tänka sig att man loopar igenom ett schackbräde eller liknande, där ena loopen styr vilken rad man är på och den andra loopen vilken kolumn.
+        </p>
+        <div style={{ flexShrink: 0, width: '200px', textAlign: 'center' }}>
+          <img src="/chessboard.png" alt="Illustration av variabler som lådor" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }} />
+        </div>
+      </div>      
+
       <p>
         <em>Tips: I Python lägger kommandot <code>print()</code> automatiskt till en ny rad i slutet. 
         Genom att skriva <code>print(text, end="")</code> säger vi åt datorn att inte byta rad, vilket är perfekt när vi ritar ut kolumner!</em>
@@ -202,6 +223,14 @@ print("En text på\\ntvå rader!")`}
             </li>
              <li>Skriv med en for-loop ut talen 10-1 på en rad med mellanslag mellan varje tal.<br />
                 <code>10 9 8 7 6 5 4 3 2 1</code>
+            </li>
+            <li>
+              🤯 Använd nästlade for-satser för att skriva ut följande mönster:<br />
+              <code>1 </code><br />
+              <code>2 4</code><br />
+              <code>3 6 9</code><br />
+              <code>4 8 12 16</code><br />
+              <code>5 10 15 20 25</code>
             </li>
           </ul>
 
