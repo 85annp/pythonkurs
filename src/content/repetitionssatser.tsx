@@ -42,13 +42,15 @@ export default function Repetitionssatser() {
       <h2>for-loopen tillsammans med textmultiplikation</h2>
       <p>
         I Python kan man multiplicera text med ett heltal. Det betyder att man kan skriva ut samma text flera gånger i rad. Det är perfekt när man vill skriva ut mönster med asterisker eller andra tecken.
+      </p>
+      <p>
         Vi kan kombinera detta med <code>for</code>-loopen för att skapa mönster som till exempel trianglar och pyramider.
       </p>
 
       <PythonIDE 
         hideCompletion={true}
-        initialCode={`for i in range(4):
-    print("*" * (i + 1))`}
+        initialCode={`for i in range(1, 6):
+    print("*" * i)`}
       />
 
       <h2>for-loopen för listor (som foreach i andra språk)</h2>
@@ -186,7 +188,7 @@ while fortsatt.lower() == "j":
 
       <h2>Flyktsekvenser (Escape-sekvenser)</h2>
       <p>
-        En del tecken har speciell betydelse i kod. Till exempel används dubbelfnutt <code>"</code> för att markera var en text börjar och slutar. Men vad händer om vi faktiskt vill skriva ut ett citattecken på skärmen?
+        En del tecken har speciell betydelse i kod. Till exempel används citattecken <code>"</code> för att markera var en text börjar och slutar. Men vad händer om vi faktiskt vill skriva ut ett citattecken på skärmen?
       </p>
       <p>
         Då använder vi en <strong>backslash</strong> <code>\</code> framför tecknet. Det kallas för att använda en flyktsekvens (eller "att escapa" på svengelska).
