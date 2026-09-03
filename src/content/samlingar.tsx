@@ -90,7 +90,7 @@ for person in namn:
         <li><code>.append(värde)</code> lägger till i slutet.</li>
         <li><code>.remove(värde)</code> tar bort ett specifikt värde.</li>
         <li><code>.index(värde)</code> tar reda på vilken position (index) ett värde har.</li>
-        <li><code>del lista[index]</code> (eller <code>.pop()</code>) tar bort värdet på en specifik plats.</li>
+        <li><code>del lista[index]</code> (eller <code>.pop(index)</code>) tar bort värdet på en specifik plats.</li>
         <li><code>.sort()</code> sorterar listan i storleksordning (eller bokstavsordning).</li>
         <li><code>värde in lista</code> kollar om ett värde finns i listan (som <i>Contains</i> i andra språk).</li>
       </ul>
