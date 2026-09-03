@@ -14,17 +14,17 @@ export default function Repetitionssatser() {
         <li>så länge som ett visst villkor är sant.</li>
       </ul>
       <p>
-        I många språk (som C# och JavaScript) finns det tre sorters loopar: <code>for</code>, <code>while</code> och <code>do-while</code>. 
+        I många språk (som C# och JavaScript) finns det tre sorters loopar: <code>for</code>, <code>while</code> och <code>do-while</code>.
         I Python klarar vi oss med bara två: <code>for</code> och <code>while</code>!
       </p>
 
       <h2>for-loopen (upprepa ett bestämt antal gånger)</h2>
       <p>
-        <code>for</code>-loopen är bäst när man vill upprepa något ett bestämt antal gånger. 
-        I Python använder vi kommandot <code>range()</code> för att skapa en följd av tal som loopen kan "räkna" igenom. 
+        <code>for</code>-loopen är bäst när man vill upprepa något ett bestämt antal gånger.
+        I Python använder vi kommandot <code>range()</code> för att skapa en följd av tal som loopen kan "räkna" igenom.
       </p>
       <p>
-        En <code>range()</code> kan anges med <code>start</code>, <code>stop</code> och <code>step</code>. 
+        En <code>range()</code> kan anges med <code>start</code>, <code>stop</code> och <code>step</code>.
         Om man inte anger <code>start</code> börjar den på <strong>noll</strong>. Om man inte anger <code>step</code> hoppar den ett steg i taget.
       </p>
       <ul>
@@ -33,7 +33,7 @@ export default function Repetitionssatser() {
         <li><code>range(1, 6, 2)</code> ger talen: 1, 3, 5 (den stannar precis innan slutsiffran och hoppar två steg i taget)</li>
       </ul>
 
-      <PythonIDE 
+      <PythonIDE
         hideCompletion={true}
         initialCode={`for i in range(1, 6, 2):
     print(i)`}
@@ -47,10 +47,10 @@ export default function Repetitionssatser() {
         Vi kan kombinera detta med <code>for</code>-loopen för att skapa mönster som till exempel trianglar och pyramider.
       </p>
 
-      <PythonIDE 
+      <PythonIDE
         hideCompletion={true}
         initialCode={`for i in range(1, 6):
-    print("*" * i)`}
+    print("⚪" * i)`}
       />
 
       <h2>for-loopen för listor (som foreach i andra språk)</h2>
@@ -62,7 +62,7 @@ export default function Repetitionssatser() {
         Mer om listor och hur man skapar dem kommer i nästa modul.
       </p>
 
-      <PythonIDE 
+      <PythonIDE
         hideCompletion={true}
         initialCode={`bilar = ["Volvo", "BMW", "Ford", "Mazda"]
 
@@ -75,7 +75,7 @@ for bil in bilar:
         Iterationer begränsas inte till att bara använda en upprepning. Man kan kombinera flera loopar genom att lägga dem inuti varandra.
       </p>
       <p>
-        Det är viktigt att tänka på att använda <strong>olika variabelnamn</strong> i de olika looparna. 
+        Det är viktigt att tänka på att använda <strong>olika variabelnamn</strong> i de olika looparna.
         Tänk också på hur du använder indenteringen, så att koden hör till rätt loop!
       </p>
       <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
@@ -85,14 +85,14 @@ for bil in bilar:
         <div style={{ flexShrink: 0, width: '200px', textAlign: 'center' }}>
           <img src="/chessboard.png" alt="Illustration av variabler som lådor" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }} />
         </div>
-      </div>      
+      </div>
 
       <p>
-        <em>Tips: I Python lägger kommandot <code>print()</code> automatiskt till en ny rad i slutet. 
-        Genom att skriva <code>print(text, end="")</code> säger vi åt datorn att inte byta rad, vilket är perfekt när vi ritar ut kolumner!</em>
+        <em>Tips: I Python lägger kommandot <code>print()</code> automatiskt till en ny rad i slutet.
+          Genom att skriva <code>print(text, end="")</code> säger vi åt datorn att inte byta rad, vilket är perfekt när vi ritar ut kolumner!</em>
       </p>
 
-      <PythonIDE 
+      <PythonIDE
         hideCompletion={true}
         initialCode={`for rad in range(10):
     print(f"Rad {rad}: ", end="")
@@ -111,7 +111,7 @@ for bil in bilar:
         Det är viktigt att tänka på att while-loopen kan bli en <strong>oändlig loop</strong> om man inte ser till att villkoret så småningom blir falskt.
       </p>
 
-      <PythonIDE 
+      <PythonIDE
         hideCompletion={true}
         initialCode={`i = 1
 while i <= 5:
@@ -123,7 +123,7 @@ while i <= 5:
         Ett vanligt användningsområde för while är när vi vill fråga användaren om vi ska fortsätta köra programmet:
       </p>
 
-      <PythonIDE 
+      <PythonIDE
         hideCompletion={true}
         initialCode={`fortsatt = "j"
 
@@ -141,7 +141,7 @@ while fortsatt.lower() == "j":
         <strong>Python har faktiskt ingen do-while-loop!</strong> I stället brukar man använda ett trick: vi skapar en loop som går för evigt (<code>while True:</code>) och använder kommandot <code>break</code> (avbryt) när vi vill hoppa ur loopen.
       </p>
 
-      <PythonIDE 
+      <PythonIDE
         hideCompletion={true}
         initialCode={`while True:
     print("Detta kommer att köras minst en gång.")
@@ -159,7 +159,7 @@ while fortsatt.lower() == "j":
         Vi kan bygga detta med hjälp av tricket ovan (<code>while True:</code>) tillsammans med den nya <code>match</code>-satsen (Pythons motsvarighet till switch).
       </p>
 
-      <PythonIDE 
+      <PythonIDE
         hideCompletion={true}
         initialCode={`while True:
     print("\\n--- MENY ---")
@@ -199,7 +199,7 @@ while fortsatt.lower() == "j":
         <li><code>\n</code> används för att skapa en <strong>ny rad</strong> (n står för newline).</li>
       </ul>
 
-      <PythonIDE 
+      <PythonIDE
         hideCompletion={true}
         initialCode={`print("Nu skriver jag ut ett citattecken: \\" ")
 print("Nu skriver jag ut ett bakvänt snedstreck: \\\\ ")
@@ -211,20 +211,20 @@ print("En text på\\ntvå rader!")`}
 
       <h3>Dina uppgifter (görs längst ner på sidan)</h3>
       <div className="task-box">
-        <p><strong>Tips!</strong><br/>Låt alla uppgifter finnas kvar i kodrutan, men kommentera bort de uppgifter du är färdig med genom att skriva ''' på raden före och efter kodblocket.</p>
-        <p><strong>Tips 2!</strong><br/>Om det inte fungerar med print med end=" ", kan du testa att lägga en tom print() på raden efter.</p>
+        <p><strong>Tips!</strong><br />Låt alla uppgifter finnas kvar i kodrutan, men kommentera bort de uppgifter du är färdig med genom att skriva ''' på raden före och efter kodblocket.</p>
+        <p><strong>Tips 2!</strong><br />Om det inte fungerar med print med end=" ", kan du testa att lägga en tom print() på raden efter.</p>
         <ol>
           <li>Tal med for-satser</li>
           <ul>
             <li>Skriv en kommentar "Uppgift 1".</li>
             <li>Skriv med en for-loop ut talen 1-5 på en rad med mellanslag mellan varje siffra.<br />
-                <code>1 2 3 4 5</code>
+              <code>1 2 3 4 5</code>
             </li>
             <li>Skriv med en for-loop ut alla jämna tal 0-10 på en rad med mellanslag mellan varje tal. Det får inte finnas någon <code>if</code>-sats.<br />
-                <code>0 2 4 6 8 10</code>
+              <code>0 2 4 6 8 10</code>
             </li>
-             <li>Skriv med en for-loop ut talen 10-1 på en rad med mellanslag mellan varje tal.<br />
-                <code>10 9 8 7 6 5 4 3 2 1</code>
+            <li>Skriv med en for-loop ut talen 10-1 på en rad med mellanslag mellan varje tal.<br />
+              <code>10 9 8 7 6 5 4 3 2 1</code>
             </li>
             <li>
               🤯 Använd nästlade for-satser för att skriva ut följande mönster:<br />
@@ -267,7 +267,7 @@ print("En text på\\ntvå rader!")`}
               <code>&nbsp;&nbsp;*****</code><br />
               <code>&nbsp;*******</code><br />
               <code>*********</code><br />
-            </li>                                
+            </li>
           </ul>
           <li>while-satser</li>
           <ul>
@@ -292,7 +292,7 @@ print("En text på\\ntvå rader!")`}
                 <li>Be användaren ange positiva heltal, ett i taget, och avsluta med -1. </li>
                 <li>Använd en while-loop för att fortsätta läsa in tal tills användaren skriver in -1.</li>
                 <li>När inmatningen är slut, ska programmet beräkna och skriva ut medelvärdet av alla inmatade tal (exklusive -1).<br />
-                    <strong>Ledtråd:</strong> Du behöver en variabel för att lagra summan av alla tal och en annan för att räkna hur många tal som matats in.</li>
+                  <strong>Ledtråd:</strong> Du behöver en variabel för att lagra summan av alla tal och en annan för att räkna hur många tal som matats in.</li>
               </ul>
             </li>
           </ul>
