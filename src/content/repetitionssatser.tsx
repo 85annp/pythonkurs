@@ -29,22 +29,22 @@ export default function Repetitionssatser() {
       </p>
       <ul>
         <li><code>range(5)</code> ger talen: 0, 1, 2, 3, 4 (den börjar på noll och stannar precis innan slutsiffran)</li>
-        <li><code>range(1, 6)</code> ger talen: 1, 2, 3, 4, 5 (den stannar precis innan slutsiffran)</li>
-        <li><code>range(1, 6, 2)</code> ger talen: 1, 3, 5 (den stannar precis innan slutsiffran och hoppar två steg i taget)</li>
+        <li><code>range(1, 6)</code> ger talen: 1, 2, 3, 4, 5 (den börjar på ett och stannar precis innan slutsiffran)</li>
+        <li><code>range(1, 6, 2)</code> ger talen: 1, 3, 5 (den börjar på ett, hoppar två steg i taget och stannar precis innan slutsiffran)</li>
       </ul>
 
       <PythonIDE
         hideCompletion={true}
         initialCode={`for i in range(5):
-    print(i)
+    print(i, end=" ")
 print()
 
 for i in range(1, 6):
-    print(i)
+    print(i, end=" ")
 print()
     
 for i in range(1, 6, 2):
-    print(i)`}
+    print(i, end=" ")`}
       />
 
       <h2>for-loopen tillsammans med textmultiplikation</h2>
