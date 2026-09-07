@@ -37,14 +37,14 @@ export default function Repetitionssatser() {
         hideCompletion={true}
         initialCode={`for i in range(5):
     print(i)
-  print()
+print()
 
-  for i in range(1, 6):
+for i in range(1, 6):
     print(i)
-  print()
+print()
     
-  for i in range(1, 6, 2):
-     print(i)`}
+for i in range(1, 6, 2):
+    print(i)`}
       />
 
       <h2>for-loopen tillsammans med textmultiplikation</h2>
