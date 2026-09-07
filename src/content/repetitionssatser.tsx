@@ -35,8 +35,16 @@ export default function Repetitionssatser() {
 
       <PythonIDE
         hideCompletion={true}
-        initialCode={`for i in range(1, 6, 2):
-    print(i)`}
+        initialCode={`for i in range(5):
+    print(i)
+  print()
+
+  for i in range(1, 6):
+    print(i)
+  print()
+    
+  for i in range(1, 6, 2):
+     print(i)`}
       />
 
       <h2>for-loopen tillsammans med textmultiplikation</h2>
