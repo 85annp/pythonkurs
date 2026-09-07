@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Python: Villkorssatser &amp; Operatorer — Quiz</title>
+<title>Python: Repetitionssatser — Quiz</title>
 <style>
   :root{
     --bg: #0f1720;
@@ -110,8 +110,8 @@
 <div class="wrap">
   <header>
     <div class="eyebrow">Pythonprogrammering</div>
-    <h1>Villkorssatser &amp; operatorer</h1>
-    <div class="subtitle">Testa vad du kommer ihåg — 10 frågor</div>
+    <h1>Repetitionssatser</h1>
+    <div class="subtitle">Testa vad du kommit ihåg — 10 frågor</div>
   </header>
 
   <div id="quiz-area">
@@ -120,95 +120,110 @@
     <div class="card" id="card"></div>
   </div>
 
-  <footer>Programmering 1 - Python - Quiz - Villkorssatser &amp; operatorer</footer>
+  <footer>Skapat med Claude · dela länken fritt med eleverna</footer>
 </div>
 
 <script>
 const questions = [
   {
-    prompt: "Vad kallas satser som if/else, där koden gör olika saker beroende på ett villkor?",
-    options: ["Loopar", "Villkorssatser (selektioner)", "Funktioner", "Variabler"],
-    correct: 1,
-    explanation: "Villkorssatser (även kallade selektioner) exekverar olika kod beroende på om ett eller flera villkor är sanna."
+    prompt: "Vilka två sorters loopar finns det i Python?",
+    options: ["for och while", "for, while och do-while", "loop och repeat", "iterate och until"],
+    correct: 0,
+    explanation: "I många andra språk finns tre sorters loopar (for, while, do-while), men i Python klarar vi oss med bara två: for och while."
   },
   {
-    prompt: "Vad måste alltid stå i slutet av en if-rad i Python?",
-    options: ["Ett semikolon ;", "Ett kolon :", "En klammerparentes {", "Inget särskilt tecken"],
+    prompt: "Vilka tal ger range(1, 6)?",
+    options: ["1, 2, 3, 4, 5, 6", "1, 2, 3, 4, 5", "0, 1, 2, 3, 4, 5", "2, 3, 4, 5, 6"],
     correct: 1,
-    explanation: "I Python måste man alltid avsluta if-raden med ett kolon :, och koden som ska köras måste vara indenterad under den."
+    explanation: "range(1, 6) börjar på 1 (start) och stannar precis innan slutsiffran, så den ger talen 1, 2, 3, 4, 5."
   },
   {
-    prompt: "Hur avgränsar Python vilken kod som tillhör ett if-block, till skillnad från språk som C# och JavaScript?",
-    options: ["Med klammerparenteser { }", "Med indrag (indentering)", "Med kolon på varje rad", "Python har inga block"],
-    correct: 1,
-    explanation: "Många andra språk använder klammerparenteser { }, men i Python används indrag (indentering) — alla rader med samma indrag under if-satsen tillhör samma block."
-  },
-  {
-    prompt: "Vad används else-grenen till i en if-else-sats?",
+    prompt: "Vad gör koden: for i in range(1, 6, 2):",
     options: [
-      "Att köra kod om villkoret är sant",
-      "Att köra kod om villkoret är falskt",
-      "Att avsluta programmet",
-      "Att deklarera en ny variabel"
+      "Loopar igenom 1, 2, 3, 4, 5",
+      "Loopar igenom 1, 3, 5 (hoppar två steg i taget)",
+      "Loopar igenom 2, 4, 6",
+      "Ger ett felmeddelande eftersom range bara tar två argument"
     ],
     correct: 1,
-    explanation: "if-else låter dig göra en sak om villkoret är uppfyllt och en annan sak om villkoret inte är uppfyllt."
+    explanation: "Det tredje argumentet i range() är step. range(1, 6, 2) börjar på 1, hoppar två steg i taget och stannar precis innan 6, vilket ger 1, 3, 5."
   },
   {
-    prompt: "Vad står elif för och när används det?",
+    prompt: 'Vad gör "text" * i i Python, till exempel print("*" * 3)?',
     options: [
-      "\"else if\" — för att kolla nästa villkor om det första inte var uppfyllt",
-      "\"end if\" — för att avsluta en if-sats",
-      "\"else infinite\" — för en oändlig loop",
-      "Det är bara ett alias för else"
+      "Ger ett felmeddelande, man kan inte multiplicera text",
+      "Multiplicerar texten med talet, dvs. skriver ut samma text flera gånger i rad",
+      "Räknar antalet bokstäver i texten",
+      "Delar upp texten i i delar"
+    ],
+    correct: 1,
+    explanation: 'I Python kan man multiplicera text med ett heltal för att skriva ut samma text flera gånger i rad, t.ex. "*" * 3 blir "***". Det är perfekt för att rita mönster.'
+  },
+  {
+    prompt: "Vad gör for-loopen i Python när man loopar direkt över en lista, t.ex. for bil in bilar:?",
+    options: [
+      "Den fungerar automatiskt som en foreach-loop och går igenom alla element ett efter ett",
+      "Den kräver att man skriver en separat foreach-loop",
+      "Den fungerar bara med tal, inte med listor",
+      "Den loopar bara igenom det första elementet"
     ],
     correct: 0,
-    explanation: "elif står för \"else if\" och används för att kolla nästa villkor bara om det föregående villkoret var falskt. Man kan ha flera elif efter varandra."
+    explanation: "I många andra språk finns en speciell foreach-loop för att gå igenom en samling, men i Python är for-loopen så smart att den fungerar som en foreach-loop automatiskt."
   },
   {
-    prompt: "Vad gör den tilldelande operatorn += i Python, t.ex. i uttrycket tal1 += tal2?",
+    prompt: "Vad är viktigt att tänka på när man skriver nästlade loopar (loopar inuti varandra)?",
     options: [
-      "Jämför om tal1 är lika med tal2",
-      "Ett kortare skrivsätt för tal1 = tal1 + tal2",
-      "Skapar en ny variabel som heter tal1tal2",
-      "Fungerar bara med text, inte med tal"
+      "Man måste alltid använda samma variabelnamn i båda looparna",
+      "Man bör använda olika variabelnamn och tänka på indenteringen så koden hör till rätt loop",
+      "Nästlade loopar är förbjudna i Python",
+      "Den inre loopen måste alltid vara en while-loop"
     ],
     correct: 1,
-    explanation: "Tilldelande operatorer som += är ett kortare skrivsätt (\"plussa och tilldela\"). tal1 += tal2 gör samma sak som tal1 = tal1 + tal2. Samma mönster finns för -=, *= och /=."
+    explanation: "Det är viktigt att använda olika variabelnamn i de olika looparna, och att tänka på hur man använder indenteringen så att koden hamnar i rätt loop."
   },
   {
-    prompt: "Vilket nyckelord används i det fallet där ingen av case-grenarna i en match-sats stämmer (default-fallet)?",
-    options: ["else", "default", "_", "other"],
+    prompt: "När kontrolleras villkoret i en while-loop, jämfört med en for-loop med bestämt antal varv?",
+    options: [
+      "while-loopen kontrollerar villkoret först, innan loopen ens har startat",
+      "while-loopen kontrollerar villkoret sist, efter att loopen har körts en gång",
+      "while-loopen kontrollerar aldrig något villkor",
+      "Villkoret kontrolleras bara varannan gång"
+    ],
+    correct: 0,
+    explanation: "while-loopen upprepar så länge ett villkor är sant, och villkoret kontrolleras alltid först, innan loopen ens har startat."
+  },
+  {
+    prompt: "Vad kan hända om man glömmer att se till att villkoret i en while-loop så småningom blir falskt?",
+    options: [
+      "Programmet kraschar direkt",
+      "Loopen blir en oändlig loop",
+      "Python hoppar automatiskt över loopen",
+      "Inget särskilt, Python stoppar den efter 10 varv"
+    ],
+    correct: 1,
+    explanation: "Det är viktigt att tänka på att while-loopen kan bli en oändlig loop om man inte ser till att villkoret så småningom blir falskt."
+  },
+  {
+    prompt: "Python har ingen inbyggd do-while-loop. Hur brukar man simulera en loop som alltid körs minst en gång?",
+    options: [
+      "Genom att använda en for-loop med range(1)",
+      "Genom att skapa en oändlig loop med while True: och använda break för att hoppa ur den",
+      "Det går inte att göra i Python",
+      "Genom att skriva while False:"
+    ],
+    correct: 1,
+    explanation: "Python har faktiskt ingen do-while-loop. I stället använder man tricket att skapa en loop som går för evigt (while True:) och använder kommandot break för att hoppa ur loopen när man vill."
+  },
+  {
+    prompt: 'Vad används flyktsekvensen \\n till i en textsträng?',
+    options: [
+      "Att skriva ut ett citattecken",
+      "Att skriva ut en backslash",
+      "Att skapa en ny rad (n står för newline)",
+      "Att avsluta programmet"
+    ],
     correct: 2,
-    explanation: "I match-case används understreck _ för att fånga övriga fall (default), och den måste alltid ligga sist bland case eftersom den alltid är sann."
-  },
-  {
-    prompt: 'Vad gör tecknet | i en match-case-sats, t.ex. "case 6 | 7:"?',
-    options: [
-      "Delar upp koden i två separata block",
-      "Fungerar som en \"eller\"-operator mellan flera värden i samma case",
-      "Betyder att villkoret aldrig kan bli sant",
-      "Kommenterar bort resten av raden"
-    ],
-    correct: 1,
-    explanation: 'Pipe-tecknet | låter dig kombinera flera värden i samma case, t.ex. "case 6 | 7:" träffar både 6 och 7.'
-  },
-  {
-    prompt: "Vad returnerar 7 % 3 i Python?",
-    options: ["2", "1", "2.33", "21"],
-    correct: 1,
-    explanation: "% är resten-operatorn (modulus). 7/3 blir 2 med resten 1, så 7 % 3 = 1."
-  },
-  {
-    prompt: "Vad är skillnaden mellan / och // i Python?",
-    options: [
-      "Ingen skillnad, båda gör samma sak",
-      "/ ger \"vanlig\" division med decimaler, // ger heltalsdivision avrundat nedåt",
-      "/ är bara till för heltal, // för decimaltal",
-      "// används för kommentarer i Python"
-    ],
-    correct: 1,
-    explanation: "/ ger vanlig division som kan resultera i decimaltal, medan // (heltalsdivision) alltid avrundar nedåt till närmaste heltal."
+    explanation: '\\n används för att skapa en ny rad (n står för "newline"). På samma sätt låter \\" oss skriva ut ett citattecken och \\\\ en backslash.'
   }
 ];
 
@@ -281,8 +296,8 @@ function renderResult(){
   let msg;
   if(pct === 100) msg = "Perfekt! Du kan grunderna utantill.";
   else if(pct >= 70) msg = "Bra jobbat! Du har koll på det mesta.";
-  else if(pct >= 40) msg = "Godkänt läge — repetera gärna modulerna en gång till.";
-  else msg = "Dags att gå igenom modulerna igen innan nästa steg.";
+  else if(pct >= 40) msg = "Godkänt läge — repetera gärna modulen en gång till.";
+  else msg = "Dags att gå igenom modulen igen innan nästa steg.";
 
   card.innerHTML = `
     <div class="result">
