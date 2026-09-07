@@ -119,6 +119,11 @@ for bil in bilar:
         Det är viktigt att tänka på att while-loopen kan bli en <strong>oändlig loop</strong> om man inte ser till att villkoret så småningom blir falskt.
       </p>
 
+      <p>
+        Det går att göra en while-loop som fungerar exakt som <code>for i in range(1, 6)</code> som nedan, men då bör man i stället använda for-loopen, eftersom den är mer kompakt och lättare att läsa.
+        Här finns den med för att visa hur while-loopen fungerar:
+      </p>
+
       <PythonIDE
         hideCompletion={true}
         initialCode={`i = 1
@@ -141,6 +146,24 @@ while fortsatt.lower() == "j":
     fortsatt = input("Vill du köra en gång till (j/n)? ")`}
       />
 
+      <p>
+        Ett annat exempel är när vi vill se hur lång tid det tar att få ihop 10 000 kr genom årliga insättningar och ränta på ett sparkonto. Vi kan då använda en while-loop som fortsätter tills vi har nått målet:
+      </p>
+
+      <PythonIDE
+        hideCompletion={true}
+        initialCode={`saldo = 0
+insattning = 1000
+ar = 0
+
+while saldo < 10000:
+    saldo += insattning
+    saldo *= 1.05 # Ränta på 5%
+    ar += 1
+
+print(f"Det tog {ar} år att nå 10 000 kr.")`}
+      />
+      
       <h2>do-while (Hur gör man i Python?)</h2>
       <p>
         I många språk finns en variant på loop som heter <code>do-while</code>. Den kör alltid koden minst en gång, och kollar villkoret <em>sist</em>.
