@@ -466,7 +466,7 @@ print(f"Vädret är: {väder}")</pre>
   <!-- ================= DEL 3 ================= -->
   <section class="part" id="del3">
     <h2 class="part-title">Del 3 — Skriv egen kod</h2>
-    <p class="part-desc">Försök skriva koden själv på papper eller i huvudet innan du kollar exempellösningen. Det finns ofta flera sätt att lösa samma uppgift rätt på.</p>
+    <p class="part-desc">Försök skriva koden själv i rutan innan du kollar exempellösningen. Det finns ofta flera sätt att lösa samma uppgift rätt på.</p>
 
     <div class="card">
       <div class="q-head"><span class="q-num">Uppgift 1</span><span class="level-pill level-E">NIVÅ E</span></div>
@@ -513,7 +513,7 @@ temp = int(input("Vad är temperaturen? "))
 
 if väder == "regn":
     print("Ta med paraply.")
-elif väder == "sol" and temp > 20:
+elif temp > 20:
     print("T-shirt räcker.")
 else:
     print("Ta med en jacka.")</pre>
@@ -532,16 +532,17 @@ else:
 tal2 = float(input("Andra talet: "))
 op = input("Räknesätt (+, -, *, /): ")
 
-if op == "+":
-    print(tal1 + tal2)
-elif op == "-":
-    print(tal1 - tal2)
-elif op == "*":
-    print(tal1 * tal2)
-elif op == "/":
-    print(tal1 / tal2)
-else:
-    print("Okänt räknesätt")</pre>
+match op:
+    case "+":
+        print(tal1 + tal2)
+    case "-":
+        print(tal1 - tal2)
+    case "*":
+        print(tal1 * tal2)
+    case "/":
+        print(tal1 / tal2)
+    case _:
+        print("Okänt räknesätt")</pre>
         </div>
       </details>
     </div>
@@ -568,7 +569,7 @@ else:
     </div>
   </section>
 
-  <footer>Skapat med Claude · öva så många gånger du vill inför provet</footer>
+  <footer>Programmering 1 - Python - Öva inför provet</footer>
 </div>
 
 <script>
