@@ -132,6 +132,68 @@
   }
   .option.right{ border-color:var(--accent); background:var(--accent-dim); }
 
+  /* Klickbara MC-knappar (Del 1) */
+  button.mc-option{
+    display:block;
+    width:100%;
+    text-align:left;
+    background:var(--panel-2);
+    border:1px solid var(--border);
+    color:var(--text);
+    border-radius:8px;
+    padding:11px 14px;
+    font-size:14.5px;
+    font-family:inherit;
+    cursor:pointer;
+    transition:border-color 0.15s, background 0.15s, transform 0.1s;
+  }
+  button.mc-option:hover:not(:disabled){ border-color:var(--accent); background:#1f313f; }
+  button.mc-option:active:not(:disabled){ transform:scale(0.99); }
+  button.mc-option:disabled{ cursor:default; }
+  button.mc-option.correct{ border-color:var(--accent); background:var(--accent-dim); }
+  button.mc-option.wrong{ border-color:var(--wrong,#e0645a); background:#3a2426; }
+
+  .mc-feedback{
+    display:none;
+    margin-top:12px;
+    padding:14px 16px;
+    border-radius:8px;
+    background:var(--panel-2);
+    border-left:3px solid var(--accent);
+    font-size:14.5px;
+    line-height:1.6;
+    color:var(--text-dim);
+  }
+  .mc-feedback.show{ display:block; }
+  .mc-feedback.is-wrong{ border-left-color:#e0645a; }
+  .mc-feedback .verdict{ display:block; font-weight:700; color:var(--text); margin-bottom:4px; }
+
+  /* Skrivrutor för Del 2 & 3 */
+  .scratchpad{
+    width:100%;
+    min-height:70px;
+    resize:vertical;
+    background:var(--code-bg);
+    border:1px solid var(--border);
+    border-radius:8px;
+    color:var(--text);
+    font-family:'Consolas','Courier New',monospace;
+    font-size:13.5px;
+    line-height:1.5;
+    padding:12px 14px;
+    margin:2px 0 14px;
+  }
+  .scratchpad::placeholder{ color:#4d6072; font-family:'Segoe UI', system-ui, sans-serif; font-style:italic; }
+  .scratchpad:focus{ outline:none; border-color:var(--accent); }
+  .scratchpad-label{
+    font-size:12px;
+    color:var(--text-dim);
+    font-family:'Consolas','Courier New',monospace;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    margin:4px 0 6px;
+  }
+
   details{
     margin-top:10px;
   }
@@ -181,7 +243,7 @@
   </header>
 
   <div class="howto">
-    <b>Så använder du materialet:</b> Försök svara själv innan du klickar fram svaret. I del 1 och del 2 kan du klicka på <b>"Visa svar"</b> för att se rätt svar och förklaring. I del 3 finns ett exempel på lösning gömt — testa att skriva din egen kod på papper eller i huvudet innan du kollar facit.
+    <b>Så använder du materialet:</b> I <b>del 1</b> klickar du direkt på det svar du tror är rätt — du får omedelbar rättning och en förklaring. I <b>del 2</b> och <b>del 3</b> finns skrivrutor där du kan skriva ditt eget svar eller din egen kod (dessa rättas inte automatiskt) — skriv klart innan du klickar på <b>"Visa svar"</b> för att jämföra med facit.
   </div>
 
   <nav class="toc">
@@ -195,124 +257,124 @@
     <h2 class="part-title">Del 1 — Flervalsfrågor</h2>
     <p class="part-desc">Välj det alternativ du tror är rätt, klicka sedan på "Visa svar" för att kontrollera.</p>
 
-    <div class="card">
+    <div class="card mc-card" data-correct="1">
       <div class="q-head"><span class="q-num">Fråga 1</span><span class="level-pill level-E">NIVÅ E</span></div>
       <p class="q-prompt">Vad skriver koden ut: <code>print("Hej", "världen")</code></p>
-      <div class="options">
-        <div class="option">a) HejVärlden</div>
-        <div class="option">b) Hej världen</div>
-        <div class="option">c) Hej,världen</div>
-        <div class="option">d) Ett felmeddelande</div>
+      <div class="mc-options">
+        <button class="mc-option">a) HejVärlden</button>
+        <button class="mc-option">b) Hej världen</button>
+        <button class="mc-option">c) Hej,världen</button>
+        <button class="mc-option">d) Ett felmeddelande</button>
       </div>
-      <details><summary>Visa svar</summary>
-        <div class="answer-box"><span class="verdict">Rätt svar: b) Hej världen</span>
-        När man skriver flera delar separerade med kommatecken i print() läggs automatiskt ett mellanslag mellan dem, men inget kommatecken syns i utskriften.</div>
-      </details>
+      <div class="mc-feedback">
+        <span class="verdict"></span>
+        När man skriver flera delar separerade med kommatecken i print() läggs automatiskt ett mellanslag mellan dem, men inget kommatecken syns i utskriften.
+      </div>
     </div>
 
-    <div class="card">
+    <div class="card mc-card" data-correct="2">
       <div class="q-head"><span class="q-num">Fråga 2</span><span class="level-pill level-E">NIVÅ E</span></div>
       <p class="q-prompt">Vilken datatyp får variabeln <code>x</code> efter <code>x = "10"</code>?</p>
-      <div class="options">
-        <div class="option">a) int</div>
-        <div class="option">b) float</div>
-        <div class="option">c) str</div>
-        <div class="option">d) bool</div>
+      <div class="mc-options">
+        <button class="mc-option">a) int</button>
+        <button class="mc-option">b) float</button>
+        <button class="mc-option">c) str</button>
+        <button class="mc-option">d) bool</button>
       </div>
-      <details><summary>Visa svar</summary>
-        <div class="answer-box"><span class="verdict">Rätt svar: c) str</span>
-        Eftersom värdet står inom citattecken blir det en textsträng (str), även om det ser ut som ett tal. Man skulle behöva skriva x = int("10") för att få ett heltal.</div>
-      </details>
+      <div class="mc-feedback">
+        <span class="verdict"></span>
+        Eftersom värdet står inom citattecken blir det en textsträng (str), även om det ser ut som ett tal. Man skulle behöva skriva x = int("10") för att få ett heltal.
+      </div>
     </div>
 
-    <div class="card">
+    <div class="card mc-card" data-correct="2">
       <div class="q-head"><span class="q-num">Fråga 3</span><span class="level-pill level-D">NIVÅ D</span></div>
       <p class="q-prompt">Vad blir värdet av <code>15 // 4</code>?</p>
-      <div class="options">
-        <div class="option">a) 3.75</div>
-        <div class="option">b) 4</div>
-        <div class="option">c) 3</div>
-        <div class="option">d) 1</div>
+      <div class="mc-options">
+        <button class="mc-option">a) 3.75</button>
+        <button class="mc-option">b) 4</button>
+        <button class="mc-option">c) 3</button>
+        <button class="mc-option">d) 1</button>
       </div>
-      <details><summary>Visa svar</summary>
-        <div class="answer-box"><span class="verdict">Rätt svar: c) 3</span>
-        // är heltalsdivision och avrundar alltid nedåt. 15/4 = 3.75, avrundat nedåt blir det 3.</div>
-      </details>
+      <div class="mc-feedback">
+        <span class="verdict"></span>
+        // är heltalsdivision och avrundar alltid nedåt. 15/4 = 3.75, avrundat nedåt blir det 3.
+      </div>
     </div>
 
-    <div class="card">
+    <div class="card mc-card" data-correct="0">
       <div class="q-head"><span class="q-num">Fråga 4</span><span class="level-pill level-D">NIVÅ D</span></div>
       <p class="q-prompt">Vad blir värdet av <code>15 % 4</code>?</p>
-      <div class="options">
-        <div class="option">a) 3</div>
-        <div class="option">b) 4</div>
-        <div class="option">c) 0</div>
-        <div class="option">d) 1</div>
+      <div class="mc-options">
+        <button class="mc-option">a) 3</button>
+        <button class="mc-option">b) 4</button>
+        <button class="mc-option">c) 0</button>
+        <button class="mc-option">d) 1</button>
       </div>
-      <details><summary>Visa svar</summary>
-        <div class="answer-box"><span class="verdict">Rätt svar: a) 3</span>
-        % ger resten vid division. 15/4 går tre hela gånger (12), och det blir 3 kvar. Alltså 15 % 4 = 3.</div>
-      </details>
+      <div class="mc-feedback">
+        <span class="verdict"></span>
+        % ger resten vid division. 15/4 går tre hela gånger (12), och det blir 3 kvar. Alltså 15 % 4 = 3.
+      </div>
     </div>
 
-    <div class="card">
+    <div class="card mc-card" data-correct="1">
       <div class="q-head"><span class="q-num">Fråga 5</span><span class="level-pill level-C">NIVÅ C</span></div>
       <p class="q-prompt">Vilket tecken används för att jämföra om två värden är lika i Python?</p>
-      <div class="options">
-        <div class="option">a) =</div>
-        <div class="option">b) ==</div>
-        <div class="option">c) ===</div>
-        <div class="option">d) equals()</div>
+      <div class="mc-options">
+        <button class="mc-option">a) =</button>
+        <button class="mc-option">b) ==</button>
+        <button class="mc-option">c) ===</button>
+        <button class="mc-option">d) equals()</button>
       </div>
-      <details><summary>Visa svar</summary>
-        <div class="answer-box"><span class="verdict">Rätt svar: b) ==</span>
-        Ett enkelt likhetstecken (=) används för tilldelning, alltså att ge en variabel ett värde. Dubbla likhetstecken (==) används för att jämföra om två värden är lika.</div>
-      </details>
+      <div class="mc-feedback">
+        <span class="verdict"></span>
+        Ett enkelt likhetstecken (=) används för tilldelning, alltså att ge en variabel ett värde. Dubbla likhetstecken (==) används för att jämföra om två värden är lika.
+      </div>
     </div>
 
-    <div class="card">
+    <div class="card mc-card" data-correct="0">
       <div class="q-head"><span class="q-num">Fråga 6</span><span class="level-pill level-C">NIVÅ C</span></div>
       <p class="q-prompt">x = 8. Vilket av följande uttryck blir <code>True</code>?</p>
-      <div class="options">
-        <div class="option">a) x &lt; 5 or x &gt; 6</div>
-        <div class="option">b) x &lt; 5 and x &gt; 6</div>
-        <div class="option">c) x == 5</div>
-        <div class="option">d) not(x &gt; 6)</div>
+      <div class="mc-options">
+        <button class="mc-option">a) x &lt; 5 or x &gt; 6</button>
+        <button class="mc-option">b) x &lt; 5 and x &gt; 6</button>
+        <button class="mc-option">c) x == 5</button>
+        <button class="mc-option">d) not(x &gt; 6)</button>
       </div>
-      <details><summary>Visa svar</summary>
-        <div class="answer-box"><span class="verdict">Rätt svar: a) x &lt; 5 or x &gt; 6</span>
-        x &lt; 5 är False (8 är inte mindre än 5), men x &gt; 6 är True (8 är större än 6). Med or räcker det att ett av påståendena är sant, så hela uttrycket blir True.</div>
-      </details>
+      <div class="mc-feedback">
+        <span class="verdict"></span>
+        x &lt; 5 är False (8 är inte mindre än 5), men x &gt; 6 är True (8 är större än 6). Med or räcker det att ett av påståendena är sant, så hela uttrycket blir True.
+      </div>
     </div>
 
-    <div class="card">
+    <div class="card mc-card" data-correct="2">
       <div class="q-head"><span class="q-num">Fråga 7</span><span class="level-pill level-B">NIVÅ B</span></div>
       <p class="q-prompt">Vad gör raden <code>poäng -= 3</code>?</p>
-      <div class="options">
-        <div class="option">a) Jämför om poäng är lika med 3</div>
-        <div class="option">b) Sätter poäng till exakt 3</div>
-        <div class="option">c) Minskar poäng med 3 (kortform för poäng = poäng - 3)</div>
-        <div class="option">d) Multiplicerar poäng med -3</div>
+      <div class="mc-options">
+        <button class="mc-option">a) Jämför om poäng är lika med 3</button>
+        <button class="mc-option">b) Sätter poäng till exakt 3</button>
+        <button class="mc-option">c) Minskar poäng med 3 (kortform för poäng = poäng - 3)</button>
+        <button class="mc-option">d) Multiplicerar poäng med -3</button>
       </div>
-      <details><summary>Visa svar</summary>
-        <div class="answer-box"><span class="verdict">Rätt svar: c) Minskar poäng med 3</span>
-        -= är en tilldelande operator, ett kortare skrivsätt för poäng = poäng - 3. Samma mönster finns för +=, *= och /=.</div>
-      </details>
+      <div class="mc-feedback">
+        <span class="verdict"></span>
+        -= är en tilldelande operator, ett kortare skrivsätt för poäng = poäng - 3. Samma mönster finns för +=, *= och /=.
+      </div>
     </div>
 
-    <div class="card">
+    <div class="card mc-card" data-correct="1">
       <div class="q-head"><span class="q-num">Fråga 8</span><span class="level-pill level-B">NIVÅ B</span></div>
       <p class="q-prompt">Vilket nyckelord används i Python för "else if", alltså för att kolla ett nytt villkor om det första var falskt?</p>
-      <div class="options">
-        <div class="option">a) elseif</div>
-        <div class="option">b) elif</div>
-        <div class="option">c) elsif</div>
-        <div class="option">d) otherwise</div>
+      <div class="mc-options">
+        <button class="mc-option">a) elseif</button>
+        <button class="mc-option">b) elif</button>
+        <button class="mc-option">c) elsif</button>
+        <button class="mc-option">d) otherwise</button>
       </div>
-      <details><summary>Visa svar</summary>
-        <div class="answer-box"><span class="verdict">Rätt svar: b) elif</span>
-        elif står för "else if" och används för att kontrollera ett nytt villkor bara om de föregående villkoren var falska. Man kan ha flera elif efter varandra.</div>
-      </details>
+      <div class="mc-feedback">
+        <span class="verdict"></span>
+        elif står för "else if" och används för att kontrollera ett nytt villkor bara om de föregående villkoren var falska. Man kan ha flera elif efter varandra.
+      </div>
     </div>
   </section>
 
@@ -326,6 +388,8 @@
       <p class="q-prompt">Vad skriver programmet ut?</p>
       <pre class="code">age = 20
 print(f"Du är {age} år gammal.")</pre>
+      <div class="scratchpad-label">Ditt svar</div>
+      <textarea class="scratchpad" rows="2" placeholder="Skriv vad du tror att koden skriver ut..."></textarea>
       <details><summary>Visa svar</summary>
         <div class="answer-box"><span class="verdict">Svar</span>
         Output: "Du är 20 år gammal." — f-strängen sätter automatiskt in variabelns värde där {age} står.</div>
@@ -337,6 +401,8 @@ print(f"Du är {age} år gammal.")</pre>
       <p class="q-prompt">Koden nedan går inte att köra. Vad är felet, och hur skriver du raden rätt?</p>
       <pre class="code">if x == 10
     print("Tio")</pre>
+      <div class="scratchpad-label">Ditt svar</div>
+      <textarea class="scratchpad" rows="2" placeholder="Vad är felet, och hur skulle den rättade raden se ut?"></textarea>
       <details><summary>Visa svar</summary>
         <div class="answer-box"><span class="verdict">Svar</span>
         Felet: if-raden saknar ett kolon på slutet.<br>Rättad rad: <code>if x == 10:</code></div>
@@ -349,6 +415,8 @@ print(f"Du är {age} år gammal.")</pre>
       <pre class="code">y = 150
 if y > 100:
 print("Stort tal")</pre>
+      <div class="scratchpad-label">Ditt svar</div>
+      <textarea class="scratchpad" rows="2" placeholder="Vilket fel blir det, och hur rättar du det?"></textarea>
       <details><summary>Visa svar</summary>
         <div class="answer-box"><span class="verdict">Svar</span>
         Felet: print-raden är inte indenterad och hör därför inte till if-blocket, vilket ger en IndentationError.<br>Rättning: indentera print-raden med samma indrag som resten av blocket, t.ex. fyra mellanslag.</div>
@@ -363,6 +431,8 @@ gissning = input("Gissa koden: ")
 
 if gissning = kod:
     print("Rätt!")</pre>
+      <div class="scratchpad-label">Ditt svar</div>
+      <textarea class="scratchpad" rows="2" placeholder="Vad är det logiska felet i koden?"></textarea>
       <details><summary>Visa svar</summary>
         <div class="answer-box"><span class="verdict">Svar</span>
         Felet: = är tilldelning, inte jämförelse. Det ska vara == för att jämföra värden.<br>Rättad rad: <code>if gissning == kod:</code><br>(Bonus-fundering: input() returnerar alltid en sträng, så egentligen borde man skriva int(input(...)) för att kunna jämföra korrekt med talet 1234.)</div>
@@ -384,6 +454,8 @@ else:
     väder = "Varmt"
 
 print(f"Vädret är: {väder}")</pre>
+      <div class="scratchpad-label">Din förklaring</div>
+      <textarea class="scratchpad" rows="4" placeholder="Förklara steg för steg vad koden gör, och vad den skriver ut..."></textarea>
       <details><summary>Visa svar</summary>
         <div class="answer-box"><span class="verdict">Svar</span>
         Koden kollar temp mot flera trösklar i turordning. Först kollas om temp &lt;= 0 (falskt, eftersom temp = 3). Sedan kollas elif temp &lt;= 10, vilket är sant (3 är mindre än eller lika med 10), så väder sätts till "Kyligt". De efterföljande grenarna (elif temp &lt;= 20 och else) körs inte eftersom en tidigare gren redan slog till.<br><b>Output:</b> "Vädret är: Kyligt"</div>
@@ -399,6 +471,8 @@ print(f"Vädret är: {väder}")</pre>
     <div class="card">
       <div class="q-head"><span class="q-num">Uppgift 1</span><span class="level-pill level-E">NIVÅ E</span></div>
       <p class="q-prompt">Skapa två variabler, <code>stad</code> och <code>invånare</code>, med valfria värden. Skriv ut en mening med hjälp av en f-sträng, till exempel: "Stockholm har 975000 invånare."</p>
+      <div class="scratchpad-label">Din kod</div>
+      <textarea class="scratchpad" rows="4" placeholder="Skriv din kod här..."></textarea>
       <details><summary>Visa exempellösning</summary>
         <div class="answer-box">
 <pre class="code">stad = "Stockholm"
@@ -411,6 +485,8 @@ print(f"{stad} har {invånare} invånare.")</pre>
     <div class="card">
       <div class="q-head"><span class="q-num">Uppgift 2</span><span class="level-pill level-D">NIVÅ D</span></div>
       <p class="q-prompt">Skriv ett program som frågar användaren efter ett heltal och skriver ut om talet är positivt, negativt eller noll. Använd if-elif-else.</p>
+      <div class="scratchpad-label">Din kod</div>
+      <textarea class="scratchpad" rows="6" placeholder="Skriv din kod här..."></textarea>
       <details><summary>Visa exempellösning</summary>
         <div class="answer-box">
 <pre class="code">tal = int(input("Skriv ett heltal: "))
@@ -428,6 +504,8 @@ else:
     <div class="card">
       <div class="q-head"><span class="q-num">Uppgift 3</span><span class="level-pill level-C">NIVÅ C</span></div>
       <p class="q-prompt">Skriv ett program som frågar efter vädret ("sol" eller "regn") och temperaturen, och ger klädråd enligt följande: om det regnar → "Ta med paraply.", om solen skiner och temperaturen är över 20 grader → "T-shirt räcker.", annars → "Ta med en jacka."</p>
+      <div class="scratchpad-label">Din kod</div>
+      <textarea class="scratchpad" rows="6" placeholder="Skriv din kod här..."></textarea>
       <details><summary>Visa exempellösning</summary>
         <div class="answer-box">
 <pre class="code">väder = input("Hur är vädret (sol/regn)? ")
@@ -446,6 +524,8 @@ else:
     <div class="card">
       <div class="q-head"><span class="q-num">Uppgift 4</span><span class="level-pill level-B">NIVÅ B</span></div>
       <p class="q-prompt">Skriv ett program som frågar efter två tal och ett räknesätt som text ("+", "-", "*" eller "/"), och skriver ut resultatet av beräkningen. Använd if-elif-else.</p>
+      <div class="scratchpad-label">Din kod</div>
+      <textarea class="scratchpad" rows="7" placeholder="Skriv din kod här..."></textarea>
       <details><summary>Visa exempellösning</summary>
         <div class="answer-box">
 <pre class="code">tal1 = float(input("Första talet: "))
@@ -469,6 +549,8 @@ else:
     <div class="card">
       <div class="q-head"><span class="q-num">Uppgift 5</span><span class="level-pill level-A">NIVÅ A</span></div>
       <p class="q-prompt">Skriv ett program som frågar efter ett användarnamn och ett lösenord, och jämför mot ett korrekt användarnamn och lösenord du bestämmer själv i koden. Använd den logiska operatorn <code>and</code> så att båda måste stämma för att skriva ut "Inloggad!". Annars ska programmet skriva ut "Fel användarnamn eller lösenord."</p>
+      <div class="scratchpad-label">Din kod</div>
+      <textarea class="scratchpad" rows="7" placeholder="Skriv din kod här..."></textarea>
       <details><summary>Visa exempellösning</summary>
         <div class="answer-box">
 <pre class="code">rätt_användarnamn = "admin"
@@ -488,5 +570,33 @@ else:
 
   <footer>Skapat med Claude · öva så många gånger du vill inför provet</footer>
 </div>
+
+<script>
+document.querySelectorAll('.mc-card').forEach(card => {
+  const correctIndex = parseInt(card.dataset.correct, 10);
+  const buttons = card.querySelectorAll('.mc-option');
+  const feedback = card.querySelector('.mc-feedback');
+  const verdictEl = feedback.querySelector('.verdict');
+
+  buttons.forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+      // Redan besvarad? Gör inget.
+      if (card.dataset.answered) return;
+      card.dataset.answered = "true";
+
+      buttons.forEach((b, j) => {
+        b.disabled = true;
+        if (j === correctIndex) b.classList.add('correct');
+        if (j === i && i !== correctIndex) b.classList.add('wrong');
+      });
+
+      const isCorrect = i === correctIndex;
+      feedback.classList.add('show');
+      if (!isCorrect) feedback.classList.add('is-wrong');
+      verdictEl.textContent = isCorrect ? 'Rätt!' : 'Inte riktigt — rätt svar är markerat ovan.';
+    });
+  });
+});
+</script>
 </body>
 </html>
