@@ -427,7 +427,7 @@ print("Stort tal")</pre>
       <div class="q-head"><span class="q-num">Fråga 4</span><span class="level-pill level-B">NIVÅ B</span></div>
       <p class="q-prompt">Koden nedan innehåller ett logiskt fel som gör att den inte fungerar som tänkt. Vad är felet?</p>
       <pre class="code">kod = 1234
-gissning = input("Gissa koden: ")
+gissning = int(input("Gissa koden: "))
 
 if gissning = kod:
     print("Rätt!")</pre>
@@ -435,7 +435,7 @@ if gissning = kod:
       <textarea class="scratchpad" rows="2" placeholder="Vad är det logiska felet i koden?"></textarea>
       <details><summary>Visa svar</summary>
         <div class="answer-box"><span class="verdict">Svar</span>
-        Felet: = är tilldelning, inte jämförelse. Det ska vara == för att jämföra värden.<br>Rättad rad: <code>if gissning == kod:</code><br>(Bonus-fundering: input() returnerar alltid en sträng, så egentligen borde man skriva int(input(...)) för att kunna jämföra korrekt med talet 1234.)</div>
+        Felet: = är tilldelning, inte jämförelse. Det ska vara == för att jämföra värden.<br>Rättad rad: <code>if gissning == kod:</code></div>
       </details>
     </div>
 
