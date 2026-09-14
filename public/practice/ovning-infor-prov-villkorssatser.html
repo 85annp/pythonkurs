@@ -543,7 +543,22 @@ match op:
         print(tal1 / tal2)
     case _:
         print("Okänt räknesätt")</pre>
-        </div>
+<div>Alternativ lösning med if-elif-else:</div>
+<pre class="code">tal1 = float(input("Första talet: "))
+tal2 = float(input("Andra talet: "))
+op = input("Räknesätt (+, -, *, /): ")
+
+if op == "+":
+    print(tal1 + tal2)
+elif op == "-":
+    print(tal1 - tal2)
+elif op == "*":
+    print(tal1 * tal2)
+elif op == "/":
+    print(tal1 / tal2)
+else:
+    print("Okänt räknesätt")</pre>
+      </div>
       </details>
     </div>
 
