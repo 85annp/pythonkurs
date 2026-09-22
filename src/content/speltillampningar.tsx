@@ -506,6 +506,7 @@ export default function Speltillampningar() {
                 <li>Ladda ner och lägg in bilden på en jackfrukt på en slumpmässig plats. <br />
                     Lägg in poäng och en kollisionshantering så att spelaren får poäng när den krockar med bilden.</li>
                 <li>Lägg in en bakgrundsbild som täcker hela fönstret.</li>
+                <li>🤯 Skapa en lista med flera jackfrukter och hantera dem i spelet.</li>
               </ul>
             </li>
           </ul>
