@@ -172,7 +172,7 @@ print(f"Du skrev in {len(stader)} städer: {stader}")`}
       </p>
 
       <p>
-        En Dictionary skapas genom att använda krullparenteser <code>{ }</code> istället för hakparenteser, och varje element i dictionaryn består av en nyckel och ett värde som separeras av ett kolon <code>:</code>.
+        En Dictionary skapas genom att använda krullparenteser <code>{ }</code> istället för hakparenteser, och varje element i dictionaryn består av en nyckel och ett värde som separeras av ett kolon (<code>:</code>).
       </p>
 
       <table className="content-table">
@@ -222,7 +222,9 @@ for key, value in hojder.items():
 ordbok["ja"] = "yes"
 ordbok["nej"] = "no"
 
-print("På engelska heter ja:", ordbok["ja"])`}
+print("På engelska heter ja:", ordbok["ja"])
+
+print(f"\nDictionaryn är {ordbok}")`}
       />
 
       <h3>Ett vanligt problem: Räkna tecken</h3>
@@ -243,7 +245,7 @@ for tecken in text:
     else:
         antal_forekomster[tecken] = 1
 
-print("Strängen innehåller följande tecken:")
+print(f"Texten \"{text}\" innehåller följande tecken:")
 for key, value in antal_forekomster.items():
     print(f"{key} - {value}")`}
       />
@@ -261,6 +263,7 @@ print(antal_forekomster)
 
 # Ta bort mellanslaget (nyckeln ' ')
 del antal_forekomster[' ']
+print(antal_forekomster)
 
 # Ta bort bokstaven a (nyckeln 'a') med .pop() och spara det borttagna värdet i en variabel
 a_antal = antal_forekomster.pop('a')
@@ -271,8 +274,9 @@ print(antal_forekomster)`}
 
       <h3>Sortera en Dictionary</h3>
       <p>
-        Till skillnad från listor är dictionaries i grunden inte tänkta att vara sorterade, de är ju uppslagsverk. 
-        Men vi kan använda funktionen <code>sorted()</code> om vi vill skriva ut dem i en viss ordning.
+        Till skillnad från listor är dictionaries i grunden inte tänkta att vara sorterade, de är ju till för att ge åtkomst via nyckeln. 
+        Det är därför lite mer komplicerat att sortera en dictionary. Vi kan inte bara skriva <code>dictionary.sort()</code> som vi gjorde med listor.
+        Det vi kan göra är att använda funktionen <code>sorted()</code> med en lamda-funktion som talar om för Python om vi vill sortera på nyckeln eller värdet.
       </p>
 
       <PythonIDE
@@ -305,7 +309,10 @@ for key, value in sorterad_nyckel:
             <PythonIDE
         hideCompletion={true}
         initialCode={`frukter = ("äpple", "banan", "plommon", "äpple")
-print(frukter)`}
+print(frukter)
+
+# Testa att lägga till ett element genom att ta bort #
+#frukter.append("ananas")`}
       />
 
       <hr />
