@@ -126,6 +126,24 @@ favorittal.sort()
 print(favorittal)`}
       />
 
+      <h3>Räkna i lista</h3>
+      <p>
+        Det finns några inbyggda funktioner som kan vara användbara när man vill räkna i listor.
+        <ul>
+          <li><code>sum(lista)</code> räknar ihop alla värden i listan.</li>
+          <li><code>max(lista)</code> tar reda på det största värdet i listan.</li>
+          <li><code>min(lista)</code> tar reda på det minsta värdet i listan.</li>
+        </ul>
+      </p>
+      <PythonIDE
+        hideCompletion={true}
+        initialCode={`flera_tal = [1, 7, 9, 2.2, 3.5, 4, 5, 8.8, 6.7]         
+print(f"sum = {sum(flera_tal)}")
+print(f"max = {max(flera_tal)}")
+print(f"min = {min(flera_tal)}")
+print(f"medelvärde = {sum(flera_tal)/len(flera_tal):.2f}")`}
+      />
+
       <h3>Skapa en tom lista</h3>
       <p>
         För att skapa en tom lista i Python använder man tomma hakparenteser <code>[]</code>.
@@ -139,7 +157,6 @@ print(f"a = {a}")
 print(f"type(a) = {type(a)}")
 print(f"len(a) = {len(a)}")`}
       />
-
 
       <h3>Mata in obegränsat antal värden</h3>
       <p>
