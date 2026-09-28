@@ -224,7 +224,7 @@ ordbok["nej"] = "no"
 
 print("På engelska heter ja:", ordbok["ja"])
 
-print(f"\nDictionaryn är {ordbok}")`}
+print(f"Dictionaryn är {ordbok}")`}
       />
 
       <h3>Ett vanligt problem: Räkna tecken</h3>
