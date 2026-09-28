@@ -138,6 +138,7 @@ print(favorittal)`}
       <PythonIDE
         hideCompletion={true}
         initialCode={`flera_tal = [1, 7, 9, 2.2, 3.5, 4, 5, 8.8, 6.7]         
+
 print(f"sum = {sum(flera_tal)}")
 print(f"max = {max(flera_tal)}")
 print(f"min = {min(flera_tal)}")
