@@ -224,7 +224,7 @@ print(f"Poäng: {poang}")`}
         def berakna_moms(pris):<br/>
         &nbsp;&nbsp;return pris * MOMS<br/>
         <br/>
-        print(f"Momsen blir: {berakna_moms(100)} kr")
+        print(f"Momsen blir: &#123;berakna_moms(100)&#125; kr")
       </div>
 
       <h3>Praxis 3: Skugga inte Pythons inbyggda funktioner (Name Shadowing)</h3>
