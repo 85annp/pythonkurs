@@ -110,13 +110,13 @@ print(f"Kvadraten av 5 är {k}.")`}
         initialCode={`def berakna_area():
     bredd = 5   # Lokal variabel
     hojd = 10   # Lokal variabel
-    area = bredd * hojd
+    area = bredd * hojd   # Lokal variabel
     print(f"Arean är: {area}")
 
 berakna_area()
 
 # Detta ger ett felmeddelande (NameError) eftersom 'area' inte finns här:
-# print(area)`}
+#print(area)`}
       />
 
       <h4>Fördel med lokala variabler</h4>
@@ -130,7 +130,7 @@ berakna_area()
 
       <PythonIDE
         hideCompletion={true}
-        initialCode={`spelarnamn = "Alex"  # Global variabel
+        initialCode={`spelarnamn = "Alex"   # Global variabel
 
 def visa_profil():
     # Funktionen kan läsa den globala variabeln
@@ -144,13 +144,14 @@ visa_profil()`}
 
       <PythonIDE
         hideCompletion={true}
-        initialCode={`poang = 0  # Global variabel
+        initialCode={`poang = 0   # Global variabel
 
 def oka_poang():
-    poang += 1  # Detta ger UnboundLocalError!
+    poang += 1   # Detta ger UnboundLocalError!
     # Python ser tilldelningen och tror att 'poang' är en lokal variabel som ännu inte har ett värde.
 
-oka_poang()`}
+oka_poang()
+print(f"Poäng: {poang}")`}
       />
 
       <p>För att tvinga Python att ändra den globala variabeln måste man använda nyckelordet <code>global</code>.</p>
@@ -160,11 +161,11 @@ oka_poang()`}
         initialCode={`poang = 0
 
 def oka_poang():
-    global poang  # Säger åt Python att använda den globala variabeln
+    global poang   # Python använder den globala variabeln
     poang += 1
 
 oka_poang()
-print(poang)`}
+print(f"Poäng: {poang}")`}
       />
 
       <p>
@@ -175,7 +176,7 @@ print(poang)`}
       <ul>
         <li><strong>Dolda beroenden:</strong> Det blir svårt att förstå vad en funktion behöver för att fungera eller vad den påverkar.</li>
         <li><strong>Svårt att felsöka:</strong> Om värdet på en variabel blir fel i ett stort program kan vilken funktion som helst ha orsakat felet.</li>
-        <li><strong>Svårt att återanvända kod:</strong> En funktion som förlitar sig på globala variabler går inte enkelt att flytta eller återanvända i andra projekt.</li>
+        <li><strong>Svårt att återanvända kod:</strong> En funktion som förlitar sig på globala variabler är svår att flytta eller återanvända i andra projekt.</li>
       </ul>
 
       <h2>God praxis (Best Practice) för funktioner</h2>
@@ -185,6 +186,30 @@ print(poang)`}
       <p>
         Istället för att ändra globala variabler direkt, låt funktionen ta emot värden via <strong>parametrar</strong> och lämna tillbaka beräknade värden med <code>return</code>.
       </p>
+
+      <table>
+        <tr>
+          <th>Dålig praxis</th>
+          <th>Bra praxis</th>
+          <td className="code-example">
+            # Dåligt: Funktionen är beroende av och ändrar en global variabel
+poang = 0
+
+def lagg_till_poang():
+    global poang
+    poang += 10
+          </td>
+          <td className="code-example">
+            # Bra: Funktionen är fristående och förutsägbar
+def berakna_ny_poang(nuvarande_poang, extra_poang):
+    return nuvarande_poang + extra_poang
+
+# Användning:
+spelarens_poang = 0
+spelarens_poang = berakna_ny_poang(spelarens_poang, 10)
+          </td>
+        </tr>
+      </table>
 
       <h4>Dålig praxis:</h4>
 
