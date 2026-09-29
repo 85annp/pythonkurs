@@ -407,7 +407,7 @@ print(frukter)
           <ul>
             <li>Skriv en kommentar "Uppgift 6".</li>
             <li>Skapa en variabel med den här texten: “Idag har jag druckit en kopp te och en kopp kaffe och sedan en kopp kaffe till.”.</li>
-            <li>Gör om texten till en lista (det finns en färdig metod för detta).</li>
+            <li>Gör om texten till en lista (det finns en färdig metod för detta - fråga om du inte hittar den).</li>
             <li>Skriv ut alla ord som förekommer exakt 2 eller 3 gånger i meningen:<br />
                 <code>en - 3<br />
                       kopp - 3<br />

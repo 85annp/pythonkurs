@@ -95,11 +95,169 @@ k = kvadrat(5)
 print(f"Kvadraten av 5 är {k}.")`}
       />
 
-      <h2>Lokala variabler</h2>
+      <h2>Lokala vs. globala variabler</h2>
       <p>
-        Att tänka på är att alla variabler som skapas inuti en funktion, <strong>bara finns inuti den funktionen</strong>. Det kallas för <em>lokala variabler</em>.
-        Om du har en variabel som heter <code>tal</code> utanför funktionen, och en som heter <code>tal</code> inuti funktionen, så blandas de inte ihop!
+        När du börjar dela upp din kod i funktioner är det avgörande att förstå var variabler existerar och var de kan nås. I programmering kallas detta för en variabels <strong>räckvidd</strong> (eller <em>scope</em> på engelska).
       </p>
+      
+      <h3>Lokala variabler</h3>
+      <p>
+        En <strong>lokal variabel</strong> skapas inuti en funktion. Den existerar enbart medan funktionen körs och kan <strong>inte</strong> nås eller användas utanför funktionen.
+      </p>
+
+      <PythonIDE
+        hideCompletion={true}
+        initialCode={`def berakna_area():
+    bredd = 5   # Lokal variabel
+    hojd = 10   # Lokal variabel
+    area = bredd * hojd
+    print(f"Arean är: {area}")
+
+berakna_area()
+
+# Detta ger ett felmeddelande (NameError) eftersom 'area' inte finns här:
+# print(area)`}
+      />
+
+      <h4>Fördel med lokala variabler</h4>
+      <ul>
+        <li>De är helt isolerade från resten av programmet.</li>
+        <li>Du behöver inte oroa dig för att råka ändra en variabel i en helt annan del av koden.</li>
+      </ul>
+
+      <h3>Globala variabler</h3>
+      <p>En <strong>global variabel</strong> skapas utanför alla funktioner, längst upp i programmet. Den kan läsas från vilken funktion som helst.</p>
+
+      <PythonIDE
+        hideCompletion={true}
+        initialCode={`spelarnamn = "Alex"  # Global variabel
+
+def visa_profil():
+    # Funktionen kan läsa den globala variabeln
+    print(f"Välkommen tillbaka, {spelarnamn}!")
+
+visa_profil()`}
+      />
+
+      <h4>Vad händer om man vill ändra en global variabel?</h4>
+      <p>Om du försöker tilldela ett nytt värde till en variabel inuti en funktion skapar Python automatiskt en <em>ny lokal variabel</em> med samma namn, istället för att ändra den globala.</p>
+
+      <PythonIDE
+        hideCompletion={true}
+        initialCode={`poang = 0  # Global variabel
+
+def oka_poang():
+    poang += 1  # Detta ger UnboundLocalError!
+    # Python ser tilldelningen och tror att 'poang' är en lokal variabel som ännu inte har ett värde.
+
+oka_poang()`}
+      />
+
+      <p>För att tvinga Python att ändra den globala variabeln måste man använda nyckelordet <code>global</code>.</p>
+
+      <PythonIDE
+        hideCompletion={true}
+        initialCode={`poang = 0
+
+def oka_poang():
+    global poang  # Säger åt Python att använda den globala variabeln
+    poang += 1
+
+oka_poang()
+print(poang)`}
+      />
+
+      <p>
+        <strong>Varning!</strong> Att använda nyckelordet <code>global</code> anses nästan alltid vara dålig praxis inom programmering.
+      </p>
+
+      <h4>Varför ska du undvika <code>global</code>?</h4>
+      <ul>
+        <li><strong>Dolda beroenden:</strong> Det blir svårt att förstå vad en funktion behöver för att fungera eller vad den påverkar.</li>
+        <li><strong>Svårt att felsöka:</strong> Om värdet på en variabel blir fel i ett stort program kan vilken funktion som helst ha orsakat felet.</li>
+        <li><strong>Svårt att återanvända kod:</strong> En funktion som förlitar sig på globala variabler går inte enkelt att flytta eller återanvända i andra projekt.</li>
+      </ul>
+
+      <h2>God praxis (Best Practice) för funktioner</h2>
+      <p>Här är tre principer för att skriva ren, säker och lättläst kod.</p>
+
+      <h3>Praxis 1: Skicka in data via parametrar och returnera resultat</h3>
+      <p>
+        Istället för att ändra globala variabler direkt, låt funktionen ta emot värden via <strong>parametrar</strong> och lämna tillbaka beräknade värden med <code>return</code>.
+      </p>
+
+      <h4>Dålig praxis:</h4>
+
+      <PythonIDE
+        hideCompletion={true}
+        initialCode={`# Dåligt: Funktionen är beroende av och ändrar en global variabel
+poang = 0
+
+def lagg_till_poang():
+    global poang
+    poang += 10`}
+      />
+
+      <h4>Bra praxis:</h4>
+
+      <PythonIDE
+        hideCompletion={true}
+        initialCode={`# Bra: Funktionen är fristående och förutsägbar
+def berakna_ny_poang(nuvarande_poang, extra_poang):
+    return nuvarande_poang + extra_poang
+
+# Användning:
+spelarens_poang = 0
+spelarens_poang = berakna_ny_poang(spelarens_poang, 10)`}
+      />
+
+      <h3>Praxis 2: Använd konstanter för värden som aldrig ändras</h3>
+      <p>Globala variabler är helt okej om de är <strong>konstanter</strong> – det vill säga fasta värden som sätts en gång och sedan aldrig ändras under programmets gång (till exempel inställningar, momssats eller matematiska konstanter).</p>
+      <p>I Python skrivs konstanter med <strong>STORA_BOKSTÄVER</strong> för att tydligt visa för andra att värdet inte ska ändras.</p>
+
+      <PythonIDE
+        hideCompletion={true}
+        initialCode={`MOMS = 0.25  # Global konstant (ändras ej)
+
+def berakna_moms(pris):
+    return pris * MOMS
+
+print(f"Momsen blir: {berakna_moms(100)} kr")`}
+      />
+
+      <h3>Praxis 3: Skugga inte Pythons inbyggda funktioner (Name Shadowing)</h3>
+      <p>Python har många inbyggda funktioner och ord (som <code>sum</code>, <code>list</code>, <code>max</code>, <code>min</code>, <code>str</code>, <code>input</code>). Om du döper en lokal eller global variabel till samma namn som en inbyggd funktion, kommer du att "skugga" (dölja) Pythons ursprungliga funktion så att den inte går att använda längre.</p>
+
+      <h4>Dålig praxis:</h4>
+
+      <PythonIDE
+        hideCompletion={true}
+        initialCode={`# DÅLIGT: Variabeln 'list' skuggar Pythons inbyggda datatyp list()
+list = [10, 20, 30] 
+
+# DÅLIGT: Variabeln 'sum' skuggar Pythons inbyggda funktion sum()
+sum = 60 
+
+# Nästa gång du försöker använda sum() kraschar programmet:
+tallista = [1, 2, 3]
+totalt = sum(tallista)  # TypeError: 'int' object is not callable`}
+      />
+
+      <h4>Bra praxis:</h4>
+
+      <PythonIDE
+        hideCompletion={true}
+        initialCode={`# BRA: Använd beskrivande namn som inte krockar med Pythons ord
+poang_lista = [10, 20, 30]
+totalsumma = 60
+
+# Nu fungerar Pythons inbyggda funktioner som de ska:
+tallista = [1, 2, 3]
+totalt = sum(tallista)  # Fungerar utmärkt!`}
+      />
+
+      <p>Om en variabel du hittar på får en särskild färg i en kodeditor (t ex Thonny), beror det ofta på att ordet är reserverat av Python. Välj då ett annat namn!</p>
+
 
       <h2>Tumregel för bra funktioner</h2>
       <p>
