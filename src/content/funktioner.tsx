@@ -187,28 +187,28 @@ print(f"Poäng: {poang}")`}
         Istället för att ändra globala variabler direkt, låt funktionen ta emot värden via <strong>parametrar</strong> och lämna tillbaka beräknade värden med <code>return</code>.
       </p>
 
-      <table>
+      <table style={{ width: "100%" }}>
         <tr>
-          <th>Dålig praxis</th>
-          <th>Bra praxis</th>
+          <th style={{ width: "50%" }}>Dålig praxis</th>
+          <th style={{ width: "50%" }}>Bra praxis</th>
         </tr>
         <tr>
           <td className="code-example">
             # Dåligt: Funktionen är beroende av och ändrar en global variabel<br/>
-poang = 0<br/>
-<br/>
-def lagg_till_poang():<br/>
-    global poang<br/>
-    poang += 10<br/>
+            poang = 0<br/>
+            <br/>
+            def lagg_till_poang():<br/>
+            &nbsp;&nbsp;global poang<br/>
+            &nbsp;&nbsp;poang += 10
           </td>
           <td className="code-example">
             # Bra: Funktionen är fristående och förutsägbar<br/>
-def berakna_ny_poang(nuvarande_poang, extra_poang):<br/>
-    return nuvarande_poang + extra_poang<br/>
-<br/>
-# Användning:<br/>
-spelarens_poang = 0<br/>
-spelarens_poang = berakna_ny_poang(spelarens_poang, 10)<br/>
+            def berakna_ny_poang(nuvarande_poang, extra_poang):<br/>
+            &nbsp;&nbsp;return nuvarande_poang + extra_poang<br/>
+            <br/>
+            # Användning:<br/>
+            spelarens_poang = 0<br/>
+            spelarens_poang = berakna_ny_poang(spelarens_poang, 10)
           </td>
         </tr>
       </table>
@@ -218,44 +218,43 @@ spelarens_poang = berakna_ny_poang(spelarens_poang, 10)<br/>
       <p>Globala variabler är helt okej om de är <strong>konstanter</strong> – det vill säga fasta värden som sätts en gång och sedan aldrig ändras under programmets gång (till exempel inställningar, momssats eller matematiska konstanter).</p>
       <p>I Python skrivs konstanter med <strong>STORA_BOKSTÄVER</strong> för att tydligt visa för andra att värdet inte ska ändras.</p>
 
-      <PythonIDE
-        hideCompletion={true}
-        initialCode={`MOMS = 0.25  # Global konstant (ändras ej)
-
-def berakna_moms(pris):
-    return pris * MOMS
-
-print(f"Momsen blir: {berakna_moms(100)} kr")`}
-      />
+      <div className="code-example">
+        MOMS = 0.25  # Global konstant (ändras ej)<br/>
+        <br/>
+        def berakna_moms(pris):<br/>
+        &nbsp;&nbsp;return pris * MOMS<br/>
+        <br/>
+        print(f"Momsen blir: {berakna_moms(100)} kr")
+      </div>
 
       <h3>Praxis 3: Skugga inte Pythons inbyggda funktioner (Name Shadowing)</h3>
       <p>Python har många inbyggda funktioner och ord (som <code>sum</code>, <code>list</code>, <code>max</code>, <code>min</code>, <code>str</code>, <code>input</code>). Om du döper en lokal eller global variabel till samma namn som en inbyggd funktion, kommer du att "skugga" (dölja) Pythons ursprungliga funktion så att den inte går att använda längre.</p>
 
-      <table>
+      <table style={{ width: "100%" }}>
         <tr>
-          <th>Dålig praxis</th>
-          <th>Bra praxis</th>
+          <th style={{ width: "50%" }}>Dålig praxis</th>
+          <th style={{ width: "50%" }}>Bra praxis</th>
         </tr>
         <tr>
           <td className="code-example">
-            `# DÅLIGT: Variabeln 'list' skuggar Pythons inbyggda datatyp list()<br/>
-list = [10, 20, 30] <br/>
-<br/>
-# DÅLIGT: Variabeln 'sum' skuggar Pythons inbyggda funktion sum()<br/>
-sum = 60 <br/>
-<br/>
-# Nästa gång du försöker använda sum() kraschar programmet:<br/>
-tallista = [1, 2, 3]<br/>
-totalt = sum(tallista)  # TypeError: 'int' object is not callable<br/>
+            # DÅLIGT: Variabeln 'list' skuggar Pythons inbyggda datatyp list()<br/>
+            list = [10, 20, 30] <br/>
+            <br/>
+            # DÅLIGT: Variabeln 'sum' skuggar Pythons inbyggda funktion sum()<br/>
+            sum = 60 <br/>
+            <br/>
+            # Nästa gång du försöker använda sum() kraschar programmet:<br/>
+            tallista = [1, 2, 3]<br/>
+            totalt = sum(tallista)  # TypeError: 'int' object is not callable
           </td>
           <td className="code-example">
-            # BRA: Använd beskrivande namn som inte krockar med Pythons ord
-poang_lista = [10, 20, 30]
-totalsumma = 60
-
-# Nu fungerar Pythons inbyggda funktioner som de ska:
-tallista = [1, 2, 3]
-totalt = sum(tallista)  # Fungerar utmärkt!
+            # BRA: Använd beskrivande namn som inte krockar med Pythons ord<br/>
+            poang_lista = [10, 20, 30]<br/>
+            totalsumma = 60<br/>
+            <br/>
+            # Nu fungerar Pythons inbyggda funktioner som de ska:<br/>
+            tallista = [1, 2, 3]<br/>
+            totalt = sum(tallista)  # Fungerar utmärkt!
           </td>
         </tr>
       </table>
