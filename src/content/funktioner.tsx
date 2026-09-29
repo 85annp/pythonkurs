@@ -191,50 +191,28 @@ print(f"Poäng: {poang}")`}
         <tr>
           <th>Dålig praxis</th>
           <th>Bra praxis</th>
+        </tr>
+        <tr>
           <td className="code-example">
-            # Dåligt: Funktionen är beroende av och ändrar en global variabel
-poang = 0
-
-def lagg_till_poang():
-    global poang
-    poang += 10
+            # Dåligt: Funktionen är beroende av och ändrar en global variabel<br/>
+poang = 0<br/>
+<br/>
+def lagg_till_poang():<br/>
+    global poang<br/>
+    poang += 10<br/>
           </td>
           <td className="code-example">
-            # Bra: Funktionen är fristående och förutsägbar
-def berakna_ny_poang(nuvarande_poang, extra_poang):
-    return nuvarande_poang + extra_poang
-
-# Användning:
-spelarens_poang = 0
-spelarens_poang = berakna_ny_poang(spelarens_poang, 10)
+            # Bra: Funktionen är fristående och förutsägbar<br/>
+def berakna_ny_poang(nuvarande_poang, extra_poang):<br/>
+    return nuvarande_poang + extra_poang<br/>
+<br/>
+# Användning:<br/>
+spelarens_poang = 0<br/>
+spelarens_poang = berakna_ny_poang(spelarens_poang, 10)<br/>
           </td>
         </tr>
       </table>
 
-      <h4>Dålig praxis:</h4>
-
-      <PythonIDE
-        hideCompletion={true}
-        initialCode={`# Dåligt: Funktionen är beroende av och ändrar en global variabel
-poang = 0
-
-def lagg_till_poang():
-    global poang
-    poang += 10`}
-      />
-
-      <h4>Bra praxis:</h4>
-
-      <PythonIDE
-        hideCompletion={true}
-        initialCode={`# Bra: Funktionen är fristående och förutsägbar
-def berakna_ny_poang(nuvarande_poang, extra_poang):
-    return nuvarande_poang + extra_poang
-
-# Användning:
-spelarens_poang = 0
-spelarens_poang = berakna_ny_poang(spelarens_poang, 10)`}
-      />
 
       <h3>Praxis 2: Använd konstanter för värden som aldrig ändras</h3>
       <p>Globala variabler är helt okej om de är <strong>konstanter</strong> – det vill säga fasta värden som sätts en gång och sedan aldrig ändras under programmets gång (till exempel inställningar, momssats eller matematiska konstanter).</p>
@@ -253,33 +231,35 @@ print(f"Momsen blir: {berakna_moms(100)} kr")`}
       <h3>Praxis 3: Skugga inte Pythons inbyggda funktioner (Name Shadowing)</h3>
       <p>Python har många inbyggda funktioner och ord (som <code>sum</code>, <code>list</code>, <code>max</code>, <code>min</code>, <code>str</code>, <code>input</code>). Om du döper en lokal eller global variabel till samma namn som en inbyggd funktion, kommer du att "skugga" (dölja) Pythons ursprungliga funktion så att den inte går att använda längre.</p>
 
-      <h4>Dålig praxis:</h4>
-
-      <PythonIDE
-        hideCompletion={true}
-        initialCode={`# DÅLIGT: Variabeln 'list' skuggar Pythons inbyggda datatyp list()
-list = [10, 20, 30] 
-
-# DÅLIGT: Variabeln 'sum' skuggar Pythons inbyggda funktion sum()
-sum = 60 
-
-# Nästa gång du försöker använda sum() kraschar programmet:
-tallista = [1, 2, 3]
-totalt = sum(tallista)  # TypeError: 'int' object is not callable`}
-      />
-
-      <h4>Bra praxis:</h4>
-
-      <PythonIDE
-        hideCompletion={true}
-        initialCode={`# BRA: Använd beskrivande namn som inte krockar med Pythons ord
+      <table>
+        <tr>
+          <th>Dålig praxis</th>
+          <th>Bra praxis</th>
+        </tr>
+        <tr>
+          <td className="code-example">
+            `# DÅLIGT: Variabeln 'list' skuggar Pythons inbyggda datatyp list()<br/>
+list = [10, 20, 30] <br/>
+<br/>
+# DÅLIGT: Variabeln 'sum' skuggar Pythons inbyggda funktion sum()<br/>
+sum = 60 <br/>
+<br/>
+# Nästa gång du försöker använda sum() kraschar programmet:<br/>
+tallista = [1, 2, 3]<br/>
+totalt = sum(tallista)  # TypeError: 'int' object is not callable<br/>
+          </td>
+          <td className="code-example">
+            # BRA: Använd beskrivande namn som inte krockar med Pythons ord
 poang_lista = [10, 20, 30]
 totalsumma = 60
 
 # Nu fungerar Pythons inbyggda funktioner som de ska:
 tallista = [1, 2, 3]
-totalt = sum(tallista)  # Fungerar utmärkt!`}
-      />
+totalt = sum(tallista)  # Fungerar utmärkt!
+          </td>
+        </tr>
+      </table>
+
 
       <p>Om en variabel du hittar på får en särskild färg i en kodeditor (t ex Thonny), beror det ofta på att ordet är reserverat av Python. Välj då ett annat namn!</p>
 
