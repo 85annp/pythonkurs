@@ -14,7 +14,8 @@ export default async function TeacherDashboard() {
 
   const students = await prisma.user.findMany({
     where: { role: "STUDENT" },
-    include: { progress: { include: { module: true } } }
+    include: { progress: { include: { module: true } } },
+    orderBy: { username: "asc", },
   });
 
   const modules = await prisma.module.findMany({
