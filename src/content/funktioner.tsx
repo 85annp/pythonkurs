@@ -19,12 +19,13 @@ export default function Funktioner() {
       <p>Ofta kommer vi att vilja skapa egna funktioner. Varje funktion har:</p>
       <ul>
         <li>Ett <strong>namn</strong> (i Python använder vi oftast små bokstäver och understreck, t.ex. <code>min_funktion</code>).</li>
-        <li>Noll, ett eller flera <strong>argument</strong> (värden vi skickar in i funktionen).</li>
-        <li>Noll eller ett <strong>returvärde</strong> (det funktionen skickar tillbaka när den är klar).</li>
+        <li>Noll, ett eller flera <strong>argument</strong> (värden vi skickar <strong>in i funktionen</strong>).</li>
+        <li>Noll eller ett <strong>returvärde</strong> (det funktionen skickar <strong>tillbaka när den är klar</strong>).<br />
+            (Det är möjligt att returnera flera värden om man separerar dem med kommatecken. De skickas då tillbaka som <strong>en</strong> tuple.)</li>
         <li>Koden som tillhör funktionen (som vi markerar med <strong>indrag</strong> i Python).</li>
       </ul>
 
-      <p>En enkel funktion skapas med nyckelordet <code>def</code> (som står för define) och kan se ut så här:</p>
+      <p>En funktion skapas med nyckelordet <code>def</code> (som står för define). En enkel funktion kan se ut så här:</p>
 
       <div className="code-example">
         def hej():<br />
@@ -115,7 +116,7 @@ print(f"Kvadraten av 5 är {k}.")`}
 
 berakna_area()
 
-# Detta ger ett felmeddelande (NameError) eftersom 'area' inte finns här:
+# Nästa rad ger ett felmeddelande (NameError) eftersom 'area' inte finns här. Testa att ta bort kommentaren och kör koden igen!
 #print(area)`}
       />
 
@@ -179,12 +180,17 @@ print(f"Poäng: {poang}")`}
         <li><strong>Svårt att återanvända kod:</strong> En funktion som förlitar sig på globala variabler är svår att flytta eller återanvända i andra projekt.</li>
       </ul>
 
-      <h2>God praxis (Best Practice) för funktioner</h2>
+      <h2>God praxis för funktioner</h2>
       <p>Här är tre principer för att skriva ren, säker och lättläst kod.</p>
 
       <h3>Praxis 1: Skicka in data via parametrar och returnera resultat</h3>
       <p>
         Istället för att ändra globala variabler direkt, låt funktionen ta emot värden via <strong>parametrar</strong> och lämna tillbaka beräknade värden med <code>return</code>.
+        Funktioner som gör beräkningar bör helst <strong>inte</strong> använda <code>input()</code> eller <code>print()</code>.
+        All kommunikation sker via parametrar in, och <code>return</code> ut!
+      </p>
+      <p>
+        Genom att skilja på <em>logik</em> (beräkningar) och <em>användargränssnitt</em> (utskrifter och inmatningar) kan du återanvända din beräkningskod oavsett om du bygger ett terminalprogram, en webbsida eller en app!
       </p>
 
       <table style={{ width: "100%" }}>
@@ -262,16 +268,6 @@ print(f"Poäng: {poang}")`}
 
       <p>Om en variabel du hittar på får en särskild färg i en kodeditor (t ex Thonny), beror det ofta på att ordet är reserverat av Python. Välj då ett annat namn!</p>
 
-
-      <h2>Tumregel för bra funktioner</h2>
-      <p>
-        En bra funktion tar emot all data den behöver som parametrar och lämnar resultatet som ett returvärde.
-        Funktioner som gör beräkningar bör helst <strong>inte</strong> använda <code>input()</code> eller <code>print()</code>.
-        All kommunikation sker via parametrar in, och <code>return</code> ut!
-      </p>
-      <p>
-        Genom att skilja på <em>logik</em> (beräkningar) och <em>användargränssnitt</em> (utskrifter och inmatningar) kan du återanvända din beräkningskod oavsett om du bygger ett terminalprogram, en webbsida eller en app!
-      </p>
 
       <h2>Menyprogram med funktioner</h2>
       <p>
