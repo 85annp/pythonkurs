@@ -186,6 +186,8 @@ print(f"Poäng: {poang}")`}
       <h3>Praxis 1: Skicka in data via parametrar och returnera resultat</h3>
       <p>
         Istället för att ändra globala variabler direkt, låt funktionen ta emot värden via <strong>parametrar</strong> och lämna tillbaka beräknade värden med <code>return</code>.
+      </p>
+      <p>
         Funktioner som gör beräkningar bör helst <strong>inte</strong> använda <code>input()</code> eller <code>print()</code>.
         All kommunikation sker via parametrar in, och <code>return</code> ut!
       </p>
