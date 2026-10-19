@@ -241,7 +241,7 @@ print("En text på\\ntvå rader!")`}
       <hr />
 
       <h3>Dina uppgifter (görs längst ner på sidan)</h3>
-      <p>Använd gärna programmeringsmiljön i Thonny under utvecklingen: <a href="https://thonny.org/" target="_blank" rel="noopener noreferrer">https://thonny.org/</a></p>6
+      <p>Använd gärna programmeringsmiljön i Thonny under utvecklingen: <a href="https://thonny.org/" target="_blank" rel="noopener noreferrer">https://thonny.org/</a></p>
       <div className="task-box">
         <p><strong>Tips!</strong><br />Låt alla uppgifter finnas kvar i kodrutan, men kommentera bort de uppgifter du är färdig med genom att skriva ''' på raden före och efter kodblocket.</p>
         <p><strong>Tips 2!</strong><br />Om det inte fungerar med print med end=" ", kan du testa att lägga en tom print() på raden efter.</p>
