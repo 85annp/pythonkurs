@@ -438,6 +438,7 @@ export default function Speltillampningar() {
       <hr />
 
       <h3>Dina uppgifter (görs i Thonny och klistras in längst ner på sidan)</h3>
+      <p>Programmeringsmiljö i Thonny: <a href="https://thonny.org/" target="_blank" rel="noopener noreferrer">https://thonny.org/</a></p>
       <div className="task-box">
         <ol>
           <li>Ditt första fönster</li>
