@@ -17,7 +17,7 @@ export default function Speltillampningar() {
 
       <h3>Installera pygame</h3>
       <p>
-        Innan du kan använda pygame måste du installera det. Gå in i menyn Verktyg och välj Manage packages... och kontrollera så att pygame är installerad.
+        Innan du kan använda pygame måste du installera det. Gå in i menyn Verktyg och välj Manage packages... och kontrollera så att pygame är installerad. Om det inte fungerar med installationen kan du prova med pygame-ce (community edition) istället.
       </p>
 
       <h2>Ditt första fönster</h2>
