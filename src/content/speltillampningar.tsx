@@ -87,7 +87,9 @@ export default function Speltillampningar() {
       </p>
       <h3>Färgnamn</h3>
       <p>
-        Det enklaste sättet att ange färger i pygame är att använda färgens namn. Pygame har en stor uppsättning fördefinierade färgnamn som man kan använda. Exempel på dessa är "white", "black", "red", "green", "blue", "yellow", "purple", och "orange". 
+        Det enklaste sättet att ange färger i pygame är att använda färgens namn. 
+        Pygame har en stor uppsättning fördefinierade färgnamn som man kan använda. 
+        Exempel på dessa är "white", "black", "red", "green", "blue", "yellow", "purple" och "orange". 
       </p>
       <p>
         Du kan hitta en lista över alla färgnamn i Pygame här: <a href="https://www.pygame.org/docs/ref/color_list.html" target="_blank" rel="noopener noreferrer">https://www.pygame.org/docs/ref/color_list.html</a>
@@ -100,7 +102,7 @@ export default function Speltillampningar() {
         För att använda färger med RGB-värden i pygame, skriver man färgen som en tuple, t.ex. (255, 0, 0) för rött, (0, 255, 0) för grönt och (0, 0, 255) för blått.
       </p>
       <p>
-        Det finns många verktyg online som kan hjälpa dig att hitta RGB-värden för olika färger. Testa att bara googla "RGB color picker" eller gå in på till exempel <a href="https://www.colorhexa.com/" target="_blank" rel="noopener noreferrer">https://www.colorhexa.com/</a> för att hitta färger som passar ihop och deras RGB-värden.
+        Det finns många verktyg online som kan hjälpa dig att hitta RGB-värden för olika färger. Testa att googla "RGB color picker" eller gå in på till exempel <a href="https://www.colorhexa.com/" target="_blank" rel="noopener noreferrer">https://www.colorhexa.com/</a> för att hitta färger som passar ihop och deras RGB-värden.
       </p>
       <h3>Hexadecimala värden</h3>
       <p>
