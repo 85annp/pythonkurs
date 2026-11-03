@@ -52,7 +52,6 @@ export default function Speltillampningar() {
         </div>
       </div>
 
-
       <p>
         Testa så att det här exemplet fungerar på din dator. Det borde öppna ett fönster med en vit cirkel på en mörkgrön bakgrund. Stäng fönstret när du är klar.
       </p>
@@ -78,6 +77,83 @@ export default function Speltillampningar() {
 
       <div className="task-box">
         <p>Nu kan du göra Uppgift 1 längst ner på sidan.</p>
+      </div>
+
+
+
+      <h2>Färger i Pygame</h2>
+      <p>
+        I pygame kan man ange färger på flera olika sätt. 
+      </p>
+      <h3>Färgnamn</h3>
+      <p>
+        Det enklaste sättet att ange färger i Pygame är att använda färgens namn. Pygame har en stor uppsättning fördefinierade färgnamn som man kan använda. Exempel på dessa är "white", "black", "red", "green", "blue", "yellow", "purple", och "orange". 
+      </p>
+      <p>
+        Du kan hitta en lista över alla färgnamn i Pygame här: <a href="https://www.pygame.org/docs/ref/color_list.html" target="_blank" rel="noopener noreferrer">https://www.pygame.org/docs/ref/color_list.html</a>
+      </p>
+      <h3>RGB-värden</h3>
+      <p>
+        Man kan också ange färger med hjälp av RGB-värden, där varje färg representeras av tre värden mellan 0 och 255. Det första värdet representerar rött, det andra grönt och det tredje blått. 
+      </p>
+      <p>
+        För att använda färger med RGB-värden i Pygame, skriver man färgen som en tuple, t.ex. (255, 0, 0) för rött, (0, 255, 0) för grönt och (0, 0, 255) för blått.
+      </p>
+      <p>
+        Det finns många verktyg online som kan hjälpa dig att hitta RGB-värden för olika färger. Testa att bra googla "RGB color picker" eller gå in på till exempel <a href="https://www.colorhexa.com/" target="_blank" rel="noopener noreferrer">https://www.colorhexa.com/</a> för att hitta färger och deras RGB-värden.
+      </p>
+      <h3>Hexadecimala värden</h3>
+      <p>
+        Man kan också ange färger med hjälp av hexadecimala värden, som är en annan representation av färger. Dessa börjar med ett hashtag (#) följt av sex tecken, där varje par av tecken representerar rött, grönt och blått. Exempel på hexadecimala färger är "#FFFFFF" för vitt, "#000000" för svart, "#FF0000" för rött, "#00FF00" för grönt och "#0000FF" för blått.
+      </p>
+
+      <div className="code-example">
+        import pygame<br />
+        <br />
+        # KONSTANTER<br />
+        BACKGROUND = "darkslategray"<br />
+        RED = (179, 0, 0)<br />
+        GREEN = (0, 179, 90)<br />
+        BLUE = "#005ab3"<br />
+        <br />
+        pygame.init()<br />
+        screen = pygame.display.set_mode((800, 600))<br />
+        clock = pygame.time.Clock()<br />
+        <br />
+        while True:<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;for event in pygame.event.get():<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if event.type == pygame.QUIT:<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit()  # Stänger programmet<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;# Fyll hela bakgrunden med bakgrundsfärgen<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;screen.fill(BACKGROUND)<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;# Rita tre rektanglar med de andra färgerna<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;pygame.draw.rect(screen, RED, (100, 200, 150, 150))<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;pygame.draw.rect(screen, GREEN, (325, 200, 150, 150))<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;pygame.draw.rect(screen, BLUE, (550, 200, 150, 150))<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;pygame.display.flip()<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;clock.tick(60) # Kör loopen i 60 FPS (bilder per sekund)
+      </div>
+
+      <h3>Slumpa en ny färg</h3>
+      <p>
+        Ibland vill vi att saker i våra spel ska byta färg, eller att fiender ska spawna med unika, slumpmässiga färger. 
+        Eftersom en RGB-färg bara består av tre heltal mellan 0 och 255, kan vi använda Pythons inbyggda modul random för att generera dessa tal åt oss.
+      </p>
+      <p>
+        Vi använder funktionen <code>random.randint(min, max)</code> för att få ett tal mellan 0 och 255 för varje färgkanal (Röd, Grön, Blå). 
+        Sedan sätter vi ihop dem till en tupel:
+      </p>
+      <div className="code-example">
+        import random<br />
+        <br />
+        r = random.randint(0, 255)<br />
+        g = random.randint(0, 255)<br />
+        b = random.randint(0, 255)<br />
+        <br />
+        new_color = (r, g, b)
       </div>
 
       <h2>Flytta saker och input</h2>
@@ -448,7 +524,7 @@ export default function Speltillampningar() {
               <ul>
                 <li>Ändra fönstret till 800x600.</li>
                 <li>Byt färg på cirkeln till orange, ge den radien 200 och flytta den till mitten.</li>
-                <li>Byt bakgrundsfärg till en RGB-färg, t.ex. (50, 50, 200).</li>
+                <li>Byt bakgrundsfärg till aqua (eller en annan färg som du vet finns).</li>
               </ul>
             </li>
           </ul>
