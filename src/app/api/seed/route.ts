@@ -12,6 +12,7 @@ const modules = [
   { slug: 'funktioner', title: 'Funktioner', order: 7, description: 'Skapa egna funktioner för att strukturera koden.' },
   { slug: 'speltillampningar-pygame', title: 'Speltillämpningar med pygame', order: 8, description: 'Lär dig grunderna i Pygame lokalt på din egen dator.' },
   { slug: 'spelprojekt-pygame', title: 'Spelprojekt i pygame', order: 9, description: 'Bygg dina egna spel indelade i tre nivåer: lättare, medel och svårare.' },
+  { slug: 'matematik-och-ai', title: 'Matematik och AI', order: 10, description: 'Upptäck hur matematik, statistik och algoritmer driver modern artificiell intelligens och maskininlärning med Python.' },
 ];
 
 export async function GET() {

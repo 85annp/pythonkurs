@@ -3,7 +3,10 @@ process.loadEnvFile?.();
 import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcryptjs';
 
-let dbUrl = process.env.POSTGRES_PRISMA_URL || "";
+if (process.env.POSTGRES_URL_NON_POOLING) {
+  process.env.POSTGRES_PRISMA_URL = process.env.POSTGRES_URL_NON_POOLING;
+}
+let dbUrl = process.env.POSTGRES_URL_NON_POOLING || process.env.POSTGRES_PRISMA_URL || "";
 if (!dbUrl.includes("pool_timeout")) {
   dbUrl += (dbUrl.includes("?") ? "&" : "?") + "pool_timeout=45&connect_timeout=45";
 }
@@ -26,6 +29,7 @@ const modules = [
   { slug: 'funktioner', title: 'Funktioner', order: 7, description: 'Skapa egna funktioner för att strukturera koden.' },
   { slug: 'speltillampningar-pygame', title: 'Speltillämpningar med pygame', order: 8, description: 'Lär dig grunderna i Pygame lokalt på din egen dator.' },
   { slug: 'spelprojekt-pygame', title: 'Spelprojekt i pygame', order: 9, description: 'Bygg dina egna spel indelade i tre nivåer: lättare, medel och svårare.' },
+  { slug: 'matematik-och-ai', title: 'Matematik och AI', order: 10, description: 'Upptäck hur matematik, statistik och algoritmer driver modern artificiell intelligens och maskininlärning med Python.' },
 ];
 
 async function main() {

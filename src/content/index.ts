@@ -7,6 +7,7 @@ import Samlingar from "./samlingar";
 import Funktioner from "./funktioner";
 import Pygame from "./speltillampningar";
 import Spelprojekt from "./spelprojekt";
+import MatematikOchAI from "./matematik-och-ai";
 
 export const ModuleContent: Record<string, React.FC> = {
   "komma-igang": KommaIgang,
@@ -18,4 +19,5 @@ export const ModuleContent: Record<string, React.FC> = {
   "funktioner": Funktioner,
   "speltillampningar-pygame": Pygame,
   "spelprojekt-pygame": Spelprojekt,
+  "matematik-och-ai": MatematikOchAI,
 };
