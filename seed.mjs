@@ -3,10 +3,7 @@ process.loadEnvFile?.();
 import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcryptjs';
 
-if (process.env.POSTGRES_URL_NON_POOLING) {
-  process.env.POSTGRES_PRISMA_URL = process.env.POSTGRES_URL_NON_POOLING;
-}
-let dbUrl = process.env.POSTGRES_URL_NON_POOLING || process.env.POSTGRES_PRISMA_URL || "";
+let dbUrl = process.env.POSTGRES_PRISMA_URL || "";
 if (!dbUrl.includes("pool_timeout")) {
   dbUrl += (dbUrl.includes("?") ? "&" : "?") + "pool_timeout=45&connect_timeout=45";
 }
