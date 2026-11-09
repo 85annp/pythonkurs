@@ -5,6 +5,8 @@ import TeacherApprovalToggle from "../../components/TeacherApprovalToggle";
 import StudentManager from "../../components/StudentManager";
 import DeleteStudentButton from "../../components/DeleteStudentButton";
 
+export const dynamic = 'force-dynamic';
+
 export default async function TeacherDashboard() {
   const session = await auth();
   
