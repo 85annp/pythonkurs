@@ -487,37 +487,6 @@ export default function Speltillampningar() {
         <p>Nu kan du göra Uppgift 5 längst ner på sidan.</p>
       </div>
 
-
-      <hr />
-
-      <h2>Spelprojekt: Bygg Pong!</h2>
-      <p>
-        Nu har du allt du behöver för att bygga ett komplett spel! Ditt slutprojekt i kursen är att bygga <strong>Pong</strong>.
-      </p>
-      <p>Du behöver:</p>
-      <ul>
-        <li>Två paddlar (en som styrs med W/S, en som styrs med Upp/Ner).</li>
-        <li>En boll som rör sig med en x-hastighet och en y-hastighet.</li>
-        <li>Kollisioner mot paddlarna som får bollen att vända (multiplicera x-hastigheten med -1).</li>
-        <li>Kollisioner mot taket och golvet som får bollen att vända (multiplicera y-hastigheten med -1).</li>
-        <li>När bollen åker utanför höger eller vänster kant – ge poäng och återställ bollen till mitten!</li>
-      </ul>
-
-      <h2>Spelprojekt: Bygg Snake!</h2>
-      <p>
-        Nu har du allt du behöver för att bygga ett komplett spel! Ditt slutprojekt i kursen är att bygga <strong>Snake</strong>.
-      </p>
-      <p>Du behöver:</p>
-      <ul>
-        <li>En lista av positioner <code>(x, y)</code> för ormen.<br />
-            När ormen rör sig lägger du till ett nytt huvud först i listan och tar bort det sista elementet (svansen).</li>
-        <li>När ormens huvud krockar med maten låter du bli att ta bort svansen – då växer ormen!</li>
-        <li>En mat som dyker upp på slumpmässiga platser.<br />
-            🤯 Kontrollera så att maten inte dyker upp på ormens kropp!</li>
-        <li>Kollisioner med väggar och själva ormen som avslutar spelet.</li>
-        <li>Hanterar styrning så att ormen inte kan vända 180 grader direkt.</li>
-      </ul>
-
       <hr />
 
       <h3>Dina uppgifter (görs i Thonny och klistras in längst ner på sidan)</h3>
@@ -598,6 +567,14 @@ export default function Speltillampningar() {
         <img src="/player.png" alt="Spelare till spel" style={{ maxWidth: '100px', height: 'auto', borderRadius: '8px' }} />
         <img src="/jackfruit.png" alt="Jackfrukt till spel" style={{ maxWidth: '100px', height: 'auto', borderRadius: '8px' }} />
         <img src="/background.png" alt="Bakgrund till spel" style={{ maxWidth: '100px', height: 'auto', borderRadius: '8px' }} />
+      </div>
+
+      <div className="task-box" style={{ borderColor: 'var(--primary)', backgroundColor: '#eff6ff', marginTop: '2rem' }}>
+        <h3 style={{ color: '#1e40af', marginTop: 0 }}>🎮 Redo för nästa steg?</h3>
+        <p style={{ color: '#1e3a8a', margin: 0 }}>
+          När du har gjort klart övningsuppgifterna ovan och känner dig bekväm med grunderna i Pygame är du redo för nästa modul: <strong>Spelprojekt i pygame</strong>!
+          Där hittar du 10 olika spelprojekt indelade i tre svårighetsgrader (Lättare, Medel och Svårare).
+        </p>
       </div>
     </div>
   );

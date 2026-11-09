@@ -1,7 +1,20 @@
+process.loadEnvFile?.();
+
 import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcryptjs';
 
-const prisma = new PrismaClient();
+let dbUrl = process.env.POSTGRES_PRISMA_URL || "";
+if (!dbUrl.includes("pool_timeout")) {
+  dbUrl += (dbUrl.includes("?") ? "&" : "?") + "pool_timeout=45&connect_timeout=45";
+}
+
+const prisma = new PrismaClient({
+  datasources: {
+    db: {
+      url: dbUrl,
+    },
+  },
+});
 
 const modules = [
   { slug: 'komma-igang', title: 'Komma igång', order: 1, description: 'Introduktion till Python och hur du kör kod.' },
@@ -11,7 +24,8 @@ const modules = [
   { slug: 'repetitionssatser', title: 'Repetitionssatser', order: 5, description: 'Loopar med for och while.' },
   { slug: 'samlingar', title: 'Samlingar', order: 6, description: 'Listor, lexikon och tupler.' },
   { slug: 'funktioner', title: 'Funktioner', order: 7, description: 'Skapa egna funktioner för att strukturera koden.' },
-  { slug: 'speltillampningar-pygame', title: 'Speltillämpningar med pygame', order: 8, description: 'Bygg dina egna spel lokalt med Pygame!' },
+  { slug: 'speltillampningar-pygame', title: 'Speltillämpningar med pygame', order: 8, description: 'Lär dig grunderna i Pygame lokalt på din egen dator.' },
+  { slug: 'spelprojekt-pygame', title: 'Spelprojekt i pygame', order: 9, description: 'Bygg dina egna spel indelade i tre nivåer: lättare, medel och svårare.' },
 ];
 
 async function main() {

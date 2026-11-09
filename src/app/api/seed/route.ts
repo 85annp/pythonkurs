@@ -10,7 +10,8 @@ const modules = [
   { slug: 'repetitionssatser', title: 'Repetitionssatser', order: 5, description: 'Loopar med for och while.' },
   { slug: 'samlingar', title: 'Samlingar', order: 6, description: 'Listor, lexikon och tupler.' },
   { slug: 'funktioner', title: 'Funktioner', order: 7, description: 'Skapa egna funktioner för att strukturera koden.' },
-  { slug: 'speltillampningar-pygame', title: 'Speltillämpningar med pygame', order: 8, description: 'Bygg dina egna spel lokalt med Pygame!' },
+  { slug: 'speltillampningar-pygame', title: 'Speltillämpningar med pygame', order: 8, description: 'Lär dig grunderna i Pygame lokalt på din egen dator.' },
+  { slug: 'spelprojekt-pygame', title: 'Spelprojekt i pygame', order: 9, description: 'Bygg dina egna spel indelade i tre nivåer: lättare, medel och svårare.' },
 ];
 
 export async function GET() {
