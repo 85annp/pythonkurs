@@ -512,7 +512,8 @@ export default function Speltillampningar() {
         <li>En lista av positioner <code>(x, y)</code> för ormen.<br />
             När ormen rör sig lägger du till ett nytt huvud först i listan och tar bort det sista elementet (svansen).</li>
         <li>När ormens huvud krockar med maten låter du bli att ta bort svansen – då växer ormen!</li>
-        <li>En mat som dyker upp på slumpmässiga platser.</li>
+        <li>En mat som dyker upp på slumpmässiga platser.<br />
+            🤯 Kontrollera så att maten inte dyker upp på ormens kropp!</li>
         <li>Kollisioner med väggar och själva ormen som avslutar spelet.</li>
         <li>Hanterar styrning så att ormen inte kan vända 180 grader direkt.</li>
       </ul>
