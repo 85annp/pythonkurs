@@ -509,7 +509,7 @@ export default function Speltillampningar() {
       </p>
       <p>Du behöver:</p>
       <ul>
-        <li>En lista av positioner för ormen.<br />
+        <li>En lista av positioner <code>(x, y)</code> för ormen.<br />
             När ormen rör sig lägger du till ett nytt huvud först i listan och tar bort det sista elementet (svansen).</li>
         <li>När ormens huvud krockar med maten låter du bli att ta bort svansen – då växer ormen!</li>
         <li>En mat som dyker upp på slumpmässiga platser.</li>
