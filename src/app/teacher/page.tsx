@@ -84,7 +84,7 @@ export default async function TeacherDashboard() {
                     style={{ color: 'var(--primary)', fontWeight: '600', textDecoration: 'none' }}
                     title={`Öppna modul ${m.order}: ${m.title}`}
                   >
-                    {m.order}. {m.title} &nearr;
+                    {m.order}. {m.title}
                   </Link>
                 </th>
               ))}
