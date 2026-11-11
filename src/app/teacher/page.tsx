@@ -4,6 +4,7 @@ import { prisma } from "../../lib/prisma";
 import TeacherApprovalToggle from "../../components/TeacherApprovalToggle";
 import StudentManager from "../../components/StudentManager";
 import DeleteStudentButton from "../../components/DeleteStudentButton";
+import Link from "next/link";
 
 export const dynamic = 'force-dynamic';
 
@@ -30,14 +31,62 @@ export default async function TeacherDashboard() {
       
       <StudentManager />
 
-      <h3 style={{ marginBottom: '1rem' }}>Elevers Framsteg</h3>
+      <div className="card" style={{ marginBottom: "2rem" }}>
+        <h3 style={{ marginBottom: "0.75rem" }}>Kursens Moduler ({modules.length} st)</h3>
+        <p style={{ color: "#64748b", fontSize: "0.95rem", marginBottom: "1rem" }}>
+          Klicka på en modul för att förhandsgranska dess innehåll och uppgifter:
+        </p>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+          {modules.map(m => (
+            <Link 
+              key={m.id} 
+              href={`/module/${m.slug}`}
+              className="btn btn-outline"
+              style={{ fontSize: "0.85rem", padding: "0.4rem 0.8rem", textDecoration: "none" }}
+            >
+              🐍 {m.order}. {m.title}
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '1rem' }}>
+        <h3 style={{ margin: 0 }}>Elevers Framsteg</h3>
+        <span style={{ fontSize: '0.85rem', color: '#64748b' }}>
+          Tips: Tabellen kan scrollas i sidled för att se alla moduler &rarr;
+        </span>
+      </div>
+
       <div style={{ overflowX: 'auto', backgroundColor: 'var(--card-bg)', borderRadius: 'var(--radius)', border: '1px solid var(--border-color)' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
           <thead>
             <tr style={{ backgroundColor: 'var(--secondary)' }}>
-              <th style={{ padding: '1rem', borderBottom: '1px solid var(--border-color)' }}>Elev</th>
+              <th style={{ 
+                padding: '1rem', 
+                borderBottom: '1px solid var(--border-color)', 
+                position: 'sticky', 
+                left: 0, 
+                backgroundColor: 'var(--secondary)', 
+                zIndex: 2,
+                minWidth: '150px'
+              }}>
+                Elev
+              </th>
               {modules.map(m => (
-                <th key={m.id} style={{ padding: '1rem', borderBottom: '1px solid var(--border-color)' }}>{m.order}. {m.title}</th>
+                <th key={m.id} style={{ 
+                  padding: '1rem', 
+                  borderBottom: '1px solid var(--border-color)', 
+                  minWidth: '160px',
+                  whiteSpace: 'nowrap'
+                }}>
+                  <Link 
+                    href={`/module/${m.slug}`} 
+                    style={{ color: 'var(--primary)', fontWeight: '600', textDecoration: 'none' }}
+                    title={`Öppna modul ${m.order}: ${m.title}`}
+                  >
+                    {m.order}. {m.title} &nearr;
+                  </Link>
+                </th>
               ))}
             </tr>
           </thead>
@@ -50,7 +99,16 @@ export default async function TeacherDashboard() {
 
               return (
                 <tr key={student.id}>
-                  <td style={{ padding: '1rem', borderBottom: '1px solid var(--border-color)', verticalAlign: 'top' }}>
+                  <td style={{ 
+                    padding: '1rem', 
+                    borderBottom: '1px solid var(--border-color)', 
+                    verticalAlign: 'top',
+                    position: 'sticky',
+                    left: 0,
+                    backgroundColor: 'var(--card-bg)',
+                    zIndex: 1,
+                    boxShadow: '2px 0 5px -2px rgba(0,0,0,0.1)'
+                  }}>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
                       <span style={{ fontWeight: 'bold' }}>{student.username}</span>
                       <DeleteStudentButton studentId={student.id} studentName={student.username} />
